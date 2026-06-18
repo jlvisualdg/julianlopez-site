@@ -1,0 +1,162 @@
+:root {
+  --bg: #0d0d0d;
+  --bg-2: #1a1a1a;
+  --ink: #39ff14;
+  --ink-soft: #32d912;
+  --ink-faint: #28a028;
+  --line: #39ff14;
+  --accent: #39ff14;
+  --accent-soft: #1a1a1a;
+  --max: 64rem;
+  --sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: #0d0d0d;
+  color: #39ff14;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  font-feature-settings: "kern", "liga";
+  text-rendering: optimizeLegibility;
+}
+
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: 1.5rem; }
+
+a { color: #39ff14; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+:focus-visible { outline: 2px solid #39ff14; outline-offset: 3px; }
+
+.skip {
+  position: absolute; left: -9999px; top: 0; z-index: 100;
+  background: #39ff14; color: #0d0d0d; padding: 0.6rem 1rem;
+}
+.skip:focus { left: 0; }
+
+/* ---- Typography scale ---- */
+h1, h2, h3, h4 { line-height: 1.12; letter-spacing: -0.02em; font-weight: 600; margin: 0; color: #39ff14; }
+h1 { font-size: clamp(2rem, 1.3rem + 3.2vw, 3.4rem); }
+h2 { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 1.9rem); }
+h3 { font-size: 1.18rem; letter-spacing: -0.01em; }
+p { margin: 0 0 1rem; max-width: 65ch; color: white; }
+
+/* ---- Monospace "entity label" — the machine-layer motif ---- */
+.label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #39ff14;
+  display: inline-flex; align-items: center; gap: 0.55rem;
+}
+.label::before { content: ""; width: 1.5rem; height: 1px; background: #39ff14; }
+
+/* ---- Header / nav ---- */
+.site-header { border-bottom: 1px solid #39ff14; background: #0d0d0d; }
+.nav { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem 0; }
+.brand { font-family: var(--mono); font-weight: 600; font-size: 0.95rem; letter-spacing: -0.01em; color: #39ff14; }
+.brand:hover { text-decoration: none; }
+.brand b { color: #39ff14; }
+.nav ul { display: flex; gap: 1.4rem; list-style: none; margin: 0; padding: 0; flex-wrap: wrap; }
+.nav ul a { color: white; font-size: 0.92rem; }
+.nav ul a:hover { color: #39ff14; }
+
+/* ---- Sections ---- */
+main { padding-block: clamp(2.5rem, 6vw, 4.5rem); }
+section { margin-bottom: clamp(3rem, 7vw, 5rem); }
+.lede { font-size: clamp(1.15rem, 1rem + 0.6vw, 1.45rem); color: white; max-width: 50ch; }
+
+/* ---- Hero Section with Image ---- */
+.hero-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-image {
+  max-width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(57, 255, 20, 0.3);
+  border: 2px solid #39ff14;
+  width: 100%;
+  height: auto;
+}
+
+@media (min-width: 768px) {
+  .hero-container {
+    flex-direction: row;
+    text-align: left;
+  }
+  
+  .hero-image {
+    flex: 0 0 300px;
+    max-width: 300px;
+  }
+  
+  .hero-content {
+    flex: 1;
+  }
+}
+
+/* ---- Hairline data rows (key facts / employment) ---- */
+.rows { border-top: 1px solid #39ff14; margin: 1.5rem 0 0; }
+.row { display: grid; grid-template-columns: 13rem 1fr; gap: 1rem; padding: 0.95rem 0; border-bottom: 1px solid #39ff14; }
+.row dt { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.08em; text-transform: uppercase; color: #28a028; padding-top: 0.15rem; }
+.row dd { margin: 0; }
+@media (max-width: 600px) { .row { grid-template-columns: 1fr; gap: 0.2rem; } }
+
+/* ---- Cards (BRAIN pillars / what I do) ---- */
+.grid { display: grid; gap: 1px; background: #39ff14; border: 1px solid #39ff14; margin-top: 1.75rem; }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 760px) { .grid.cols-3 { grid-template-columns: 1fr; } }
+.cell { background: #0d0d0d; padding: 1.6rem; }
+.cell .n { font-family: var(--mono); font-size: 0.78rem; color: #39ff14; }
+.cell h3 { margin: 0.6rem 0 0.1rem; }
+.cell .sub { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase; color: #28a028; margin-bottom: 0.6rem; }
+.cell p { font-size: 0.96rem; color: white; margin: 0; }
+
+/* ---- Q&A blocks (machine-reading-comprehension headers) ---- */
+.qa { border-top: 1px solid #39ff14; padding-top: 1.4rem; margin-top: 1.4rem; }
+.qa h3 { color: #39ff14; }
+.qa p { margin-top: 0.5rem; color: white; }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-block; font-family: var(--mono); font-size: 0.85rem; letter-spacing: 0.02em;
+  padding: 0.7rem 1.2rem; border: 1px solid #39ff14; color: #39ff14; background: transparent;
+}
+.btn:hover { background: #39ff14; color: #0d0d0d; text-decoration: none; }
+.btn-primary { background: #39ff14; border-color: #39ff14; color: #0d0d0d; }
+.btn-primary:hover { background: #32d912; color: #0d0d0d; }
+.actions { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 2rem; }
+
+/* ---- Media ---- */
+figure { margin: 0; }
+.shot { width: 100%; height: auto; display: block; border: 1px solid #39ff14; background: #1a1a1a; }
+figcaption { font-family: var(--mono); font-size: 0.74rem; color: #28a028; margin-top: 0.5rem; }
+.media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.75rem; }
+.media-grid figure:first-child { grid-column: 1 / -1; }
+@media (max-width: 640px) { .media-grid { grid-template-columns: 1fr; } }
+
+/* ---- Footer ---- */
+.site-footer { border-top: 1px solid #39ff14; padding-block: 2.5rem; color: white; font-size: 0.9rem; }
+.site-footer .cols { display: flex; flex-wrap: wrap; gap: 2rem 3rem; justify-content: space-between; }
+.site-footer h4 { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: #28a028; font-weight: 400; margin-bottom: 0.7rem; }
+.site-footer ul { list-style: none; margin: 0; padding: 0; line-height: 1.9; }
+.site-footer .nap { font-style: normal; }
+
+/* ---- Misc ---- */
+ul.clean { list-style: none; padding: 0; margin: 0.5rem 0; }
+ul.clean li { padding: 0.35rem 0; border-bottom: 1px solid #39ff14; }
+.tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+.tag { font-family: var(--mono); font-size: 0.78rem; padding: 0.25rem 0.6rem; background: #1a1a1a; color: #39ff14; }
+hr { border: 0; border-top: 1px solid #39ff14; margin: 2.5rem 0; }
