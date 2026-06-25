@@ -3,28 +3,51 @@ import { machineData } from '@/lib/machineData';
 export default function MachineDataView() {
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-green-900">
-        <div className="px-4 py-2 flex items-center">
-          <div className="flex-1 font-mono text-green-500 text-sm">
+      <nav style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 50,
+        backgroundColor: '#000',
+        borderBottom: '1px solid #14532d'
+      }}>
+        <div style={{ padding: '8px 16px', display: 'flex', alignItems: 'center' }}>
+          <div style={{ flex: 1, fontFamily: 'monospace', color: '#22c55e', fontSize: '0.875rem' }}>
             julian_lopez.entity.json
           </div>
-          <div className="flex-1 flex justify-center">
+          <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
             <button
-              className="inline-block bg-[#39ff14] hover:bg-[#32d912] text-black font-bold px-4 py-1 text-sm transition-all"
               style={{
-                boxShadow: "0 0 10px rgba(57, 255, 20, 0.7), 0 0 20px rgba(57, 255, 20, 0.5), 0 0 30px rgba(57, 255, 20, 0.3)",
-                textShadow: "none"
+                display: 'inline-block',
+                backgroundColor: '#39ff14',
+                color: '#000',
+                fontWeight: 'bold',
+                padding: '4px 16px',
+                fontSize: '0.875rem',
+                border: 'none',
+                cursor: 'pointer',
+                boxShadow: '0 0 10px rgba(57, 255, 20, 0.7), 0 0 20px rgba(57, 255, 20, 0.5), 0 0 30px rgba(57, 255, 20, 0.3)',
+                textShadow: 'none'
               }}
             >
               Humans Click Here
             </button>
           </div>
-          <div className="flex-1" />
+          <div style={{ flex: 1 }} />
         </div>
       </nav>
-      <div className="min-h-screen bg-[#0d0d0d] text-[#39ff14] font-mono text-sm pt-12 pb-4">
-        <div className="max-w-7xl mx-auto p-4 overflow-auto">
-          <pre className="leading-relaxed whitespace-pre-wrap break-words">
+      <div style={{
+        minHeight: '100vh',
+        backgroundColor: '#0d0d0d',
+        color: '#39ff14',
+        fontFamily: 'monospace',
+        fontSize: '0.875rem',
+        paddingTop: '3rem',
+        paddingBottom: '1rem'
+      }}>
+        <div style={{ maxWidth: '80rem', margin: '0 auto', padding: '1rem', overflow: 'auto' }}>
+          <pre style={{ lineHeight: 1.625, whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
             {JSON.stringify(machineData, null, 2)}
           </pre>
         </div>
