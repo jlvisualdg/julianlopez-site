@@ -4,14 +4,13 @@ export default function MachineDataView() {
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-black border-b border-green-900">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex items-center relative">
-          <div className="font-mono text-green-500 text-sm">
+        <div className="px-4 py-2 flex items-center">
+          <div className="flex-1 font-mono text-green-500 text-sm">
             julian_lopez.entity.json
           </div>
-          <div style={{ position: "absolute", left: 0, right: 0, display: "flex", justifyContent: "center", pointerEvents: "none" }}>
+          <div className="flex-1 flex justify-center">
             <button
               style={{
-                pointerEvents: "auto",
                 background: "#39ff14",
                 color: "#000",
                 fontWeight: "bold",
@@ -25,6 +24,7 @@ export default function MachineDataView() {
               Humans Click Here
             </button>
           </div>
+          <div className="flex-1" />
         </div>
       </nav>
       <div className="min-h-screen bg-[#0d0d0d] text-[#3
