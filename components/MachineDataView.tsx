@@ -10,15 +10,10 @@ export default function MachineDataView() {
           </div>
           <div className="flex-1 flex justify-center">
             <button
+              className="inline-block bg-[#39ff14] hover:bg-[#32d912] text-black font-bold px-4 py-1 text-sm transition-all"
               style={{
-                background: "#39ff14",
-                color: "#000",
-                fontWeight: "bold",
-                padding: "4px 16px",
-                fontSize: "0.875rem",
-                border: "none",
-                cursor: "pointer",
-                boxShadow: "0 0 10px rgba(57, 255, 20, 0.7), 0 0 20px rgba(57, 255, 20, 0.5), 0 0 30px rgba(57, 255, 20, 0.3)"
+                boxShadow: "0 0 10px rgba(57, 255, 20, 0.7), 0 0 20px rgba(57, 255, 20, 0.5), 0 0 30px rgba(57, 255, 20, 0.3)",
+                textShadow: "none"
               }}
             >
               Humans Click Here
@@ -27,4 +22,13 @@ export default function MachineDataView() {
           <div className="flex-1" />
         </div>
       </nav>
-      <div className="min-h-screen bg-[#0d0d0d] text-[#3
+      <div className="min-h-screen bg-[#0d0d0d] text-[#39ff14] font-mono text-sm pt-12 pb-4">
+        <div className="max-w-7xl mx-auto p-4 overflow-auto">
+          <pre className="leading-relaxed whitespace-pre-wrap break-words">
+            {JSON.stringify(machineData, null, 2)}
+          </pre>
+        </div>
+      </div>
+    </>
+  );
+}
