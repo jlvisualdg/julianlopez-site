@@ -139,10 +139,30 @@ export const entity = {
 
   contact: { email: "julian.l@paretotalent.com" },
 
+
+  articles: [
+    {
+      title: "How to Get Your Brand Recommended by AI (AEO) with Julian Lopez",
+      url: "https://smartmarketer.com/how-to-get-your-brand-recommended-by-ai-aeo-with-julian-lopez/",
+      publisher: "SmartMarketer",
+    },
+  ],
+
+  podcastAppearances: [
+    {
+      title: "Episode 276: How to Get Your Brand Recommended by AI",
+      apple: "https://podcasts.apple.com/us/podcast/episode-276-how-to-get-your-brand-recommended-by-ai/id1522629407?i=1000768742864",
+      spotify: "https://open.spotify.com/episode/1sPrTntUVvjUq4nm2DClyj",
+    },
+  ],
+
   sameAs: [
     "https://www.linkedin.com/in/julian-lopez-a51724176/",
     "https://www.facebook.com/julian.lopez.9026/",
     "https://www.amazon.com/AEO-Blueprint-Be-Answer-Recommends-ebook/dp/B0FX5VN49P",
+    "https://smartmarketer.com/how-to-get-your-brand-recommended-by-ai-aeo-with-julian-lopez/",
+    "https://podcasts.apple.com/us/podcast/episode-276-how-to-get-your-brand-recommended-by-ai/id1522629407?i=1000768742864",
+    "https://open.spotify.com/episode/1sPrTntUVvjUq4nm2DClyj",
   ],
 } as const;
 

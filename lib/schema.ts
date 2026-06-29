@@ -44,6 +44,22 @@ export function profilePageSchema() {
         url: entity.book.url,
       },
       sameAs: entity.sameAs,
+      subjectOf: [
+        ...entity.articles.map((a) => ({
+          "@type": "Article",
+          name: a.title,
+          url: a.url,
+          publisher: { "@type": "Organization", name: a.publisher },
+          about: { "@id": PERSON_ID },
+        })),
+        ...entity.podcastAppearances.map((p) => ({
+          "@type": "PodcastEpisode",
+          name: p.title,
+          url: p.apple,
+          sameAs: [p.apple, p.spotify],
+          about: { "@id": PERSON_ID },
+        })),
+      ],
     },
     about: {
       "@type": "Organization",
