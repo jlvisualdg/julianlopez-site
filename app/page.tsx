@@ -7,7 +7,7 @@ export default function Home() {
       <section aria-labelledby="hero-h">
         <div className="hero-container">
           <img 
-            src="/julian-lopez-headshot.png" 
+            src="/julian-lopez-headshot-white.png" 
             alt="Julian Lopez - AEO Expert and Business Builder"
             className="hero-image"
           />

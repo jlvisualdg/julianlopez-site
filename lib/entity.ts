@@ -11,7 +11,7 @@ export const entity = {
   birthDate: "1989-01-21",
   birthPlace: "Bogotá, Colombia",
   nationality: "Colombian",
-  image: `${SITE_URL}/julian-lopez-keynote-aeo-mentor-table-nashville.jpg`,
+  image: `${SITE_URL}/julian-lopez-headshot-white.png`,
   audience: "Entrepreneurs, founders, and business owners",
 
   headline: "Julian Lopez — AEO Expert & Business Builder",
