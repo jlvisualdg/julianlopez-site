@@ -41,47 +41,25 @@ export default function Book() {
         <p style={{ marginTop: "0.4rem" }}>{entity.book.bestsellerNote}</p>
       </section>
 
-       {/* BRAIN methodology lives here (per the canonical structure) */}
+       {/* BRAIN methodology — reads from entity.brain.pillars (single source of truth) */}
        <section className="qa">
          <h2>{entity.brain.name} (Methodology)</h2>
          <p style={{ marginTop: "0.6rem" }}>
-           {entity.name} is the co-creator of {entity.brain.name}, {entity.brain.summary} The
-           BRAIN Framework has five pillars, none optional. They're a causal chain — each one depends on the the one before it.
+           {entity.name} is the co-creator of {entity.brain.name}. {entity.brain.summary} The
+           B.R.A.I.N. Framework has five pillars, none optional. They form a causal chain — each one
+           depends on the one before it.
          </p>
-         <div className="qa">
-           <h2>B — Brand Representation: Reach, Recognition, Reputation</h2>
-           <p style={{ marginTop: "0.6rem" }}>
-             Your external footprint. Reach (are you present where AI looks?), Recognition (is your brand described consistently across all platforms?), Reputation (is the sentiment positive?). AI builds its understanding of your brand from what others say about you, not what you say about yourself.
-           </p>
-         </div>
-         <div className="qa">
-           <h2>R — Research: Question Intelligence</h2>
-           <p style={{ marginTop: "0.6rem" }}>
-             First-party customer questions (CS transcripts, call recordings, surveys), the Answer Database built from those, AI visibility baselines across ChatGPT/Perplexity/AI Mode, competitor citation analysis, and SparkToro audience profiling. You can't create citable content without knowing what questions you need to answer.
-           </p>
-         </div>
-         <div className="qa">
-           <h2>A — Authority: Third-Party Validation</h2>
-           <p style={{ marginTop: "0.6rem" }}>
-             Topical depth (trunk and branch content architecture), a named authority figure with a verifiable footprint, digital PR and earned media, UGC presence on Reddit and review platforms, E-E-A-T compliance. AI recommends brands that other independent sources already endorse.
-           </p>
-         </div>
-         <div className="qa">
-           <h2>I — Indexability: Technical Foundation</h2>
-           <p style={{ marginTop: "0.6rem" }}>
-             AI crawlers allowed in robots.txt, site architecture under 3 clicks, clean SSR code, schema markup (Organization, Person, Product, FAQ), semantic heading hierarchy, entity home established, content structured with direct answers front-loaded. This is where the website work lives.
-           </p>
-         </div>
-         <div className="qa">
-           <h2>N — Network: Co-Citation Authority</h2>
-           <p style={{ marginTop: "0.6rem" }}>
-             Being mentioned alongside category competitors in AI responses, listed in industry directories, connected through partnerships and affiliate relationships with DA 40+ domains, featured in press and podcasts, embedded in niche communities. A brand that exists in isolation is less citable than one woven into its category's web.
-           </p>
-         </div>
+         {entity.brain.pillars.map((pillar) => (
+           <div className="qa" key={pillar.letter}>
+             <h2>{pillar.letter} — {pillar.title}: {pillar.subtitle}</h2>
+             <p style={{ marginTop: "0.6rem" }}>{pillar.body}</p>
+           </div>
+         ))}
          <div className="qa">
            <h2>Critical Note: The sequence matters</h2>
            <p style={{ marginTop: "0.6rem" }}>
-             The sequence matters: fixing Indexability while Brand Representation is broken is backwards. AI forms its opinion about you externally before it ever visits your site.
+             Fixing Indexability while Brand Representation is broken is backwards. AI forms its
+             opinion about you externally before it ever visits your site.
            </p>
          </div>
        </section>
