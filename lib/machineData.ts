@@ -63,7 +63,7 @@ export const machineData = {
   // BRAIN Framework data
   "brain_framework": {
     "name": "The BRAIN Framework",
-    "summary": "A first-principles approach designed to transform invisible websites into AI-Recommended Brands",
+    "summary": "A first-principles, five-pillar system (B.R.A.I.N. v2.4) designed to transform invisible websites into AI-Recommended Brands. Pillars: Brand Representation · Research · Audience · Indexability · Network.",
     "pillars": [
       {
         "letter": "B",
@@ -74,14 +74,14 @@ export const machineData = {
       {
         "letter": "R",
         "title": "Research",
-        "subtitle": "Question Intelligence",
-        "description": "First-party customer questions (CS transcripts, call recordings, surveys), the Answer Database built from those, AI visibility baselines across ChatGPT/Perplexity/AI Mode, competitor citation analysis, and SparkToro audience profiling. You can't create citable content without knowing what questions you need to answer."
+        "subtitle": "AI Visibility, Competitor Intel, Attribution",
+        "description": "AI answer engines and retrieval behavior change on a timescale of months, not years. Research isn't a phase — it's a standing budget line. Four functions: AI Visibility Baseline (monthly scans across ChatGPT, Perplexity, Gemini, Claude, AI Mode), Competitor & Category Intelligence (who AI cites for your queries), Channel Monitoring (new agentic surfaces as they emerge), and Source Attribution (closing the loop from AI citation to business outcome)."
       },
       {
         "letter": "A",
-        "title": "Authority",
-        "subtitle": "Third-Party Validation",
-        "description": "Topical depth (trunk and branch content architecture), a named authority figure with a verifiable footprint, digital PR and earned media, UGC presence on Reddit and review platforms, E-E-A-T compliance. AI recommends brands that other independent sources already endorse."
+        "title": "Audience",
+        "subtitle": "Query Intelligence, Buying Situations",
+        "description": "Strategy calibrated to who asks what, in what situations. AI doesn't recommend generic brands — it recommends brands that demonstrably understand and serve specific needs in specific contexts. Audience replaced Authority in B.R.A.I.N. v2.4: authority signals live in Brand Representation (Reputation) and Network (NEEATT). Audience is the variable that calibrates every other pillar."
       },
       {
         "letter": "I",
