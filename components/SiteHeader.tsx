@@ -8,7 +8,7 @@ export default function SiteHeader() {
     <header className="site-header">
       <div className="wrap nav">
         <Link href="/" className="brand">
-          {entity.name.toLowerCase().replace(" ", "_")}
+          {entity.name.toLowerCase().replace(" ", "_")}<span>.</span>
         </Link>
         <nav aria-label="Primary">
           <ul>
