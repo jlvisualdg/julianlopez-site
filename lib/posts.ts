@@ -31,7 +31,7 @@ export const posts: Post[] = [
       "AI didn't come to search. It replaced it. And most brands are completely invisible to the new system — not because they did something wrong, but because they were never built for it.",
     body: `I want to tell you about a conversation I had with a founder six months ago.
 
-She ran a successful e-commerce brand. Seven figures. Strong SEO. Good content. She asked me to pull up ChatGPT and search for her category — "best magnesium supplement for sleep."
+She ran a successful e-commerce brand. Seven figures. Strong SEO. Good content. She asked me to pull up ChatGPT and search for something a customer would realistically ask about her category.
 
 Her brand didn't appear. Not in the first response. Not in the follow-ups. Not even when I pushed.
 
@@ -48,6 +48,8 @@ And that recommendation either includes your brand or it doesn't.
 Here's what makes it harder: AI forms its opinion about your brand before it ever visits your website. Internal research suggests AI spends 66%+ of its retrieval budget on third-party sources — industry blogs, review sites, community discussions — to identify and validate candidates before touching your domain. If you only exist on your own properties, you're invisible at the selection phase.
 
 The founder's content was excellent. It just lived in the wrong part of the internet for how AI retrieves.
+
+This wasn't a one-off. I've had this exact conversation — same confusion, same gap — with founders and marketing teams across every category I've worked in. Different products, different markets, different budgets. Same blind spot. The brands doing everything right by the old playbook, invisible to the new one.
 
 ## This isn't SEO with a new name
 
