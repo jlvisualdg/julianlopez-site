@@ -24,7 +24,6 @@ export const metadata: Metadata = {
     images: [entity.image],
   },
   robots: { index: true, follow: true },
-  verification: { google: "ei9vk_KszVdBbtXxRoziFSrfuHhptS7XbLf95csXfjQ" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -37,6 +36,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
+        <meta name="google-site-verification" content="ei9vk_KszVdBbtXxRoziFSrfuHhptS7XbLf95csXfjQ" />
         <JsonLd data={profilePageSchema()} />
         <script src="/view-toggle.js"></script>
         <script dangerouslySetInnerHTML={{ __html: `
