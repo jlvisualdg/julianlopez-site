@@ -14,6 +14,7 @@ export default function SiteHeader() {
           <ul>
             <li><Link href="/about/">About</Link></li>
             <li><Link href="/the-aeo-blueprint/">The AEO Blueprint</Link></li>
+            <li><Link href="/blog/">Writing</Link></li>
             <li><Link href="/media-speaking/">Media & Speaking</Link></li>
             <li><Link href="/contact/">Contact</Link></li>
           </ul>
