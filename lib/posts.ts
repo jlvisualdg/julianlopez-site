@@ -61,19 +61,17 @@ If AI can't describe your brand in one consistent sentence — if your LinkedIn 
 
 A hedging AI is a lost sale.
 
-## The four states your brand can be in
+## The three states your brand can be in
 
-When someone asks AI about your category right now, your brand is in one of four states:
+When someone asks AI about your category right now, your brand is in one of three states:
 
-Refusing — "I don't have information on that brand." You don't exist in the machine.
+Visible — AI knows you exist. It can name you. But that's the floor, not the goal.
 
-Hedging — "According to their website, they claim to..." AI knows you exist but won't stake a recommendation on you.
+Understood — AI can describe what you do, who you're for, and why you're relevant. It has enough signal to place you in the conversation.
 
-Confident — A clean, direct mention without qualifiers. This is the goal.
+Recommended — AI mentions you without qualification, unprompted, as the answer. This is what we're building toward.
 
-Hardwired — AI seeks out your content unprompted when composing answers, even when your brand wasn't named in the question. The machine has internalized you as a source of truth.
-
-Most brands I audit are somewhere between Refusing and Hedging. The good news: this is fixable. The bad news: it requires building something most brands have never thought to build.
+Most brands I audit are stuck at Visible at best. Often not even that. The good news: all three states are buildable. The bad news: they require building something most brands have never thought to build.
 
 ## What I've built to solve it
 
