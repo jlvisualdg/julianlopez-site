@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Audit: Julian Lopez vs Personal Brand Authority Framework</title>
+<style>
+  :root {
+    --bg: #1a1a1a;
+    --card: #242424;
+    --text: #e0e0e0;
+    --muted: #999;
+    --pass: #4caf50;
+    --warn: #ff9800;
+    --fail: #f44336;
+    --accent: #468FFE;
+    --gold: #ffd24d;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--text); font-family:'Segoe UI',system-ui,sans-serif; line-height:1.6; }
+  .container { max-width:1100px; margin:0 auto; padding:40px 20px; }
+  h1 { font-size:2rem; margin-bottom:8px; }
+  h1 span { color:var(--gold); }
+  h2 { font-size:1.4rem; margin:40px 0 16px; border-bottom:1px solid #333; padding-bottom:8px; }
+  h3 { font-size:1.1rem; margin:24px 0 12px; color:var(--muted); }
+  .subtitle { color:var(--muted); margin-bottom:32px; font-size:0.95rem; }
+  .score-card {
+    background:var(--card); border-radius:12px; padding:24px; margin-bottom:20px;
+    display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;
+  }
+  .score-card .label { font-size:1.05rem; }
+  .score-card .detail { color:var(--muted); font-size:0.85rem; margin-top:4px; }
+  .score { font-size:2rem; font-weight:700; text-align:right; }
+  .score.pass { color:var(--pass); }
+  .score.warn { color:var(--warn); }
+  .score.fail { color:var(--fail); }
+  .checklist { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:12px; margin:16px 0; }
+  .check-item {
+    background:var(--card); border-radius:8px; padding:16px;
+    display:flex; align-items:flex-start; gap:12px;
+  }
+  .check-item .icon { font-size:1.3rem; flex-shrink:0; margin-top:2px; }
+  .check-item.met .icon { color:var(--pass); }
+  .check-item.miss .icon { color:var(--fail); }
+  .check-item.part .icon { color:var(--warn); }
+  .check-item .name { font-weight:600; }
+  .check-item .note { color:var(--muted); font-size:0.82rem; margin-top:4px; }
+  table { width:100%; border-collapse:collapse; margin:16px 0; background:var(--card); border-radius:8px; overflow:hidden; }
+  th, td { padding:12px 16px; text-align:left; border-bottom:1px solid #333; font-size:0.9rem; }
+  th { background:#2a2a2a; color:var(--muted); font-weight:600; text-transform:uppercase; font-size:0.78rem; letter-spacing:0.5px; }
+  td:last-child, th:last-child { text-align:center; }
+  .badge { display:inline-block; padding:2px 10px; border-radius:12px; font-size:0.75rem; font-weight:600; }
+  .badge.pass { background:#1b5e20; color:var(--pass); }
+  .badge.warn { background:#3e2800; color:var(--warn); }
+  .badge.fail { background:#4a1515; color:var(--fail); }
+  .rec { background:var(--card); border-left:3px solid var(--gold); padding:16px 20px; margin:8px 0; border-radius:0 8px 8px 0; font-size:0.9rem; }
+  .rec::before { content:'→ '; color:var(--gold); font-weight:700; }
+  .advantage { background:var(--card); border-left:3px solid var(--pass); padding:16px 20px; margin:8px 0; border-radius:0 8px 8px 0; font-size:0.9rem; }
+  .advantage::before { content:'★ '; color:var(--pass); font-weight:700; }
+  .summary-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:12px; margin:16px 0; }
+  .metric { background:var(--card); border-radius:8px; padding:16px; text-align:center; }
+  .metric .value { font-size:1.6rem; font-weight:700; }
+  .metric .label { color:var(--muted); font-size:0.8rem; margin-top:4px; }
+  code { background:#111; padding:2px 7px; border-radius:4px; font-size:0.82rem; color:#aaa; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Site Audit: <span>Julian Lopez</span></h1>
+<p class="subtitle">Evaluated against the Personal Brand Authority Framework (same rubric as Kasim Aslam audit, Jul 22 2026).<br>
+Audit date: July 30, 2026 &nbsp;|&nbsp; Source: <code>julianlopez-site/</code> — live codebase (Next.js, GitHub Pages)<br>
+Auditor: Claude (Cowork) — all checks run against actual code in <code>lib/entity.ts</code>, <code>lib/schema.ts</code>, and all <code>app/</code> pages.</p>
+
+<!-- OVERVIEW METRICS -->
+<div class="summary-grid">
+  <div class="metric"><div class="value" style="color:var(--warn)">54%</div><div class="label">Overall Score</div></div>
+  <div class="metric"><div class="value" style="color:var(--warn)">4</div><div class="label">Pages Present</div></div>
+  <div class="metric"><div class="value" style="color:var(--fail)">6</div><div class="label">sameAs Links</div></div>
+  <div class="metric"><div class="value" style="color:var(--fail)">0</div><div class="label">Identifier Properties</div></div>
+  <div class="metric"><div class="value" style="color:var(--warn)">2</div><div class="label">subjectOf Items</div></div>
+  <div class="metric"><div class="value" style="color:var(--fail)">1</div><div class="label">Published Articles</div></div>
+</div>
+
+<p style="color:var(--muted);margin:16px 0 0;">Kasim scored 72%. Julian scores 54%. The gap isn't schema architecture — Julian's schema is structurally better than Kasim's (ProfilePage, FAQPage, subjectOf, hasOccupation all present). The drag is page count, thin external footprint, and homepage copy that doesn't convert authority into proof. These are fixable in one sprint.</p>
+
+<!-- SECTION 1: HOMEPAGE -->
+<h2>1. Homepage Audit</h2>
+<p style="color:var(--muted);margin-bottom:16px;">Julian's homepage has a headshot and two CTAs — that's ahead of Kasim's. But the body copy reads as a product description, not a personal authority claim. It explains AEO instead of proving Julian knows AEO. The visual proof layer (logos, numbers, testimonials, pain/solution arc) is absent.</p>
+
+<div class="checklist">
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">Professional headshot in hero</div><div class="note">julian-lopez-headshot-white.png is in the hero section. Kasim had no headshot. Julian already wins this one.</div></div></div>
+  <div class="check-item part"><span class="icon">~</span><div><div class="name">Title / authority claim</div><div class="note">"AEO Expert & Business Builder" — functional, but it's a label, not a claim. Compare Kasim: "I build companies by finding extraordinary people and getting out of their way." Julian's doesn't land with the same weight.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Hero headline with proof</div><div class="note">The hero body is the elevator pitch from entity.ts (~60 words describing what Julian does). No specific numbers, no story hook, no before/after frame. Kasim opens with "six 7- and 8-figure businesses. Three exits." Julian opens with a definition of AEO.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Pain points section</div><div class="note">Kasim's homepage has a "Most founders do not have a time problem. They have a leverage problem" section. Julian's homepage has AEO Research + Brand Entity Optimization — two descriptive paragraphs. No pain framing, no problem-solution arc.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Specific numbers / proof stats</div><div class="note">Kasim leads with "6 businesses, 3 exits, 8-figure exit, 100+ placements." Julian's homepage has no quantified proof. The AEO Blueprint bestseller status, the BRAIN Framework, the client results — none appear on the homepage.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Featured in / media logo strip</div><div class="note">No media logos. SmartMarketer, Perpetual Traffic podcast, the Nashville conference — all have brandable logos. None shown.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Testimonials / social proof</div><div class="note">Zero testimonials on homepage. The AEO community has active members. The program has results. None are surfaced.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">FAQ / AEO answer block on homepage</div><div class="note">The About page has excellent FAQ blocks. The homepage has none. Kasim's homepage ends with "Who is Kasim Aslam" — an AEO-extractable block. Julian's homepage ends with a contact section.</div></div></div>
+  <div class="check-item part"><span class="icon">~</span><div><div class="name">CTA routing</div><div class="note">Two CTAs: "Read the AEO Blueprint" (Amazon) and "Reach Out" (contact). Functional, but single track. Kasim has three routes. Julian's missing a "learn AEO" or "Skool community" route.</div></div></div>
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">Quick Facts section</div><div class="note">Present: role, location, expertise, book, framework. Good dense reference block for crawlers. AEO-extractable.</div></div></div>
+</div>
+
+<!-- SECTION 2: NAVIGATION -->
+<h2>2. Navigation Structure</h2>
+
+<table>
+  <tr><th>Framework Standard</th><th>Julian's Site</th><th>Status</th></tr>
+  <tr><td>About / Entity Home</td><td>/about — strong Q&A entity page, intro paragraph, 6 sections, 20+ Q&As</td><td><span class="badge pass">MET</span></td></tr>
+  <tr><td>Book / Courses</td><td>/the-aeo-blueprint — book page with BRAIN framework, hook, Amazon CTA</td><td><span class="badge pass">MET</span></td></tr>
+  <tr><td>Media & Speaking</td><td>/media-speaking — 1 event (Nashville March 2026), 5 photos, 1 podcast referenced in schema</td><td><span class="badge warn">PARTIAL</span></td></tr>
+  <tr><td>Contact</td><td>/contact — email + LinkedIn + SmartMarketer link. No intent-routing (hire vs. speak vs. learn)</td><td><span class="badge warn">PARTIAL</span></td></tr>
+  <tr><td>Articles / Writing</td><td>Not present. 1 article in schema (SmartMarketer) but no dedicated page.</td><td><span class="badge fail">MISSING</span></td></tr>
+  <tr><td>Frameworks / IP</td><td>BRAIN is covered on /the-aeo-blueprint but not a standalone navigable section. No /brain or /frameworks route.</td><td><span class="badge fail">MISSING</span></td></tr>
+  <tr><td>Community</td><td>AEO Skool community is mentioned in About schema but has no page.</td><td><span class="badge fail">MISSING</span></td></tr>
+  <tr><td>Awards / Bestseller</td><td>Book bestseller status mentioned on /the-aeo-blueprint. Not standalone.</td><td><span class="badge warn">PARTIAL</span></td></tr>
+</table>
+
+<div class="rec">Julian has 4 pages. Kasim has 9. The /the-aeo-blueprint page serves as both "book" and "frameworks" — that's too much weight on one page. The BRAIN Framework is Julian's IP engine, same as Kasim's /frameworks section. It deserves its own route. An /articles page collecting external publications and an AEO community callout would round out the nav to a competitive 7-page structure.</div>
+
+<!-- SECTION 3: SCHEMA MARKUP -->
+<h2>3. Schema Markup — Jason Barnard Comparison</h2>
+<p style="color:var(--muted);margin-bottom:16px;">Julian's schema architecture is structurally superior to Kasim's. He uses ProfilePage (not just Person), has FAQPage, has subjectOf, has hasOccupation, has birthDate/birthPlace. The gaps are data density: thin sameAs, zero identifier properties, no affiliation, minimal image array.</p>
+
+<table>
+  <tr><th>Schema Property</th><th>Jason (Gold Standard)</th><th>Julian</th><th>vs. Kasim</th><th>Gap</th></tr>
+  <tr>
+    <td>@type</td>
+    <td>Person + WebSite + WebPage</td>
+    <td>ProfilePage (mainEntity: Person) + FAQPage + Book</td>
+    <td>Better</td>
+    <td><span class="badge pass">EXCEEDS</span></td>
+  </tr>
+  <tr>
+    <td>name</td>
+    <td>"Jason Barnard"</td>
+    <td>"Julian Lopez"</td>
+    <td>Same</td>
+    <td><span class="badge pass">MET</span></td>
+  </tr>
+  <tr>
+    <td>alternateName</td>
+    <td>5 variants</td>
+    <td>1 variant: "Julian Bonzo"</td>
+    <td>Kasim has 2</td>
+    <td><span class="badge warn">THIN</span></td>
+  </tr>
+  <tr>
+    <td>description</td>
+    <td>500+ word comprehensive bio</td>
+    <td>~60-word elevator pitch (entity.elevatorPitch)</td>
+    <td>Same as Kasim</td>
+    <td><span class="badge warn">SHORT</span></td>
+  </tr>
+  <tr>
+    <td>image</td>
+    <td>17 ImageObjects with captions</td>
+    <td>1 image URL (headshot-white.png). 5 speaking photos exist in /public but NOT in schema.</td>
+    <td>Kasim also 1</td>
+    <td><span class="badge fail">MAJOR</span></td>
+  </tr>
+  <tr>
+    <td>sameAs</td>
+    <td>60+ URLs</td>
+    <td>6 URLs: LinkedIn, Facebook, Amazon, SmartMarketer article, Apple Podcasts, Spotify</td>
+    <td>Kasim has 11</td>
+    <td><span class="badge fail">THIN</span></td>
+  </tr>
+  <tr>
+    <td>identifier</td>
+    <td>18 PropertyValue objects (ISNI, Wikidata, Crunchbase, Amazon author, etc.)</td>
+    <td>0 — complete gap</td>
+    <td>Kasim also 0</td>
+    <td><span class="badge fail">MISSING</span></td>
+  </tr>
+  <tr>
+    <td><strong>Wikidata Q-ID</strong></td>
+    <td><strong>Present</strong></td>
+    <td><strong>Not present. No Wikidata item exists.</strong></td>
+    <td>Kasim also missing</td>
+    <td><span class="badge fail">CRITICAL</span></td>
+  </tr>
+  <tr>
+    <td>subjectOf</td>
+    <td>17 CollectionPage objects</td>
+    <td>2 items: 1 Article (SmartMarketer) + 1 PodcastEpisode (Ep 276)</td>
+    <td>Kasim had 0 — Julian wins</td>
+    <td><span class="badge warn">THIN</span></td>
+  </tr>
+  <tr>
+    <td>hasOccupation</td>
+    <td>Not in standard Jason schema</td>
+    <td>3 Occupation objects: SmartMarketer (2025–), Kasim Aslam companies (2024–2025), Creative Director (2012–2024)</td>
+    <td>Kasim has 0</td>
+    <td><span class="badge pass">MET</span></td>
+  </tr>
+  <tr>
+    <td>birthDate / birthPlace</td>
+    <td>Present</td>
+    <td>Present: 1989-01-21, Bogotá Colombia</td>
+    <td>Kasim missing</td>
+    <td><span class="badge pass">MET</span></td>
+  </tr>
+  <tr>
+    <td>nationality</td>
+    <td>Present</td>
+    <td>Present: Colombian</td>
+    <td>Kasim partial</td>
+    <td><span class="badge pass">MET</span></td>
+  </tr>
+  <tr>
+    <td>alumniOf</td>
+    <td>Not present</td>
+    <td>Universidad Nacional de Colombia — present</td>
+    <td>Kasim has 0</td>
+    <td><span class="badge pass">MET</span></td>
+  </tr>
+  <tr>
+    <td>affiliation / memberOf</td>
+    <td>3 organizations (EO Network, Forbes Councils, Rolling Stone)</td>
+    <td>0 — AEO Community not listed as affiliation in schema</td>
+    <td>Kasim also 0</td>
+    <td><span class="badge fail">MISSING</span></td>
+  </tr>
+  <tr>
+    <td>FAQPage schema</td>
+    <td>Not standard in Jason's schema</td>
+    <td>Present — all About Q&As mirrored in FAQPage structured data. Excellent.</td>
+    <td>Kasim has 0</td>
+    <td><span class="badge pass">EXCEEDS</span></td>
+  </tr>
+</table>
+
+<div class="advantage">Julian's schema architecture is better than Kasim's out of the box. ProfilePage wrapping Person is the current best-practice model. FAQPage is a direct AI extraction win. hasOccupation with career timeline and alumniOf are populated. These are real advantages. The weaknesses are data density, not structure.</div>
+
+<!-- SECTION 3.5: NEEATT -->
+<h2>3.5 NEEATT Trust Factor Audit</h2>
+
+<table>
+  <tr><th>NEEATT Factor</th><th>Algorithmic Definition</th><th>Julian's Status</th><th>Score</th></tr>
+  <tr>
+    <td><strong>N</strong>otability</td>
+    <td>Existence as a verified, distinct entity</td>
+    <td>No Wikidata Q-ID. No confirmed Knowledge Panel. Amazon bestseller is the strongest notability signal — it's machine-readable and verifiable. Entity exists in the site's schema but lacks external anchor.</td>
+    <td><span class="badge warn">5/10</span></td>
+  </tr>
+  <tr>
+    <td><strong>E</strong>xperience</td>
+    <td>Direct, firsthand involvement with subject matter</td>
+    <td>Strong: 12+ years branding documented in hasOccupation, career evolution Q&As, co-creator of BRAIN Framework, co-author of bestselling AEO book. Nashville speaking event with 5 photos is solid firsthand proof.</td>
+    <td><span class="badge pass">8/10</span></td>
+  </tr>
+  <tr>
+    <td><strong>E</strong>xpertise</td>
+    <td>Current, applied knowledge in a specific field</td>
+    <td>The BRAIN Framework is Julian's IP. The AEO Blueprint is a #1 bestseller. The About/book pages explain the framework in depth. Only 1 external article indexed. Framework needs its own URL to become citable.</td>
+    <td><span class="badge warn">6/10</span></td>
+  </tr>
+  <tr>
+    <td><strong>A</strong>uthoritativeness</td>
+    <td>Independent references from recognized industry sources</td>
+    <td>Weakest signal. 1 SmartMarketer article. 1 Perpetual Traffic podcast appearance. Nashville conference. That's it. Amazon bestseller helps. No SEJ, no industry publications, no external citations confirmed in schema.</td>
+    <td><span class="badge fail">4/10</span></td>
+  </tr>
+  <tr>
+    <td><strong>T</strong>rustworthiness</td>
+    <td>Independent verification of self-declared claims</td>
+    <td>Self-declarations (bestseller, BRAIN co-creator, 12 yrs branding) are well-documented internally. External third-party verification is minimal. Only 6 sameAs URLs. No Spring Clean across platforms confirmed. No Crunchbase or Wikidata profile.</td>
+    <td><span class="badge fail">4/10</span></td>
+  </tr>
+  <tr>
+    <td><strong>T</strong>ransparency</td>
+    <td>Clarity regarding author identity and relationships</td>
+    <td>Clean: entity.ts is the single source of truth driving every page. Roles, org, education all explicit. Career timeline documented. ProfilePage → Person → Org chain is correct. Kasim Aslam connection acknowledged and documented.</td>
+    <td><span class="badge pass">9/10</span></td>
+  </tr>
+</table>
+
+<div class="rec">NEEATT average: 6.0/10 — slightly below Kasim's 6.7/10. Authoritativeness and Trustworthiness are the drag, same as Kasim. The fix path: create a Wikidata item (Notability), publish 3–5 more external articles (Authoritativeness), expand sameAs to 15+ verified profiles (Trustworthiness). The BRAIN Framework itself is Julian's edge — it needs to be citeable from an external URL that isn't just the AEO Blueprint book page.</div>
+
+<!-- SECTION 4: CONTENT QUALITY -->
+<h2>4. Content Quality & Voice</h2>
+
+<div class="checklist">
+  <div class="check-item part"><span class="icon">~</span><div><div class="name">Voice consistency</div><div class="note">About page is well-written. Homepage copy reads corporate: "Julian Lopez developed the BRAIN Framework — a first-principles approach to turn any business into the AI-recommended brand for their market." This explains. It doesn't claim authority. Compare Kasim's staccato personal voice. Julian's voice on the homepage is a features list, not a personality.</div></div></div>
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">AEO answer blocks — About page</div><div class="note">Excellent. Every Q&A section has a full-sentence extractable answer. "Julian Lopez is the Head Strategist for the AEO Team at SmartMarketer Agency, co-author of the #1 Amazon best-selling book..." — AI can extract this directly. Best page on the site.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">AEO answer block — Homepage</div><div class="note">No extractable 40-word literal answer on the homepage. The homepage should open with "Julian Lopez is [one sentence definition]" — Kasim nails this. Julian's homepage opens with the hero headline, not an entity definition.</div></div></div>
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">No jargon / agency-speak</div><div class="note">Clean throughout. No "synergy," "holistic approach," "game-changer." The AEO terminology is appropriate given the subject matter.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Specific numbers / proof stats on homepage</div><div class="note">The book is a #1 Amazon bestseller in 3 categories. The BRAIN Framework has been through 5+ iterations. The AEO program has active clients. None of this appears on the homepage in a proof bar or stats strip.</div></div></div>
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">FAQ blocks — About page</div><div class="note">6 sections, 20+ Q&As covering roles, expertise, career, personal info, associations, authorship, education. This is thorough. FAQPage schema mirrors it. Strong.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Pain / solution arc</div><div class="note">No pain framing anywhere. The homepage sections (AEO Research, Brand Entity Optimization) explain what Julian does, not the problem the reader is experiencing. The book page has the hook body: "The internet you knew is gone." That copy belongs on the homepage.</div></div></div>
+  <div class="check-item part"><span class="icon">~</span><div><div class="name">CTA routing (intent-based)</div><div class="note">Homepage: two CTAs (Amazon book, Contact). Contact page: three routes (email, LinkedIn, SmartMarketer). No routing by intent: hire Julian, learn AEO, join community. Kasim routes by outcome. Julian routes by channel.</div></div></div>
+</div>
+
+<!-- SECTION 5: PAGE DEPTH -->
+<h2>5. Page Depth — "One Page Per Credential" Standard</h2>
+<p style="color:var(--muted);margin-bottom:16px;">Julian has 4 pages. Kasim has 9. The framework standard rewards individual pages per credential — each one becomes a citable URL, a subjectOf link, and an authority signal.</p>
+
+<table>
+  <tr><th>Credential Type</th><th>Julian's Site</th><th>Gap</th></tr>
+  <tr><td>About / Entity Home</td><td>/about — excellent. 20+ Q&As, career timeline, education, online presence. Best page on the site.</td><td><span class="badge pass">STRONG</span></td></tr>
+  <tr><td>Book</td><td>/the-aeo-blueprint — present, has BRAIN Framework explanation, bestseller note, Amazon CTA. Overloaded (serves as both book page AND framework hub).</td><td><span class="badge warn">OVERLOADED</span></td></tr>
+  <tr><td>Media & Speaking</td><td>/media-speaking — 1 event (Nashville), 5 photos, AEO explainer copy. Good start. Only 1 podcast referenced. No archive.</td><td><span class="badge warn">THIN</span></td></tr>
+  <tr><td>Contact</td><td>/contact — minimal. Email + LinkedIn + SmartMarketer link. No intent-based routing.</td><td><span class="badge warn">MINIMAL</span></td></tr>
+  <tr><td>BRAIN Framework (standalone)</td><td>Not present as its own page. Covered in /the-aeo-blueprint but not standalone or navigable independently.</td><td><span class="badge fail">MISSING</span></td></tr>
+  <tr><td>Articles / Publications</td><td>Not present. 1 article exists in schema. No collection page.</td><td><span class="badge fail">MISSING</span></td></tr>
+  <tr><td>Community</td><td>Not present. AEO Skool community mentioned in About schema but no page or CTA for it.</td><td><span class="badge fail">MISSING</span></td></tr>
+  <tr><td>Awards / Recognition</td><td>#1 Amazon Bestseller in 3 categories. Mentioned in book page copy. Not surfaced in a dedicated awards block or standalone page.</td><td><span class="badge warn">PARTIAL</span></td></tr>
+</table>
+
+<div class="advantage">The 5 speaking photos already in /public (Nashville keynote, roundtable, schema slide, stage shots) are underused — they only appear on /media-speaking. They should also appear in schema as ImageObjects with captions. Each photo is a piece of evidence. Right now they're decorative.</div>
+<div class="rec">The BRAIN Framework is Julian's strongest differentiator — the same way Kasim's /frameworks section is his. It should have its own URL: /brain-framework. Each pillar gets a section with a full explanation. The existing entity.brain.pillars data already contains the full copy. This page writes itself from the data already in entity.ts.</div>
+
+<!-- SECTION 6: VISUAL PROOF LAYER -->
+<h2>6. Visual Proof Layer</h2>
+
+<div class="checklist">
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">Professional headshot</div><div class="note">julian-lopez-headshot-white.png is in the hero. This is Julian's clearest win over Kasim's audit. A face is in the first viewport.</div></div></div>
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">Speaking photos</div><div class="note">5 high-quality event photos from Nashville on /media-speaking. Properly alt-tagged for accessibility and AEO. Good.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Media logo strip</div><div class="note">SmartMarketer, Perpetual Traffic (DigitalMarketer), Nashville Mentor Table Conference — all have logos. None shown on the site. Kasim also missing this. Both need it.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Amazon bestseller badge / book cover</div><div class="note">The #1 bestseller claim appears as text on the book page. No visual badge, no book cover image, no Amazon bestseller graphic. This is proof you can show visually. Show it.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Testimonials</div><div class="note">Zero testimonials anywhere. The AEO community has members who have gotten results. The program has active clients. Named testimonials with titles would directly address the Trustworthiness NEEATT gap.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Client / partner logos</div><div class="note">SmartMarketer is Julian's org. No logo shown. No partner or community logos. Kasim shows none either — both need this.</div></div></div>
+</div>
+
+<!-- SECTION 7: TECHNICAL / STRUCTURAL -->
+<h2>7. Technical & Structural Notes</h2>
+
+<div class="checklist">
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">Single source of truth (entity.ts)</div><div class="note">All pages, schema, and /llms.txt generated from one file. Any content update propagates everywhere. This is a structural advantage — most personal brand sites don't have this.</div></div></div>
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">llms.txt route</div><div class="note">app/llms.txt/route.ts present. Julian has the AI-readable sitemap that most sites lack entirely.</div></div></div>
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">MachineDataView / DualViewContainer</div><div class="note">The human/machine view toggle in components is a differentiating AEO signal — literally showing AI the structured entity data. Rare.</div></div></div>
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">robots.txt present</div><div class="note">public/robots.txt exists. AI bots are not blocked.</div></div></div>
+  <div class="check-item met"><span class="icon">✓</span><div><div class="name">GitHub Actions deploy pipeline</div><div class="note">.github/workflows/deploy.yml — auto-deploys on push. No manual deploy step needed.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Contact email exposes Pareto Talent domain</div><div class="note">entity.contact.email = "julian.l@paretotalent.com" — but Kasim sold Pareto Talent. This email domain may be stale. Recommend switching to a julian@julianlopez.site or @smartmarketer.com address for entity consistency.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">Speaking photos not in schema</div><div class="note">5 photos in /public with excellent alt text — but only 1 image (the headshot) is registered in entity.ts image field. All 5 speaking photos should be added as ImageObjects in schema. The alt text is already written.</div></div></div>
+  <div class="check-item miss"><span class="icon">✗</span><div><div class="name">sameAs missing key platforms</div><div class="note">Missing from sameAs: X/Twitter, YouTube (if channel exists), Instagram, TikTok, the Amazon author page, the Apple Podcast show page, any other external profiles. Current 6 is less than half what's needed.</div></div></div>
+</div>
+
+<!-- SECTION 8: OVERALL SCORES -->
+<h2>8. Overall Assessment</h2>
+
+<div class="score-card">
+  <div>
+    <div class="label">Schema Architecture</div>
+    <div class="detail">ProfilePage → Person, FAQPage, Book, hasOccupation, alumniOf, subjectOf, birthDate/Place — all present. Structure is correct and ahead of the benchmark. The weakness is data density, not architecture.</div>
+  </div>
+  <div class="score pass">8.0</div>
+</div>
+
+<div class="score-card">
+  <div>
+    <div class="label">About Page / Entity Home</div>
+    <div class="detail">Best page on the site. 20+ Q&As, clean FAQ schema, career timeline, education, online presence section. This is what every page should aspire to.</div>
+  </div>
+  <div class="score pass">9.0</div>
+</div>
+
+<div class="score-card">
+  <div>
+    <div class="label">Homepage Content & Copy</div>
+    <div class="detail">Headshot present (Kasim's win reversed). But the body copy is descriptive, not authoritative. No pain arc, no proof numbers, no FAQ block, no testimonials. The hook copy from the book page belongs here.</div>
+  </div>
+  <div class="score warn">5.0</div>
+</div>
+
+<div class="score-card">
+  <div>
+    <div class="label">Page Architecture</div>
+    <div class="detail">4 pages vs. Kasim's 9. Missing: /brain-framework, /articles, /community. The existing pages work but Julian's IP and credentials are compressed into too few URLs — each one is a lost citation opportunity.</div>
+  </div>
+  <div class="score warn">5.0</div>
+</div>
+
+<div class="score-card">
+  <div>
+    <div class="label">External Footprint / sameAs Coverage</div>
+    <div class="detail">6 sameAs URLs. Kasim has 11. Jason has 60+. Missing: Twitter/X, YouTube, Instagram, TikTok, Amazon author page, any directory or community profiles. No identifier properties. No Wikidata anchor.</div>
+  </div>
+  <div class="score fail">3.0</div>
+</div>
+
+<div class="score-card">
+  <div>
+    <div class="label">Visual Proof Layer</div>
+    <div class="detail">Headshot in hero (Julian's edge over Kasim). 5 Nashville speaking photos on media page. But no media logos, no book cover, no testimonials, no bestseller badge, no client logos.</div>
+  </div>
+  <div class="score warn">5.0</div>
+</div>
+
+<!-- SECTION 9: PRIORITY ACTIONS -->
+<h2>9. Priority Actions (ordered by impact)</h2>
+
+<div class="rec" style="margin-bottom:12px;"><strong>P0 — Add all 5 speaking photos to entity.ts image array.</strong> The photos are in /public. The alt text is already written. Adding them to schema takes 15 minutes and immediately expands the image array from 1 to 6. In entity.ts, add an <code>images</code> array under <code>speaking[0].images</code> and map them into the ProfilePage schema as ImageObjects with captions. Zero new content needed.</div>
+
+<div class="rec" style="margin-bottom:12px;"><strong>P0 — Expand sameAs to 15+ profiles.</strong> Add: X/Twitter, YouTube, Instagram, TikTok (if active), the Amazon author page (separate from the book URL), the Apple Podcast show (not just the episode), any Skool profile page, Crunchbase, LinkedIn company page for AEO.co. All are one-line additions to entity.ts.</div>
+
+<div class="rec" style="margin-bottom:12px;"><strong>P0 — Add identifier PropertyValue objects.</strong> Even 3–4 makes a difference: Amazon ASIN (B0FX5VN49P is already known), LinkedIn profile ID, the Perpetual Traffic episode ID, the SmartMarketer author URL. These are what Google uses to anchor the entity across platforms. Kasim has 0. Julian can have 4 today.</div>
+
+<div class="rec" style="margin-bottom:12px;"><strong>P1 — Rewrite homepage copy with proof and pain arc.</strong> The book page already has the hook: "The internet you knew is gone." Move that to the homepage. Add a proof strip: "#1 Amazon Bestseller · BRAIN Framework · Nashville 2026 · 12+ years building brands." Add one FAQ block: "Who is Julian Lopez? Julian Lopez is..." — an extractable entity definition for AI.</div>
+
+<div class="rec" style="margin-bottom:12px;"><strong>P1 — Create /brain-framework standalone page.</strong> The copy is already in <code>entity.brain.pillars</code>. Each pillar becomes a full section. This gives the BRAIN Framework its own URL, its own subjectOf link, and its own citation target. It's the most important piece of IP Julian has — it needs its own address.</div>
+
+<div class="rec" style="margin-bottom:12px;"><strong>P1 — Add affiliation/memberOf to schema.</strong> The AEO Community on Skool (co-creator), SmartMarketer Agency (current), DigitalMarketer / Perpetual Traffic (guest). These are third-party trust signals. Add as <code>memberOf</code> and <code>affiliation</code> arrays on the Person object in schema.ts.</div>
+
+<div class="rec" style="margin-bottom:12px;"><strong>P2 — Fix the contact email.</strong> <code>julian.l@paretotalent.com</code> ties Julian to a company Kasim sold. For entity consistency: use julian@julianlopez.site or the SmartMarketer email. Update in entity.ts — propagates everywhere automatically.</div>
+
+<div class="rec" style="margin-bottom:12px;"><strong>P2 — Create /articles page.</strong> The 1 SmartMarketer article is a start. Add any LinkedIn articles, the podcast episode page, any external mentions. Even a 3-item list with publication dates is better than none. Add each as a new entry in <code>entity.articles[]</code> — the schema.ts subjectOf array auto-populates.</div>
+
+<div class="rec"><strong>P3 — Create Wikidata item for Julian Lopez.</strong> Same as Kasim's gap. An Amazon #1 bestselling author with a named framework and a speaking history meets Wikidata's notability threshold for people in a field. Once created, add the Q-ID as an identifier PropertyValue and to sameAs. This is the single highest-impact AEO action — it creates the external knowledge graph anchor that everything else connects to.</div>
+
+</div>
+</body>
+</html>

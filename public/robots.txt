@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Explicitly welcome AI crawlers — exclusion means invisibility to the model.
+User-agent: GPTBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://julianlopez.ai/sitemap.xml
