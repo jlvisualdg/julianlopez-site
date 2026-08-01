@@ -57,13 +57,13 @@ I had two options. Double down on the strategy that wasn't working. Or jump into
 
 I became an Executive Assistant.
 
-The honest reason: the exchange rate. Living in Argentina and earning in dollars was a lifeline, not a vocation. I won't dress that up as a calling. It was survival with upside.
+The honest reason: the exchange rate. Living in Colombia and earning in dollars was a lifeline, not a vocation. I won't dress that up as a calling. It was survival with upside.
 
 But survival got me to the right room.
 
-Pareto Talent is a staffing agency that places people from Argentina and Colombia as right-hand operators to business owners in the United States. It's a specific kind of environment — you're not filling a role, you're being embedded in how someone thinks and builds.
+Pareto Talent is a staffing agency that places people from Colombia and Argentina as right-hand operators to business owners in the United States. It's a specific kind of environment — you're not filling a role, you're being embedded in how someone thinks and builds.
 
-I ended up working alongside Kasim Aslam. He created Solutions 8, the largest Google Ads agency in the world — managing over $100 million in ad spend a year. That's where the marketing education actually happened. Not in a course. Not in a classroom. Inside the machine, watching what actually moved the needle at scale.
+I ended up working alongside Kasim Aslam. He created Solutions 8, the largest Google Ads agency in the world — managing over $100 million in ad spend a year. That's where the marketing education actually happened. Not in a course. Not in a classroom. Inside the machine, trying to engineer success.
 
 That's where everything started.
 
@@ -83,11 +83,11 @@ For most people in the SEO industry, less traffic and fuzzy attribution was the 
 
 I saw it differently. If you're a practitioner who has spent a career on being right about where digital attention moves, this is the most interesting moment in the last decade. The puzzle changed. The variables are different. The answer requires work nobody has fully figured out yet.
 
-That's not a loss. That's adrenalin.
+That's not loss. It's fear with a mix of adrenalin.
 
 ## What I found when I stopped defending
 
-I co-authored the first best-selling book on Answer Engine Optimization. I ran a research team of eight people for over a year — specifically to figure out how AI recommends brands. Not in theory. Across categories, at scale, inside real client accounts.
+I co-authored the first best-selling book on Answer Engine Optimization. I ran a research team of eight people for over a year — specifically to figure out how AI recommends brands. Not in theory. Across categories, inside real client accounts.
 
 What we built from that research is the B.R.A.I.N. Framework — five pillars designed to address the full complexity of AI retrieval while keeping your audience at the center. Not just technical signals. Not just content volume. The complete picture of what an answer engine is actually evaluating when it decides whether to recommend your brand.
 
@@ -109,41 +109,19 @@ AI sources its understanding of your brand from third-party sources before it ev
 
 The metric that actually predicts AI visibility isn't rankings, traffic, or citation count. It's branded search volume. The thing everyone forgot about while chasing algorithms for a decade. AI retrieval systems reward brands that are recognized, remembered, and looked up by name. The SEO industry spent ten years optimizing away from that. AI just made it the most important metric again.
 
-## Where your brand sits right now
+## What the cubicle was actually for
 
-When someone asks an AI engine about your category, your brand is in one of three states.
+I spent a long time thinking the cubicle was something to escape.
 
-Visible — AI knows you exist. It can name you. Most established brands with decent SEO are already here. This is the floor, not the goal.
+Turns out it was the only place I could have learned what I needed to solve what came next.
 
-Understood — AI can describe what you do, who you're for, and why you matter in that category. It has enough coherent signal to include you in the conversation. This is where the work starts to compound.
+The adrenalin from that period — the particular focus of someone who can't afford to be wrong — that's exactly the energy this work requires. Not patience. Not process. The hunger to notice what everyone else is defending against and ask what it actually means.
 
-Recommended — AI mentions you without qualification, unprompted, as the answer to the question. This is what we're building toward.
+That's the brand new puzzle. Built for the adrenalin I picked up in that cubicle.
 
-The gap between Visible and Recommended isn't budget. It's clarity. AI doesn't reward the biggest brand — it rewards the most clearly defined one.
+I write the AEO Changelog for people who see the AI shift the same way — not as a loss, but as the most interesting thing to figure out in the last decade. No theory. What I'm testing. What I'm finding. What I got wrong.
 
-## The first thing to fix
-
-Before schema. Before new content. Before anything technical.
-
-Open LinkedIn. Crunchbase. Your industry directory listings. Your About page. Put them side by side.
-
-Are they describing the same company in the same words? Or does each platform have its own version?
-
-If AI reads five different descriptions across five platforms, it doesn't average them. It gets uncertain — and an uncertain AI won't recommend you. You stay Visible when you could be Recommended.
-
-This is the work most brands skip because it's tedious and unglamorous. It's also the work that moves the needle fastest — because you're not building something new. You're aligning what already exists.
-
-You're building the business brain. The structured, consistent, machine-readable entity that sits underneath everything the brand does. Right now, that's a competitive advantage. Within a few years, it'll be table stakes.
-
-## What this is
-
-I write the AEO Changelog for people who've built careers on being right about where to invest attention — and who see the current shift not as a loss but as the hard new puzzle that makes the work worth doing.
-
-No theory. What I'm testing. What I'm finding. What I got wrong. Specific mechanics. Real audits. Live experiments from client work.
-
-If you want to be the brand AI recommends when your customer asks, you're in the right place.
-
-The community building this together is at skool.com/aeo. That's where I spend most of my time — because Network isn't a pillar on a slide. It's how this gets figured out.
+The community is at skool.com/aeo. That's where I spend my time.
 
 Let's build.`,
   },
