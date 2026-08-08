@@ -28,98 +28,96 @@ export const posts: Post[] = [
     tags: ["AEO", "Origin Story", "BRAIN Framework", "Answer Engines"],
     author: "Julian Lopez",
     excerpt:
-      "I couldn't imagine leaving branding to pursue marketing. It took a printshop full of machines, a retroactive rent bill, and Kasim Aslam to show me the other half of the business — and eventually, the most interesting puzzle in marketing.",
-    body: `I couldn't imagine leaving branding to pursue marketing.
+      "I spent a year running a research team of eight people to figure out how AI decides which brands to recommend. But the path that got me there — a printshop, artisanal beer, and a business laboratory — explains why I approach this differently.",
+    body: `I spent a year running a research team of eight people to answer one question.
 
-Branding felt like the real craft — the identity layer, the visual language, the thing that earns a product its place in the world. Marketing felt downstream. More transactional. Too far from the thing I actually cared about making.
+How does AI actually decide which brands to recommend?
 
-I was wrong about that. And the way I found out cost me more than I expected.
+Not in theory. Not from whitepapers. Across categories, inside real client accounts, observing what got cited and what didn't.
 
-## The half of the business I wasn't running
+The findings changed how I think about visibility entirely. But the path that got me to that question — that's worth explaining first, because it explains why I approach this differently than most people in the industry.
 
-I had a one-man printshop. More equipment than I had hands to run it.
+## The craftsman who learned to sell everything else
 
-I was skilled, creative, tenacious — the kind of person who figures out the technical side through sheer stubbornness. I could execute. I could produce. What I couldn't do — for longer than I should admit — was the other half of the business.
+Before any of this, I ran a printshop. One man, more equipment than I had hands. I was deeply in love with the craft — the identity work, the technical execution, the part where you make something real from nothing.
 
-That half looks like this: understanding your client, talking clearly about the problem your product solves, and selling consistently. Not when you felt like it. Consistently.
+What I lacked wasn't drive. It was the commercial layer — understanding the client, communicating clearly about the problem I solved, building a system for selling consistently. That gap is only dangerous when you can't see it. And for a long time, I couldn't.
 
-I had mastered one side and ignored the other entirely. Not out of laziness. I genuinely didn't register it as a gap. That's the most dangerous kind of blind spot — the one you can't see because you've never had a reason to look.
+But what that chapter gave me was something no classroom ever could: the stubbornness to figure things out under real pressure.
 
-The bills started stacking. The machines that were supposed to pay for themselves weren't.
+When the finances got tight, I didn't fold. I improvised. I learned to bake — real baking, structured recipes, something worth paying for. I brewed artisanal beer and learned how to move it. I sold peanuts, almonds, and oatmeal like it was illegal. It wasn't. But the energy felt like it should be — that particular kind of hustle where you're betting on yourself with very little margin for error.
 
-I'd recently moved with my girlfriend — now my wife — into a new apartment. Then the building management sent a notice: the fees they'd failed to charge for six months were coming due in a single retroactive bill.
+Each of those small ventures was its own education. Each required showing up, making something worth buying, and convincing someone to hand over money for it. That's where I first understood the difference between production and commerce. Between craft and the thing that makes craft sustainable.
 
-The lights were about to go out. Quite literally.
+The bills still stacked. I'd just moved into a new apartment with my girlfriend — now my wife — when the building sent a notice: six months of unpaid fees, due immediately, in one retroactive bill.
 
-I had two options. Double down on the strategy that wasn't working. Or jump into territory I didn't know.
+All that hustle, and it still wasn't enough for the life I needed to build.
 
-## The jump that wasn't about calling
+That wasn't a signal to give up. It was a signal to leap.
 
-I became an Executive Assistant.
+## The business laboratory
 
-The honest reason: the exchange rate. Living in Colombia and earning in dollars was a lifeline, not a vocation. I won't dress that up as a calling. It was survival with upside.
+At some point, resilience isn't about grinding harder at the same thing. It's about recognizing when a completely different kind of bet is required.
 
-But survival got me to the right room.
+Pareto Talent is a staffing agency that places operators from Colombia and Argentina alongside business owners in the United States. Through them, I ended up working alongside Kasim Aslam — who built Solutions 8, the largest Google Ads agency in the world, managing over $100 million in ad spend a year.
 
-Pareto Talent is a staffing agency that places people from Colombia and Argentina as right-hand operators to business owners in the United States. It's a specific kind of environment — you're not filling a role, you're being embedded in how someone thinks and builds.
+My title was Executive Assistant. What I actually became was a business builder.
 
-I ended up working alongside Kasim Aslam. He created Solutions 8, the largest Google Ads agency in the world — managing over $100 million in ad spend a year. That's where the marketing education actually happened. Not in a course. Not in a classroom. Inside the machine, trying to engineer success.
+Kasim runs what can only be described as a business laboratory — an environment where you're not filling a role, you're embedded in how someone thinks, builds, and moves. Where the people around you are obsessed with solving hard commercial problems, and the standard for what's worth doing is set by outcomes, not effort.
 
-That's where everything started.
+That's where the real marketing education happened. Not from a course. Not from a certification. Inside the machine, trying to engineer outcomes.
 
-The rest of that story I'll come back to in further posts. Here's what came after.
+And inside that machine, something caught our attention.
 
-## The state of denial I recognized
+AI was changing search. Not gradually. Structurally. The way brands get recommended, the way questions get answered, the way visibility gets assigned — all of it was being rewritten at the infrastructure level.
 
-While I was researching search — its origin, its mechanics, its latest developments — I noticed something strange about the industry I was entering.
+Most of the industry was busy debating whether the shift was real. We thought that was the wrong question. The more interesting question was: how does AI actually decide which brands to recommend?
 
-The people who should have been the most curious were the most resistant.
+We just went at it.
 
-Publications were running pieces on why AI search was flawed, why zero-click numbers were overstated, why the old playbook still worked if you just executed it correctly. Practitioners were spending more time criticizing the new features than trying to understand them.
+## What a year of studying citations actually showed
 
-I recognized the posture. I'd been in it myself — back when I was running a printshop full of machines and no system for actually selling what they produced.
+I co-authored the first best-selling book on Answer Engine Optimization. Then I assembled eight people and we spent over a year doing the unglamorous work: analyzing AI responses, tracking citation patterns, testing what moved the needle.
 
-For most people in the SEO industry, less traffic and fuzzy attribution was the end of the conversation. A problem to defend against. A loss to grieve.
+We turned the findings into the B.R.A.I.N. Framework. Five pillars. Not a theory — a model built from observation.
 
-I saw it differently. If you're a practitioner who has spent a career on being right about where digital attention moves, this is the most interesting moment in the last decade. The puzzle changed. The variables are different. The answer requires work nobody has fully figured out yet.
+### Entity clarity beats domain authority.
 
-That's not loss. It's fear with a mix of adrenalin.
+I've watched brands with DA 70+ lose to brands with DA 30. The difference: the smaller brand had the same name, description, and positioning across every platform AI touches. When AI can describe you in one sentence that holds up everywhere it looks, authority matters less than you'd think. When your description fragments across platforms, no amount of backlinks saves you.
 
-## What I found when I stopped defending
+### Most of the work that determines AI visibility happens off your site.
 
-I co-authored the first best-selling book on Answer Engine Optimization. I ran a research team of eight people for over a year — specifically to figure out how AI recommends brands. Not in theory. Across categories, inside real client accounts.
+AI sources its understanding of your brand from third-party surfaces before it ever touches your domain. Industry publications. Reviews. Forums. Directories. Yet most AEO advice starts and ends with schema markup on the brand's own website. That's the last mile. The first twenty-six happen somewhere else.
 
-What we built from that research is the B.R.A.I.N. Framework — five pillars designed to address the full complexity of AI retrieval while keeping your audience at the center. Not just technical signals. Not just content volume. The complete picture of what an answer engine is actually evaluating when it decides whether to recommend your brand.
+### Structure beats volume.
 
-Here's what the research keeps showing.
+44.2% of ChatGPT citations come from the first 30% of page content. AI doesn't scroll. It operates on a computational budget. If your key claims are buried under scene-setting and preamble, you're not thorough — you're invisible.
 
-### Domain authority doesn't win. Entity clarity does.
+### The metric that matters is the one the industry forgot.
 
-I've watched brands with DA 70+ get passed over for brands with DA 30. The difference wasn't backlinks or page speed. The smaller brand had a perfectly consistent entity definition across 15+ platforms — the same name, description, and positioning everywhere AI looks. When AI can describe you in one sentence that matches everywhere, your authority score matters less than you think. When your description fragments, no amount of backlinks saves you.
+Branded search volume. Not rankings. Not traffic. Not citation count. AI retrieval systems reward brands that people look up by name. The SEO industry spent a decade optimizing away from branded search. AI just made it the most important signal again.
 
-### Most of the work happens off your site.
+## On gratitude
 
-AI sources its understanding of your brand from third-party sources before it ever reaches your domain. Industry publications. Review sites. Community discussions. Directories. Yet most AEO strategies start and end with schema markup on the brand's own site. That's the last mile. The first twenty-six happen somewhere else entirely.
+None of this happens without Kasim. The laboratory he created — the way he thinks, builds, and gives people room to discover things at full speed — was exactly the environment I needed to find the problem worth solving. I'm grateful for that in ways that are hard to measure but easy to feel.
 
-### Structure beats volume. Every time.
+And then came the Smart Marketer team.
 
-44.2% of ChatGPT citations come from the first 30% of page text. Not from deep in a 3,000-word post. From the top. AI operates on a computational budget — it doesn't scroll. If your key claims are buried under three paragraphs of scene-setting, you're not being thorough. You're invisible.
+Working with them has taught me something I think about constantly: there's a ceiling on what any one person can figure out alone, and the right team blows that ceiling off entirely. What Smart Marketer compounds isn't just output — it's the human value per hour. The quality of what you learn, who you learn it from, and how much of your actual potential gets unlocked in the process. That's what working alongside people who are genuinely great at what they do actually feels like. It raises the bar on what you thought you were capable of.
 
-### Everything old is new again.
+The printshop taught me resilience. The side hustles taught me that commerce is its own craft. Kasim's laboratory taught me how to think in systems. The research team taught me how to build knowledge from scratch. And Smart Marketer showed me what it looks like when all of it compounds.
 
-The metric that actually predicts AI visibility isn't rankings, traffic, or citation count. It's branded search volume. The thing everyone forgot about while chasing algorithms for a decade. AI retrieval systems reward brands that are recognized, remembered, and looked up by name. The SEO industry spent ten years optimizing away from that. AI just made it the most important metric again.
+## What this is actually about
 
-## What the cubicle was actually for
+I used to think the cubicle was something to escape. It turned out to be the only place I could have learned what I needed for what came next.
 
-I spent a long time thinking the cubicle was something to escape.
+The focus you develop when you can't afford to be wrong — that's the energy this work demands. Not patience. Not process. The willingness to notice what everyone else is defending against and ask what it actually means.
 
-Turns out it was the only place I could have learned what I needed to solve what came next.
+I write for ecommerce brand owners and personal brands who see the shift the same way — not as a loss to manage, but as the most interesting puzzle in a decade. And I write to be a guide for others stepping into these new experiences. Because the people who thrived through every previous shift in marketing weren't the ones who waited for the dust to settle. They were the ones who moved while the ground was still shifting.
 
-The adrenalin from that period — the particular focus of someone who can't afford to be wrong — that's exactly the energy this work requires. Not patience. Not process. The hunger to notice what everyone else is defending against and ask what it actually means.
+That's where we are right now. And it's the best time to be paying attention.
 
-That's the brand new puzzle. Built for the adrenalin I picked up in that cubicle.
-
-I write the AEO Changelog for people who see the AI shift the same way — not as a loss, but as the most interesting thing to figure out in the last decade. No theory. What I'm testing. What I'm finding. What I got wrong.
+I run the AEO Changelog. I share what I'm testing, finding, and getting wrong. No theory. What the data says.
 
 The community is at skool.com/aeo. That's where I spend my time.
 
