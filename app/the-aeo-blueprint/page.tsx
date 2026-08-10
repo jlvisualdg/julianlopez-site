@@ -21,28 +21,14 @@ export default function Book() {
         {entity.book.description}
       </p>
 
-      {/* Hero — book mockups */}
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 1fr",
-        gap: "1.5rem",
-        marginTop: "2rem",
-      }}>
-        <img
-          src="/aeo-blueprint-book-mockup-1.avif"
-          alt="The AEO Blueprint book cover"
-          width={1200}
-          height={900}
-          style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
-        />
-        <img
-          src="/aeo-blueprint-book-mockup-2.avif"
-          alt="The AEO Blueprint — two copies stacked"
-          width={1200}
-          height={900}
-          style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
-        />
-      </div>
+      {/* Hero — single book mockup */}
+      <img
+        src="/aeo-blueprint-book-mockup-1.avif"
+        alt="The AEO Blueprint book cover"
+        width={1200}
+        height={900}
+        style={{ width: "100%", maxWidth: "720px", height: "auto", borderRadius: "8px", display: "block", marginTop: "2rem" }}
+      />
 
        <section className="qa">
          <h2>Why AI recommends your business</h2>
@@ -62,6 +48,15 @@ export default function Book() {
           Amazon best seller in Marketing for Small Businesses, Web Marketing &amp; Internet Marketing
         </h3>
         <p style={{ marginTop: "0.4rem" }}>{entity.book.bestsellerNote}</p>
+
+        {/* Second mockup — stacked copies, pairs naturally with the bestseller proof below */}
+        <img
+          src="/aeo-blueprint-book-mockup-2.avif"
+          alt="The AEO Blueprint — two copies stacked"
+          width={1200}
+          height={900}
+          style={{ width: "100%", maxWidth: "560px", height: "auto", borderRadius: "8px", display: "block", marginTop: "1.5rem" }}
+        />
 
         {/* Bestseller screenshots */}
         <div style={{
