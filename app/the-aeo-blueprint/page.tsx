@@ -21,6 +21,29 @@ export default function Book() {
         {entity.book.description}
       </p>
 
+      {/* Hero — book mockups */}
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "1fr 1fr",
+        gap: "1.5rem",
+        marginTop: "2rem",
+      }}>
+        <img
+          src="/aeo-blueprint-book-mockup-1.avif"
+          alt="The AEO Blueprint book cover"
+          width={1200}
+          height={900}
+          style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
+        />
+        <img
+          src="/aeo-blueprint-book-mockup-2.avif"
+          alt="The AEO Blueprint — two copies stacked"
+          width={1200}
+          height={900}
+          style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
+        />
+      </div>
+
        <section className="qa">
          <h2>Why AI recommends your business</h2>
          <p style={{ marginTop: "0.6rem" }}>{entity.book.hookBody}</p>
@@ -39,6 +62,31 @@ export default function Book() {
           Amazon best seller in Marketing for Small Businesses, Web Marketing &amp; Internet Marketing
         </h3>
         <p style={{ marginTop: "0.4rem" }}>{entity.book.bestsellerNote}</p>
+
+        {/* Bestseller screenshots */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(2, 1fr)",
+          gap: "1rem",
+          marginTop: "1.5rem",
+        }}>
+          {[
+            { src: "/aeo-blueprint-bestseller.avif",  alt: "Amazon Best Seller badge — AEO Blueprint" },
+            { src: "/aeo-blueprint-amz-1.avif",       alt: "#1 Best Seller in Web Marketing" },
+            { src: "/aeo-blueprint-amz-2.avif",       alt: "#1 Best Seller in Internet Marketing" },
+            { src: "/aeo-blueprint-amz-3.avif",       alt: "Amazon product page — AEO Blueprint" },
+            { src: "/aeo-blueprint-amz-4.avif",       alt: "#1 Best Seller in Marketing for Small Businesses" },
+          ].map(({ src, alt }) => (
+            <img
+              key={src}
+              src={src}
+              alt={alt}
+              width={1200}
+              height={893}
+              style={{ width: "100%", height: "auto", borderRadius: "6px", display: "block" }}
+            />
+          ))}
+        </div>
       </section>
 
        {/* BRAIN methodology — reads from entity.brain.pillars (single source of truth) */}
