@@ -34,8 +34,34 @@ function formatDate(iso: string): string {
   });
 }
 
+// Inline renderer — supports [text](url) links within text
+function renderInline(text: string): React.ReactNode {
+  const linkRe = /\[([^\]]+)\]\(([^)]+)\)/g;
+  const nodes: React.ReactNode[] = [];
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = linkRe.exec(text)) !== null) {
+    if (m.index > last) nodes.push(text.slice(last, m.index));
+    const isExternal = m[2].startsWith("http");
+    nodes.push(
+      <a
+        key={m.index}
+        href={m[2]}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+        style={{ color: "var(--spring-laser)" }}
+      >
+        {m[1]}
+      </a>
+    );
+    last = m.index + m[0].length;
+  }
+  if (last < text.length) nodes.push(text.slice(last));
+  return nodes.length === 0 ? text : nodes.length === 1 ? nodes[0] : nodes;
+}
+
 // Minimal body renderer — no dependencies
-// ## Heading → h2 | ### Sub → h3 | - item → li (grouped) | blank line → paragraph break
+// ## Heading → h2 | ### Sub → h3 | - item → li (grouped) | blank line → paragraph break | [text](url) → link
 function renderBody(body: string) {
   const blocks = body.split(/\n\n+/);
   const elements: React.ReactNode[] = [];
@@ -69,7 +95,7 @@ function renderBody(body: string) {
       elements.push(
         <ul key={i} className="clean" style={{ marginTop: "0.5rem" }}>
           {block.split("\n").map((line, j) => (
-            <li key={j}>{line.slice(2)}</li>
+            <li key={j}>{renderInline(line.slice(2))}</li>
           ))}
         </ul>
       );
@@ -78,7 +104,7 @@ function renderBody(body: string) {
 
     // default: paragraph
     elements.push(
-      <p key={i} style={{ maxWidth: "65ch" }}>{block}</p>
+      <p key={i} style={{ maxWidth: "65ch" }}>{renderInline(block)}</p>
     );
   }
 

@@ -28,40 +28,50 @@ export const posts: Post[] = [
     tags: ["AEO", "Origin Story", "BRAIN Framework", "Answer Engines"],
     author: "Julian Lopez",
     excerpt:
-      "Most brands aren't in AI answers — not because they're bad brands, but because they never built the signals AI looks for. I spent a year with a research team of eight figuring out exactly what those signals are.",
-    body: `If you run an ecommerce brand or a personal brand, here's the problem you probably haven't felt yet.
+      "AI is the quickest path to an answer — and most brands aren't in those answers. I spent a year with a research team of eight finding the patterns that explain why, and building the B.R.A.I.N. Framework from what we found.",
+    body: `AI is not a way to get results — it's the quickest path to an answer.
+
+AI understands your query, not two or three keywords. A complex request like "[What are the best barefoot shoes for flat feet that I can use in the tropics under $100 with free shipping](https://www.amazon.com/dp/B09MVWCPP8)" — I wore them every day for a year and still got a bit of life left, so comfortable — is exactly the kind of question AI was built for. It will run through hundreds of sources: blogs, communities, review sites, social media comments, find the specific datapoints, and deliver an answer that looks like two hours of mental work were just saved. You're not as doubtful as you are grateful. The time and energy savings are what's making the act of searching through sources something we're no longer willing to put ourselves through.
+
+If you run an ecommerce brand, a personal brand, a local business, or a digital services company — here's the problem you probably haven't felt yet.
 
 AI is becoming the interface between your customers and your business.
 
-When someone asks ChatGPT "what's the best [product] for [need]," it answers. When they search Google and an AI Overview sits above every link, it answers. When their voice assistant recommends a provider, it answers.
+When someone asks ChatGPT "what's the best [product] for [need]," it's got the answer. When they search Google and an AI Overview sits above every link, it's got the answer. And when wearables and helpful companion robots with AI brains are in every household, it will have the answer.
 
 The question is whether your brand is in that answer.
 
-Most brands aren't. Not because they're bad brands. Because they never built the signals AI systems look for when deciding who to cite and recommend.
+Most brands aren't. Not because they're bad brands. Nobody is ever truly prepared for disruption — but the brands that move quickly, while the shift is still incomplete, are the ones that get in.
 
-I know this because I spent a year running a research team of eight people to figure out exactly how AI makes those decisions. Not in theory. Across categories, inside real client accounts, tracking what got cited and what didn't.
+I know this because I spent a year running a research team of eight people to figure out exactly how AI makes those decisions. Not in theory. Across categories, inside real client accounts, finding patterns and building a theory of these new AI experiences.
 
 Here's what we found and what to do with it.
 
 ## How I got here (the short version)
 
-Before any of this, I ran a printshop. I was good at the craft and terrible at the other half — understanding clients, communicating clearly, selling consistently. The bills stacked up. The lights were about to go out.
+I spent ten years in branding. Identity work, visual systems, the craft of making something feel like it meant something. When the pandemic hit, I had to pivot — I opened a printshop to keep moving.
 
-Survival pushed me into an Executive Assistant role in Colombia, where I ended up working alongside Kasim Aslam at Solutions 8 — the largest Google Ads agency in the world. That's where I actually learned marketing. Inside the machine, trying to engineer outcomes.
+Once the streets opened again, I took every job that came through the door. Long hours. New techniques, new materials, daily. I was deeply in love with the craft.
 
-When I later started researching how AI was changing search, I noticed the same posture I once had in that printshop: practitioners defending the old way instead of studying the new one. Articles about why AI search was flawed. Arguments that the old playbook still worked.
+Then a phrase from "The Win Without Pitching Manifesto" stopped me cold: "We will embrace sales as a basic business function that cannot be avoided and so we will learn to do it properly, as respectful facilitators."
+
+Even working long hours, taking any job that came in, learning new techniques and finding new materials on a daily basis — I was only working on 50% of my business. I felt dumb. That was the moment I decided to retire from graphic design and face the career hangover with absolute resolution: jump to the front lines and learn marketing. Be closer to the business outcomes.
+
+That decision led me to Pareto Talent, an agency that places operators from Colombia and Argentina alongside business owners in the United States. Through them, I connected with Kasim Aslam — who had just exited his Google Ads agency for seven figures and was now launching an executive staffing agency. I came in as an Executive Assistant and became a student of how ambitious businesses think and move.
+
+When I later started researching how AI was changing search, I noticed the same posture I once had running that printshop: practitioners defending the old way instead of studying the new one. Articles about why AI search was flawed. Arguments that the old playbook still worked.
 
 I recognized it immediately. That was me — insisting the craft was enough while the bills stacked up.
 
-So I did what nobody else seemed to be doing. I built a research team. Eight people. Over a year. We pulled apart citation patterns, analyzed thousands of AI responses, and tracked what actually moved the needle.
+So I did what nobody else seemed to be doing. I built a research team. Eight people. Over a year. We pulled apart citation patterns, analyzed thousands of AI responses, and found the patterns that built into a real theory of how AI decides who to recommend.
 
-We turned the findings into the B.R.A.I.N. Framework — five pillars, built from observation, not theory.
+We turned those findings into the B.R.A.I.N. Framework — five pillars, built from observation, not theory. And from that work came the AEO Blueprint: a structured way to make sense of the massive shift ahead as early as possible, and to start acting before your category gets decided without you.
 
 ## Four things the research keeps showing
 
-### Entity clarity beats domain authority.
+### Brand mentions beat domain authority.
 
-Brands with DA 30 outrank brands with DA 70+ when the smaller brand has the same name, description, and positioning across every platform AI touches. When AI can describe you in one sentence that holds up everywhere it looks, authority matters less. When your description fragments, nothing saves you.
+Being mentioned across the web — helping AI make up its mind about who you are with consistent, relevant signals — seems to be the new way authority is built in times of AI. Brands with DA 30 outrank brands with DA 70+ when the smaller brand has the same name, description, and positioning across every platform AI touches. When AI can describe you in one sentence that holds up everywhere it looks, traditional authority matters less. When your presence fragments, nothing saves you.
 
 ### Most of the work that determines AI visibility happens off your site.
 
@@ -73,15 +83,17 @@ AI sources its understanding of your brand from third-party surfaces — industr
 
 ### The metric that matters is the one the industry forgot.
 
-Branded search volume. Not rankings. Not traffic. AI systems reward brands that people look up by name. The industry spent a decade optimizing away from branded search. AI just made it the most important signal again.
+In a world without attribution, branded search demand increase could be the correlation we ground AI visibility on. People searching for your brand by name seem to be the most likely outcome after they discover you in an AI experience.
+
+It's muscle memory. Google is hardcoded into our day-to-day. We want to validate the research as fast as possible — then the job is yours to get the sale.
+
+The industry spent a decade optimizing away from branded search. AI just made it the most important signal again.
 
 ## What this means for you
 
-If you're building an ecommerce brand or a personal brand, the window is open. AI-mediated discovery is reorganizing how customers find businesses. The brands that build the right signals now get locked in as defaults. Everyone else becomes harder to find.
+If you're building an ecommerce brand, a personal brand, a local business, or a digital service — the window is open. AI-mediated discovery is reorganizing how customers find businesses. So far it appears that consensus-based influence is the way into these answers — or as I like to think of it, [building a brand in the BRAIN of AI](/the-aeo-blueprint). Everyone else becomes harder to find.
 
-I write the AEO Changelog for people who see this shift the same way — not as a loss to manage, but as the most interesting problem in a decade. I share what I'm testing, finding, and getting wrong. No theory. What the data says.
-
-The community is at skool.com/aeo.
+The community at skool.com/aeo is where I spend time with people running this same experiment — exchanging findings, testing approaches, and figuring out together what actually works in this new landscape.
 
 Let's build.`,
   },
