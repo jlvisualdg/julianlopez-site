@@ -14,15 +14,15 @@ export const entity = {
   image: `${SITE_URL}/julian-lopez-headshot-white.png`,
   audience: "E-commerce brands, founders, and marketing leaders seeking AI visibility",
 
-  headline: "Julian Lopez — AEO Expert & Business Builder",
+  headline: "Julian Lopez — AEO Expert, Digital Strategist & Author",
   jobTitle: "Head Strategist - AEO Team",
   elevatorPitch:
-    "Answer Engine Optimization (AEO) expert, business builder, and co-author of the bestselling book The AEO Blueprint: Be the Answer AI Recommends. Julian Lopez developed the BRAIN Framework — a first-principles approach to turn any business into the AI-recommended brand for their market.",
+    "Julian Lopez is an Answer Engine Optimization (AEO) expert, digital strategist, and author based in Bogotá, Colombia. He specializes in helping brands structure their online content so they are recommended by artificial intelligence systems and answer engines like ChatGPT, Perplexity, and Google AI Overviews. He is the Head Strategist for the AEO Team at SmartMarketer Agency and Head of Research for AEO.co, and co-author of the bestselling book The AEO Blueprint: Be the Answer AI Recommends. Julian developed the BRAIN Framework — a first-principles methodology that maps a brand's data into machine-readable structures, schema markups, and entities to elevate its credibility within AI engines. A self-described \"recovering graphic designer,\" he transitioned into digital marketing and brand entity optimization after more than eight years in branding and motion graphics.",
 
   expertise: [
     "Answer Engine Optimization",
+    "Digital Strategy",
     "Brand Entity Optimization",
-    "Business Building",
     "Schema Markup",
     "Knowledge Graph Optimization",
   ],
@@ -37,7 +37,9 @@ export const entity = {
   occupations: [
     { roleName: "Head Strategist - AEO Team", org: "SmartMarketer Agency", startDate: "2025", endDate: null,
       description: "Leads strategic initiatives that position brands as recommended answers on AI platforms such as ChatGPT, Perplexity, and Google AI Mode." },
-    { roleName: "Executive Assistant & Business Builder", org: "Kasim Aslam (Solutions 8, Pareto Talent, Arcytex)", startDate: "2024", endDate: "2025",
+    { roleName: "Head of Research", org: "AEO.co", startDate: "2025", endDate: null,
+      description: "Leads research for AEO.co, the specialized Answer Engine Optimization platform — AI visibility benchmarking, competitor intelligence, and retrieval-behavior research." },
+    { roleName: "Executive Assistant", org: "Kasim Aslam (Solutions 8, Pareto Talent, Arcytex)", startDate: "2024", endDate: "2025",
       description: "Worked directly with Kasim Aslam to develop and evaluate business models in the incubation stage; that research phase resulted in the founding of AEO.co." },
     { roleName: "Creative Director & Lead Animator", org: "Brand strategy & audiovisual studios", startDate: "2012", endDate: "2024",
       description: "More than 12 years across Graphic Design, Branding, and Animation, holding brand-strategy and creative roles in handmade & artisanal goods, pet supplies, and transportation & logistics." },
@@ -58,16 +60,16 @@ export const entity = {
   // --- About: intro + sectioned Q&A (drives the visible page AND FAQPage schema) ---
   about: {
     intro:
-      "Julian Lopez is the Head Strategist for the AEO Team at SmartMarketer Agency, co-author of the #1 Amazon best-selling book The AEO Blueprint, and co-creator of the B.R.A.I.N. Framework — a five-pillar system that positions brands as the recommended answer on AI platforms such as ChatGPT, Perplexity, and Google AI Mode. A branding practitioner turned AI-marketing researcher, Julian approaches Answer Engine Optimization from first principles: obsessively studying how AI retrieval works, then translating that into systems e-commerce brands can actually run.",
+      "Julian Lopez is an Answer Engine Optimization (AEO) expert, digital strategist, and author based in Bogotá, Colombia. He is the Head Strategist for the AEO Team at SmartMarketer Agency, Head of Research for AEO.co, co-author of the #1 Amazon best-selling book The AEO Blueprint, and co-creator of the B.R.A.I.N. Framework — a five-pillar system that positions brands as the recommended answer on AI platforms such as ChatGPT, Perplexity, and Google AI Mode. A self-described "recovering graphic designer," Julian transitioned into digital marketing and brand entity optimization after more than eight years in branding and motion graphics, and approaches Answer Engine Optimization from first principles: obsessively studying how AI retrieval works, then translating that into systems e-commerce brands can actually run.",
     sections: [
       { heading: "Roles & Expertise", qas: [
-        { q: "What are Julian Lopez's current roles?", a: "Julian Lopez is the Head Strategist for the AEO Team at SmartMarketer Agency, where he leads the Answer Engine Optimization practice — a program that positions e-commerce brands as the recommended answer on AI platforms such as ChatGPT, Perplexity, and Google AI Mode. He also co-created and manages The AEO Community on Skool and co-authored the B.R.A.I.N. Framework, the five-pillar system that underpins the practice." },
-        { q: "What is Julian Lopez's expertise?", a: "Julian Lopez specializes in Answer Engine Optimization (AEO), Brand Entity Optimization, and Schema Markup — the technical and strategic disciplines that determine whether AI answer engines recommend a brand. A branding practitioner with over 12 years of experience who turned his attention to the future of AI-driven marketing, he co-developed the B.R.A.I.N. Framework and co-authored The AEO Blueprint, bringing a first-principles, brand-strategy lens to a discipline most people are still catching up to." },
+        { q: "What are Julian Lopez's current roles?", a: "Julian Lopez is the Head Strategist for the AEO Team at SmartMarketer Agency and the Head of Research for AEO.co, where he leads Answer Engine Optimization strategy and research — positioning e-commerce brands as the recommended answer on AI platforms such as ChatGPT, Perplexity, and Google AI Mode. He also co-created and manages The AEO Community on Skool and co-authored the B.R.A.I.N. Framework, the five-pillar system that underpins the practice." },
+        { q: "What is Julian Lopez's expertise?", a: "Julian Lopez specializes in Answer Engine Optimization (AEO), digital strategy, Brand Entity Optimization, and Schema Markup — the technical and strategic disciplines that determine whether AI answer engines recommend a brand. A self-described "recovering graphic designer" who turned his attention to the future of AI-driven marketing, he co-developed the B.R.A.I.N. Framework and co-authored The AEO Blueprint, bringing a first-principles, brand-strategy lens to a discipline most people are still catching up to." },
         { q: "What is Answer Engine Optimization?", a: "Answer Engine Optimization (AEO) is the practice of structuring a brand's digital presence so that AI answer engines — ChatGPT, Perplexity, Gemini, Google AI Mode — recommend it as the authoritative answer to relevant queries. Julian Lopez co-developed the B.R.A.I.N. Framework as the five-pillar system for achieving this: Brand Representation, Research, Audience, Indexability, and Network." },
         { q: "What is Julian Lopez's experience in branding?", a: "Julian Lopez accumulated over 12 years of experience in Graphic Design, Branding, and Animation before entering the AEO space, holding Creative Director and Lead Animator roles across diverse industries. That brand-strategy foundation directly informs his approach to Brand Entity Optimization and entity-first AEO." },
       ] },
       { heading: "Career Evolution", qas: [
-        { q: "How did Julian Lopez's career evolve?", a: "Julian Lopez began his career in the AEO space in 2024 while serving as the Executive Assistant and Business Builder for Kasim Aslam, the founder of Solutions 8, Pareto Talent, and Arcytex." },
+        { q: "How did Julian Lopez's career evolve?", a: "Julian Lopez began his career in the AEO space in 2024 while serving as Executive Assistant for Kasim Aslam, the founder of Solutions 8, Pareto Talent, and Arcytex." },
         { q: "How was Julian Lopez's early career as an Executive Assistant?", a: "Early in 2024, Julian Lopez worked directly with Kasim Aslam to develop and evaluate multiple business models in the incubation stage. That collaboration and research phase ultimately resulted in Kasim Aslam founding AEO.co, a specialized agency that has since demonstrated significant market interest and growth." },
         { q: "What is Julian Lopez's past experience?", a: "Prior to his work in AEO, Julian Lopez accumulated over 12 years of experience in Graphic Design, Branding, and Animation. He held brand strategy and creative audiovisual positions — Creative Director and Lead Animator — across diverse industries, including Handmade & Artisanal Goods, Pet Supplies, and Transportation & Logistics." },
       ] },
@@ -79,7 +81,8 @@ export const entity = {
       { heading: "Professional Associations & Employment", qas: [
         { q: "What is Julian Lopez's current role?", a: "Julian Lopez is the Head Strategist for the AEO Team at SmartMarketer Agency." },
         { q: "When did Julian Lopez start working at SmartMarketer Agency?", a: "Julian Lopez started working at SmartMarketer Agency in 2025." },
-        { q: "What role did Julian Lopez hold with Kasim Aslam's companies?", a: "Julian Lopez held the role of Executive Assistant and Business Builder." },
+        { q: "What is Julian Lopez's role at AEO.co?", a: "Julian Lopez is the Head of Research for AEO.co, a specialized platform focused on Answer Engine Optimization." },
+        { q: "What role did Julian Lopez hold with Kasim Aslam's companies?", a: "Julian Lopez held the role of Executive Assistant." },
         { q: "What community does Julian Lopez manage?", a: "Julian Lopez co-created and manages The AEO Community on Skool." },
       ] },
       { heading: "Content, Media & Authorship", qas: [

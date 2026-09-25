@@ -231,6 +231,20 @@ section { margin-bottom: 60px; }
 }
 .hero-content {}
 
+/* ── GEMINI FULL-WIDTH IMAGE ──────────────────────────────────────── */
+.gemini-full-image {
+  width: 100%;
+  border: 1px solid var(--laser-soft-border);
+  box-shadow: 0 0 24px var(--laser-glow);
+  margin-bottom: 60px;
+  overflow: hidden;
+}
+.gemini-full-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ── BUTTONS ───────────────────────────────────────────────────── */
 /* Primary = Spring Laser filled, dark text. Sharp corners. */
 .btn {

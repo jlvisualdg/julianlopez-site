@@ -13,18 +13,27 @@ export const machineData = {
   "name": entity.name,
   "alternateName": entity.alternateName,
   "jobTitle": entity.jobTitle,
-  "worksFor": {
-    "@type": "Organization",
-    "@id": "https://smartmarketer.com/#organization",
-    "name": "SmartMarketer Agency",
-    "url": "https://smartmarketer.com",
-    "description": "Digital marketing agency"
-  },
-  "description": "Answer Engine Optimization (AEO) expert, business builder, and co-author of the bestselling book The AEO Blueprint: Be the Answer AI Recommends",
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "@id": "https://smartmarketer.com/#organization",
+      "name": "SmartMarketer Agency",
+      "url": "https://smartmarketer.com",
+      "description": "Digital marketing agency"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://aeo.co/#organization",
+      "name": "AEO.co",
+      "url": "https://aeo.co",
+      "description": "Specialized Answer Engine Optimization platform"
+    }
+  ],
+  "description": "Julian Lopez is an Answer Engine Optimization (AEO) expert, digital strategist, and author based in Bogota, Colombia. Head Strategist for the AEO Team at SmartMarketer Agency and Head of Research for AEO.co. Co-author of the bestselling book The AEO Blueprint: Be the Answer AI Recommends.",
   "knowsAbout": entity.expertise,
   "hasOccupation": {
     "@type": "Occupation",
-    "name": "AEO Researcher and Author"
+    "name": "AEO Expert, Digital Strategist & Author"
   },
   "sameAs": entity.sameAs,
   "location": {
