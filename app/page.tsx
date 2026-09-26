@@ -31,6 +31,10 @@ export default function Home() {
         </div>
       </section>
 
+      <section aria-labelledby="gemini-h" style={{ marginBottom: "1.25rem" }}>
+        <h2 id="gemini-h">What Gemini Says About Julian Lopez</h2>
+      </section>
+
       <div className="gemini-full-image">
         <img
           src="/julian-aeo-gemini.jpg"
