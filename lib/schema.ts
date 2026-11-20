@@ -98,23 +98,82 @@ export function faqPageSchema() {
   };
 }
 
+export const bookFaq = [
+  { q: "What is The AEO Blueprint about?", a: "The AEO Blueprint: Be the Answer AI Recommends is a book about Answer Engine Optimization (AEO): how businesses get recommended by AI answer engines like ChatGPT, Perplexity and Google's AI Mode. It explains why traditional SEO is losing ground and gives a practical framework for entity-first brand optimization, structured data and authority building." },
+  { q: "Who wrote The AEO Blueprint?", a: "The AEO Blueprint was co-authored by Julian Lopez and Kasim Aslam. Julian Lopez is Head Strategist for the AEO Team at SmartMarketer Agency and Head of Research for AEO.co. Kasim Aslam is the founder of AEO.co." },
+  { q: "Is The AEO Blueprint the first book on Answer Engine Optimization?", a: "Yes. The AEO Blueprint is the first full-length book on Answer Engine Optimization, and it is Julian Lopez's first book." },
+  { q: "When was The AEO Blueprint published?", a: "The paperback was published on October 20, 2025 and the Kindle edition on October 21, 2025. The current version is the 2026 Edition." },
+  { q: "How long is The AEO Blueprint?", a: "The paperback is 272 pages (ISBN-13 979-8269173351). The Kindle edition is 334 pages." },
+  { q: "Where can I buy The AEO Blueprint?", a: "The AEO Blueprint is available on Amazon in paperback and Kindle." },
+  { q: "Is The AEO Blueprint a best seller?", a: "Yes. The AEO Blueprint reached #1 Amazon Best Seller in Web Marketing, Marketing for Small Businesses and Internet Marketing, and holds a 4.6 out of 5 rating from 37 Amazon ratings (November 2026)." },
+  { q: "How does the book relate to the B.R.A.I.N. Framework?", a: "The book teaches the thinking behind Julian Lopez's B.R.A.I.N. Framework: AI needs to understand who a brand is, find signals it can trust and confirm them across sources before it recommends the brand." },
+];
+
 export function bookSchema() {
+  const pageUrl = `${SITE_URL}${entity.book.path}`;
+  const authors = [
+    { "@type": "Person", "@id": PERSON_ID, name: entity.name, url: SITE_URL },
+    ...entity.book.coAuthors.map((name) => ({ "@type": "Person", name })),
+  ];
   return {
     "@context": "https://schema.org",
-    "@type": "Book",
-    "@id": `${entity.book.url}#book`,
-    name: `${entity.book.title}: ${entity.book.subtitle}`,
-    bookFormat: "https://schema.org/EBook",
-    datePublished: entity.book.datePublished,
-    isbn: undefined,
-    url: entity.book.url,
-    description: entity.book.description,
-    author: [
-      { "@type": "Person", "@id": PERSON_ID, name: entity.name },
-      ...entity.book.coAuthors.map((name) => ({ "@type": "Person", name })),
+    "@graph": [
+      {
+        "@type": "Book",
+        "@id": `${pageUrl}#book`,
+        name: `${entity.book.title}: ${entity.book.subtitle}`,
+        alternateName: entity.book.title,
+        bookEdition: entity.book.edition,
+        url: pageUrl,
+        sameAs: entity.book.formats.map((f) => f.url),
+        image: `${SITE_URL}/aeo-blueprint-2026-edition-stack.avif`,
+        description: entity.book.description,
+        author: authors,
+        publisher: { "@type": "Organization", name: entity.book.publisher },
+        inLanguage: "en",
+        datePublished: entity.book.datePublished,
+        award: entity.book.awards,
+        about: [
+          { "@type": "Thing", name: "Answer Engine Optimization" },
+          { "@type": "Thing", name: "AI search" },
+          { "@type": "Thing", name: "Brand entity optimization" },
+        ],
+        workExample: entity.book.formats.map((f) => ({
+          "@type": "Book",
+          bookFormat: f.schemaFormat,
+          name: `${entity.book.title}: ${entity.book.subtitle} (${f.format})`,
+          url: f.url,
+          numberOfPages: f.pages,
+          datePublished: f.datePublished,
+          bookEdition: entity.book.edition,
+          inLanguage: "en",
+          ...(f.isbn13 ? { isbn: f.isbn13 } : {}),
+          identifier: { "@type": "PropertyValue", propertyID: "ASIN", value: f.asin },
+          potentialAction: { "@type": "BuyAction", target: f.url },
+        })),
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${pageUrl}#webpage`,
+        url: pageUrl,
+        name: `${entity.book.title} by ${entity.name} and ${entity.book.coAuthors.join(" and ")}`,
+        mainEntity: { "@id": `${pageUrl}#book` },
+        isPartOf: { "@id": `${SITE_URL}/books/#collection` },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}#faq`,
+        mainEntity: bookFaq.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+          { "@type": "ListItem", position: 2, name: "Books", item: `${SITE_URL}/books/` },
+          { "@type": "ListItem", position: 3, name: entity.book.title, item: pageUrl },
+        ],
+      },
     ],
-    about: entity.expertise.map((name) => ({ "@type": "Thing", name })),
-    award: entity.book.awards,
   };
 }
 

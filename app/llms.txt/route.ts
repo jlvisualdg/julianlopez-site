@@ -23,7 +23,7 @@ ${entity.brain.pillars.map((p) => `  - [${p.letter}: ${p.title}](${SITE_URL}${en
 
 ## Authorship
 - [Books](${SITE_URL}/books/): Books by ${entity.name}.
-- [${entity.book.title}](${SITE_URL}/the-aeo-blueprint/): ${entity.book.awards}
+- [${entity.book.title}](${SITE_URL}${entity.book.path}): The first book on Answer Engine Optimization, by ${entity.name} and ${entity.book.coAuthors.join(" and ")}. ${entity.book.awards}
 - [Buy on Amazon](${entity.book.url})
 
 ## Speaking

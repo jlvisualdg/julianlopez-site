@@ -5,22 +5,23 @@ import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Books by Julian Lopez",
-  description: `Books by ${entity.name}, including ${entity.book.title}: ${entity.book.subtitle}, the #1 Amazon best seller on Answer Engine Optimization.`,
+  description: `Books written by ${entity.name} on Answer Engine Optimization and helping businesses get recommended by AI, starting with ${entity.book.title}, his first book and the first book on AEO.`,
   alternates: { canonical: "/books/" },
 };
 
+const b = entity.book;
+
 const books = [
   {
-    title: entity.book.title,
-    subtitle: entity.book.subtitle,
-    url: entity.book.url,
+    title: b.title,
+    subtitle: b.subtitle,
+    path: b.path,
+    amazon: b.formats[0].url,
     cover: "/aeo-blueprint-2026-edition-stack.avif",
-    coverAlt: `${entity.book.title}: ${entity.book.subtitle}, book by ${entity.name} and ${entity.book.coAuthors.join(", ")}`,
-    authors: [entity.name, ...entity.book.coAuthors],
-    year: entity.book.year,
-    award: entity.book.awards,
-    description: entity.book.description,
-    detailPath: "/the-aeo-blueprint/",
+    coverAlt: `${b.title}: ${b.subtitle}, ${b.edition}, by ${b.coAuthors.join(" and ")} and ${entity.name}`,
+    authors: `${entity.name} & ${b.coAuthors.join(" & ")}`,
+    kicker: `${b.edition} · First book · #1 Amazon Best Seller`,
+    summary: `${entity.name}'s first book, and the first book on Answer Engine Optimization. It shows businesses how to become the brand that ChatGPT, Perplexity and Google's AI Mode recommend, built from thousands of hours testing how AI decides which brands to trust.`,
   },
 ];
 
@@ -31,22 +32,14 @@ function booksSchema() {
     "@id": `${SITE_URL}/books/#collection`,
     name: `Books by ${entity.name}`,
     url: `${SITE_URL}/books/`,
+    author: { "@type": "Person", "@id": `${SITE_URL}/#person`, name: entity.name },
     mainEntity: {
       "@type": "ItemList",
-      itemListElement: books.map((b, i) => ({
+      itemListElement: books.map((bk, i) => ({
         "@type": "ListItem",
         position: i + 1,
-        item: {
-          "@type": "Book",
-          "@id": `${b.url}#book`,
-          name: `${b.title}: ${b.subtitle}`,
-          url: b.url,
-          author: [
-            { "@type": "Person", "@id": `${SITE_URL}/#person`, name: entity.name },
-            ...entity.book.coAuthors.map((name) => ({ "@type": "Person", name })),
-          ],
-          award: b.award,
-        },
+        url: `${SITE_URL}${bk.path}`,
+        item: { "@id": `${SITE_URL}${bk.path}#book` },
       })),
     },
   };
@@ -58,33 +51,33 @@ export default function Books() {
       <JsonLd data={booksSchema()} />
       <p className="label">Books</p>
       <h1 style={{ marginTop: "1rem" }}>Books by {entity.name}</h1>
-      <p className="lede" style={{ marginTop: "1rem", maxWidth: "62ch" }}>
-        Books on Answer Engine Optimization and how brands get recommended by AI.
+      <p className="lede" style={{ marginTop: "1rem", maxWidth: "64ch" }}>
+        {entity.name} writes about helping businesses get found, trusted and recommended by AI. His first book,
+        co-authored with {b.coAuthors.join(" and ")}, is also the first book on Answer Engine Optimization.
       </p>
 
-      {books.map((b) => (
-        <section className="qa" key={b.url} aria-labelledby="h-aeo-blueprint">
+      {books.map((bk) => (
+        <section className="qa" key={bk.path} aria-labelledby={`h-${bk.path}`}>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "2rem", alignItems: "center", marginTop: "0.5rem" }}>
-            <a href={b.url} rel="noopener">
+            <Link href={bk.path}>
               <img
-                src={b.cover}
-                alt={b.coverAlt}
+                src={bk.cover}
+                alt={bk.coverAlt}
                 width={1312}
                 height={1199}
                 style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
               />
-            </a>
+            </Link>
             <div>
-              <p className="label">{b.year} &middot; #1 Amazon Best Seller</p>
-              <h2 id="h-aeo-blueprint" style={{ marginTop: "0.8rem" }}>
-                <a href={b.url} rel="noopener" style={{ color: "var(--white)" }}>{b.title}: {b.subtitle}</a>
+              <p className="label">{bk.kicker}</p>
+              <h2 id={`h-${bk.path}`} style={{ marginTop: "0.8rem" }}>
+                <Link href={bk.path} style={{ color: "var(--white)" }}>{bk.title}: {bk.subtitle}</Link>
               </h2>
-              <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.74rem" }}>By {b.authors.join(" & ")}</p>
-              <p>{b.description}</p>
-              <p>{b.award}</p>
+              <p style={{ fontFamily: "var(--font-mono)", fontSize: "0.74rem" }}>By {bk.authors}</p>
+              <p>{bk.summary}</p>
               <div className="actions">
-                <a className="btn btn-primary" href={b.url} rel="noopener">Get it on Amazon</a>
-                <Link className="btn" href={b.detailPath}>About the book</Link>
+                <Link className="btn btn-primary" href={bk.path}>About the book</Link>
+                <a className="btn" href={bk.amazon} rel="noopener">Get it on Amazon</a>
               </div>
             </div>
           </div>

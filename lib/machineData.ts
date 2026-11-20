@@ -57,7 +57,7 @@ export const machineData = {
     "frameworks": "/frameworks/",
     "brain_framework": "/frameworks/brain-framework/",
     "books": "/books/",
-    "book": "/the-aeo-blueprint/",
+    "book": "/books/the-aeo-blueprint/",
     "blog": "/blog/",
     "media_speaking": "/media-speaking/",
     "contact": "/contact/"

@@ -91,7 +91,7 @@ The industry spent a decade optimizing away from branded search. AI just made it
 
 ## What this means for you
 
-If you're building an ecommerce brand, a personal brand, a local business, or a digital service — the window is open. AI-mediated discovery is reorganizing how customers find businesses. So far it appears that consensus-based influence is the way into these answers — or as I like to think of it, [building a brand in the BRAIN of AI](/the-aeo-blueprint). Everyone else becomes harder to find.
+If you're building an ecommerce brand, a personal brand, a local business, or a digital service — the window is open. AI-mediated discovery is reorganizing how customers find businesses. So far it appears that consensus-based influence is the way into these answers — or as I like to think of it, [building a brand in the BRAIN of AI](/frameworks/brain-framework/). Everyone else becomes harder to find.
 
 The community at skool.com/aeo is where I spend time with people running this same experiment — exchanging findings, testing approaches, and figuring out together what actually works in this new landscape.
 
