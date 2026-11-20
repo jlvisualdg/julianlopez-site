@@ -18,7 +18,8 @@ export function GET() {
 ## Methodology
 - [${entity.brain.name}](${SITE_URL}${entity.brain.path}): Created by ${entity.name}. ${entity.brain.summary}
 ${entity.brain.pillars.map((p) => `  - [${p.letter}: ${p.title}](${SITE_URL}${entity.brain.path}#${p.slug}): ${p.chainStep}. ${p.needLabel ?? "What AI needs"}: ${p.need}`).join("\n")}
-- [All frameworks](${SITE_URL}/frameworks/)
+- [Long-term AEO execution framework](${SITE_URL}/frameworks/#execution): Six steps that run the B.R.A.I.N. pillars every month to build a brand in the brain of AI.
+- [All frameworks by ${entity.name}](${SITE_URL}/frameworks/)
 
 ## Authorship
 - [Books](${SITE_URL}/books/): Books by ${entity.name}.

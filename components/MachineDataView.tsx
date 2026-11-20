@@ -13,21 +13,21 @@ export default function MachineDataView() {
         borderBottom: '1px solid #14532d'
       }}>
         <div style={{ padding: '8px 16px', display: 'flex', alignItems: 'center' }}>
-          <div style={{ flex: 1, fontFamily: 'monospace', color: '#22c55e', fontSize: '0.875rem' }}>
+          <div style={{ flex: 1, fontFamily: 'monospace', color: '#73C3E4', fontSize: '0.875rem' }}>
             julian_lopez.entity.json
           </div>
           <div style={{ flex: 1, display: 'flex', justifyContent: 'center' }}>
             <button
               style={{
                 display: 'inline-block',
-                backgroundColor: '#39ff14',
+                backgroundColor: '#73C3E4',
                 color: '#000',
                 fontWeight: 'bold',
                 padding: '4px 16px',
                 fontSize: '0.875rem',
                 border: 'none',
                 cursor: 'pointer',
-                boxShadow: '0 0 10px rgba(57, 255, 20, 0.7), 0 0 20px rgba(57, 255, 20, 0.5), 0 0 30px rgba(57, 255, 20, 0.3)',
+                boxShadow: '0 0 10px rgba(115, 195, 228, 0.7), 0 0 20px rgba(115, 195, 228, 0.5), 0 0 30px rgba(115, 195, 228, 0.3)',
                 textShadow: 'none'
               }}
             >
@@ -40,7 +40,7 @@ export default function MachineDataView() {
       <div style={{
         minHeight: '100vh',
         backgroundColor: '#0d0d0d',
-        color: '#39ff14',
+        color: '#73C3E4',
         fontFamily: 'monospace',
         fontSize: '0.875rem',
         paddingTop: '3rem',

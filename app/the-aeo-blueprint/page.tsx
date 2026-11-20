@@ -24,10 +24,10 @@ export default function Book() {
 
       {/* Hero — single book mockup */}
       <img
-        src="/aeo-blueprint-book-mockup-1.avif"
-        alt="The AEO Blueprint book cover"
-        width={1200}
-        height={900}
+        src="/aeo-blueprint-2026-edition-stack.avif"
+        alt="The AEO Blueprint: Be the Answer AI Recommends, 2026 Edition, by Kasim Aslam and Julian Lopez, standing on a stack of copies"
+        width={1312}
+        height={1199}
         style={{ width: "100%", maxWidth: "720px", height: "auto", borderRadius: "8px", display: "block", marginTop: "2rem" }}
       />
 
@@ -52,10 +52,10 @@ export default function Book() {
 
         {/* Second mockup — stacked copies, pairs naturally with the bestseller proof below */}
         <img
-          src="/aeo-blueprint-book-mockup-2.avif"
-          alt="The AEO Blueprint — two copies stacked"
-          width={1200}
-          height={900}
+          src="/aeo-blueprint-2026-edition-desk.avif"
+          alt="The AEO Blueprint 2026 Edition by Kasim Aslam and Julian Lopez lying on a desk"
+          width={1312}
+          height={1199}
           style={{ width: "100%", maxWidth: "560px", height: "auto", borderRadius: "8px", display: "block", marginTop: "1.5rem" }}
         />
 
@@ -67,18 +67,18 @@ export default function Book() {
           marginTop: "1.5rem",
         }}>
           {[
-            { src: "/aeo-blueprint-bestseller.avif",  alt: "Amazon Best Seller badge — AEO Blueprint" },
-            { src: "/aeo-blueprint-amz-1.avif",       alt: "#1 Best Seller in Web Marketing" },
-            { src: "/aeo-blueprint-amz-2.avif",       alt: "#1 Best Seller in Internet Marketing" },
-            { src: "/aeo-blueprint-amz-3.avif",       alt: "Amazon product page — AEO Blueprint" },
-            { src: "/aeo-blueprint-amz-4.avif",       alt: "#1 Best Seller in Marketing for Small Businesses" },
-          ].map(({ src, alt }) => (
+            { src: "/aeo-blueprint-bestseller.avif",      alt: "Amazon Best Seller badge — AEO Blueprint", w: 1200, h: 893 },
+            { src: "/aeo-blueprint-amazon-listing.avif",  alt: "Amazon Kindle listing for The AEO Blueprint: Be the Answer AI Recommends, showing the #1 Best Seller badge in Web Marketing", w: 1200, h: 626 },
+            { src: "/aeo-blueprint-amz-2.avif",           alt: "#1 Best Seller in Internet Marketing", w: 1200, h: 893 },
+            { src: "/aeo-blueprint-amz-3.avif",           alt: "Amazon product page — AEO Blueprint", w: 1200, h: 893 },
+            { src: "/aeo-blueprint-amz-4.avif",           alt: "#1 Best Seller in Marketing for Small Businesses", w: 1200, h: 893 },
+          ].map(({ src, alt, w, h }) => (
             <img
               key={src}
               src={src}
               alt={alt}
-              width={1200}
-              height={893}
+              width={w}
+              height={h}
               style={{ width: "100%", height: "auto", borderRadius: "6px", display: "block" }}
             />
           ))}

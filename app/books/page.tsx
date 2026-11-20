@@ -14,7 +14,7 @@ const books = [
     title: entity.book.title,
     subtitle: entity.book.subtitle,
     url: entity.book.url,
-    cover: "/aeo-blueprint-book-mockup-1.avif",
+    cover: "/aeo-blueprint-2026-edition-stack.avif",
     coverAlt: `${entity.book.title}: ${entity.book.subtitle}, book by ${entity.name} and ${entity.book.coAuthors.join(", ")}`,
     authors: [entity.name, ...entity.book.coAuthors],
     year: entity.book.year,
@@ -69,8 +69,8 @@ export default function Books() {
               <img
                 src={b.cover}
                 alt={b.coverAlt}
-                width={1200}
-                height={900}
+                width={1312}
+                height={1199}
                 style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
               />
             </a>

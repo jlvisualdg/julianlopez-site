@@ -5,8 +5,8 @@
 
 :root {
   /* Primary accent */
-  --spring-laser:       #4DFF00;
-  --spring-laser-hover: #66FF33;
+  --spring-laser:       #73C3E4;
+  --spring-laser-hover: #9AD5ED;
 
   /* Backgrounds */
   --carbon-black:   #222223;
@@ -27,9 +27,9 @@
   --border-active: #333333;
 
   /* Tints */
-  --laser-soft:        rgba(77, 255, 0, .08);
-  --laser-soft-border: rgba(77, 255, 0, .25);
-  --laser-glow:        rgba(77, 255, 0, .15);
+  --laser-soft:        rgba(115, 195, 228, .08);
+  --laser-soft-border: rgba(115, 195, 228, .25);
+  --laser-glow:        rgba(115, 195, 228, .15);
   --amber-soft:        rgba(255, 157, 0, .08);
   --amber-soft-border: rgba(255, 157, 0, .25);
 
@@ -216,7 +216,7 @@ section { margin-bottom: 60px; }
   gap: 40px;
   align-items: center;
   border: 1px solid var(--border-active);
-  background: linear-gradient(135deg, rgba(77,255,0,.03), rgba(255,157,0,.02));
+  background: linear-gradient(135deg, rgba(115,195,228,.03), rgba(255,157,0,.02));
   padding: 32px;
   margin-bottom: 40px;
 }

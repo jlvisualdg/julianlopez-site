@@ -1,5 +1,5 @@
 import { entity, SITE_URL } from "@/lib/entity";
-import { brainFramework, brainSources, frameworks } from "@/lib/frameworks";
+import { brainFramework, brainSources, frameworks, frameworksHub } from "@/lib/frameworks";
 
 const PERSON_ID = `${SITE_URL}/#person`;
 const ORG_ID = `${entity.org.url}/#organization`;
@@ -230,7 +230,10 @@ export function frameworksCollectionSchema() {
         name: `Frameworks by ${entity.name}`,
         url: `${SITE_URL}/frameworks/`,
         author: PERSON_REF,
+        description: frameworksHub.intro,
         about: { "@type": "Thing", name: "Answer Engine Optimization" },
+        mentions: frameworksHub.classics.map((c) => ({ "@type": "CreativeWork", name: c.name, description: `${c.origin}. ${c.idea}` })),
+        hasPart: { "@id": `${SITE_URL}/frameworks/#execution` },
         mainEntity: {
           "@type": "ItemList",
           itemListElement: frameworks.map((f, i) => ({
@@ -240,6 +243,21 @@ export function frameworksCollectionSchema() {
             name: f.name,
           })),
         },
+      },
+      {
+        "@type": "HowTo",
+        "@id": `${SITE_URL}/frameworks/#execution`,
+        name: frameworksHub.executionTitle,
+        description: frameworksHub.executionIntro,
+        author: PERSON_REF,
+        isBasedOn: { "@id": BRAIN_ID },
+        step: frameworksHub.execution.map((st, i) => ({
+          "@type": "HowToStep",
+          position: i + 1,
+          name: `${st.name} (${st.pillar})`,
+          text: st.text,
+          url: `${SITE_URL}/frameworks/#execution`,
+        })),
       },
       breadcrumbs([
         { name: "Home", path: "/" },

@@ -107,7 +107,7 @@ export default function BrainFrameworkPage() {
           <div>
             <p style={{ marginTop: 0 }}>
               <strong style={{ color: "var(--white)" }}>{entity.name}</strong> created the B.R.A.I.N. Framework. He is{" "}
-              {entity.jobTitle.replace(" - ", " for the ")} at {entity.org.name}, Head of Research for AEO.co and co-author of the
+              {entity.jobTitle.replace(" - ", " for the ")} at {entity.org.name}, Head of Research for AEO.co and co-author, with {entity.book.coAuthors.join(" and ")}, of the
               #1 Amazon best seller <Link href="/books/"><em>{entity.book.title}</em></Link>.
             </p>
             {bf.origin.map((para) => <p key={para}>{para}</p>)}
@@ -249,7 +249,7 @@ export default function BrainFrameworkPage() {
           ))}
         </div>
         <p style={{ marginTop: "1.25rem" }}>
-          The ideas behind the framework are also covered in <Link href="/books/"><em>{entity.book.title}</em></Link>, co-authored by {entity.name}.
+          The ideas behind the framework are also covered in <Link href="/books/"><em>{entity.book.title}</em></Link>, co-authored by {entity.name} and {entity.book.coAuthors.join(" and ")}.
         </p>
       </section>
 

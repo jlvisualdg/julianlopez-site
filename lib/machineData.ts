@@ -79,38 +79,13 @@ export const machineData = {
     "creator": "Julian Lopez",
     "url": `${SITE_URL}/frameworks/brain-framework/`,
     "summary": "A first-principles, five-pillar system (B.R.A.I.N. v2.4) designed to transform invisible websites into AI-Recommended Brands. Pillars: Brand Representation · Research · Audience · Indexability · Network.",
-    "pillars": [
-      {
-        "letter": "B",
-        "title": "Brand Representation",
-        "subtitle": "Reach, Recognition, Reputation",
-        "description": "Your external footprint. Reach (are you present where AI looks?), Recognition (is your brand described consistently across all platforms?), Reputation (is the sentiment positive?). AI builds its understanding of your brand from what others say about you, not what you say about yourself."
-      },
-      {
-        "letter": "R",
-        "title": "Research",
-        "subtitle": "AI Visibility, Competitor Intel, Attribution",
-        "description": "AI answer engines and retrieval behavior change on a timescale of months, not years. Research isn't a phase — it's a standing budget line. Four functions: AI Visibility Baseline (monthly scans across ChatGPT, Perplexity, Gemini, Claude, AI Mode), Competitor & Category Intelligence (who AI cites for your queries), Channel Monitoring (new agentic surfaces as they emerge), and Source Attribution (closing the loop from AI citation to business outcome)."
-      },
-      {
-        "letter": "A",
-        "title": "Audience",
-        "subtitle": "Query Intelligence, Buying Situations",
-        "description": "Strategy calibrated to who asks what, in what situations. AI doesn't recommend generic brands — it recommends brands that demonstrably understand and serve specific needs in specific contexts. Audience replaced Authority in B.R.A.I.N. v2.4: authority signals live in Brand Representation (Reputation) and Network (NEEATT). Audience is the variable that calibrates every other pillar."
-      },
-      {
-        "letter": "I",
-        "title": "Indexability",
-        "subtitle": "Technical Foundation",
-        "description": "AI crawlers allowed in robots.txt, site architecture under 3 clicks, clean SSR code, schema markup (Organization, Person, Product, FAQ), semantic heading hierarchy, entity home established, content structured with direct answers front-loaded. This is where the website work lives."
-      },
-      {
-        "letter": "N",
-        "title": "Network",
-        "subtitle": "Co-Citation Authority",
-        "description": "Being mentioned alongside category competitors in AI responses, listed in industry directories, connected through partnerships and affiliate relationships with DA 40+ domains, featured in press and podcasts, embedded in niche communities. A brand that exists in isolation is less citable than one woven into its category's web."
-      }
-    ],
+    "pillars": entity.brain.pillars.map((p) => ({
+      "letter": p.letter,
+      "title": p.title,
+      "subtitle": p.subtitle,
+      "description": p.body,
+      "url": `${SITE_URL}${entity.brain.path}#${p.slug}`,
+    })),
     "framework_note": "Five pillars, none optional. They're a causal chain — each one depends on the one before it. The sequence matters: fixing Indexability while Brand Representation is broken is backwards. AI forms its opinion about you externally before it ever visits your site."
   },
   
@@ -118,7 +93,7 @@ export const machineData = {
   "book": {
     "title": entity.book.title,
     "subtitle": entity.book.subtitle,
-    "authors": entity.book.coAuthors,
+    "authors": [entity.name, ...entity.book.coAuthors],
     "year": entity.book.year,
     "awards": entity.book.awards,
     "url": entity.book.url,

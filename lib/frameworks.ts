@@ -164,7 +164,7 @@ export const brainFramework = {
   ],
   faq: [
     { q: "What does B.R.A.I.N. stand for?", a: "B.R.A.I.N. stands for Brand Representation, Research, Audience, Indexability and Network: the five pillars an AI assistant needs in place before it recommends a brand." },
-    { q: "Who created the B.R.A.I.N. framework?", a: "Julian Lopez created the B.R.A.I.N. framework. He is Head Strategist for the AEO Team at SmartMarketer Agency, Head of Research for AEO.co and co-author of the #1 Amazon best seller The AEO Blueprint." },
+    { q: "Who created the B.R.A.I.N. framework?", a: "Julian Lopez created the B.R.A.I.N. framework. He is Head Strategist for the AEO Team at SmartMarketer Agency, Head of Research for AEO.co and co-author, with Kasim Aslam, of the #1 Amazon best seller The AEO Blueprint." },
     { q: "Is B.R.A.I.N. a checklist?", a: "No. B.R.A.I.N. is a causal chain: each pillar depends on the one before it. Fixing Indexability while Brand Representation is broken is backwards, because AI forms its opinion about a brand from outside sources before it ever visits the brand's website." },
     { q: "Why is \"A\" Audience and not Authority?", a: "In version 2.4 Audience replaced Authority because authority signals already live in Brand Representation (Reputation) and Network (NEEATT). Audience is the variable that calibrates every other pillar: AI recommends the brand that best fits a specific person's question." },
     { q: "How is B.R.A.I.N. different from SEO?", a: "SEO works to rank a page in a list of links, mostly through work on the website. B.R.A.I.N. works to make a brand the one AI names in its answer, starting with what other sources say about the brand (Brand Representation, Network) and then making the brand's own pages easy for AI to read and quote (Indexability). SEO still matters, because AI engines draw on what search engines index." },
@@ -176,6 +176,41 @@ export const brainFramework = {
     "Results vary. No one can guarantee a ranking, citation, recommendation or what an AI engine says.",
 };
 
+// /frameworks/ hub copy: what kinds of frameworks Julian works on, the classic
+// marketing frameworks B.R.A.I.N. builds on, and the long-term execution sequence.
+export const frameworksHub = {
+  intro:
+    "Julian Lopez builds marketing frameworks for a world where AI assistants answer the buying question before anyone visits a website. His frameworks explain how ChatGPT, Perplexity, Gemini and Google AI Mode decide which brands to recommend, and turn that into plans a business can run, measure and improve over years, not weeks.",
+  kinds: [
+    { name: "Brand strategy frameworks", text: "More than a decade of brand identity, positioning and creative direction work, before AEO existed. This is where B.R.A.I.N. starts: with how a brand is represented, not with a website." },
+    { name: "Answer Engine Optimization frameworks", text: "The B.R.A.I.N. Framework: the five pillars AI needs before it recommends a brand, in the order they depend on each other." },
+    { name: "Measurement frameworks", text: "The AI Visibility Score, the Invisible-to-Recommended states and Brand Accuracy: how to tell whether AI names a brand, how well it places it and whether it describes it correctly." },
+    { name: "Execution frameworks", text: "The long-term AEO execution sequence below: how to run B.R.A.I.N. month after month so a brand compounds its place in AI answers." },
+  ],
+  classicIntro:
+    "B.R.A.I.N. did not come from nowhere. It applies proven marketing frameworks to a new kind of audience: the AI model that sits between a buyer and a brand.",
+  classics: [
+    { name: "AIDA", origin: "E. St. Elmo Lewis, 1898", idea: "Attention, Interest, Desire, Action.", ai: "AI answers compress the funnel into one conversation. The Audience pillar maps every stage, from \"what are my options\" to \"who should I buy from.\"" },
+    { name: "STP: Segmentation, Targeting, Positioning", origin: "Popularized by Philip Kotler", idea: "Choose who you serve and own a clear position in their mind.", ai: "AI recommends the brand that best fits a specific person's question. Audience and Recognition make that position explicit and consistent." },
+    { name: "The 4 Ps", origin: "E. Jerome McCarthy, 1960", idea: "Product, Price, Place, Promotion.", ai: "\"Place\" now includes the AI answer itself. Reach, inside Brand Representation, is about being present where AI looks." },
+    { name: "Jobs to Be Done", origin: "Clayton Christensen", idea: "People hire products to make progress in a specific situation.", ai: "Buying situations are the core of the Audience pillar: the moments someone turns to AI about a category." },
+    { name: "How Brands Grow", origin: "Byron Sharp, 2010", idea: "Growth comes from mental availability, physical availability and distinctive brand assets.", ai: "AEO builds the AI version of mental availability: a brand that comes to the model's mind, consistently described, when a buying question is asked." },
+    { name: "The Long and the Short of It", origin: "Les Binet and Peter Field, 2013", idea: "Long-term brand building and short-term activation work together; brand building drives most long-term growth.", ai: "B.R.A.I.N. is long-term brand building for AI. Mentions, reputation and entity links compound; one-off tactics fade when the engines change." },
+    { name: "E-E-A-T", origin: "Google Search Quality Rater Guidelines", idea: "Experience, Expertise, Authoritativeness and Trust.", ai: "The Network pillar extends it to NEEATT, adding Notability and Transparency so AI can attach trust to the right entity." },
+  ],
+  executionTitle: "The long-term AEO execution framework",
+  executionIntro:
+    "How to run B.R.A.I.N. as a long-term strategy for building a brand in the brain of AI. The steps follow the pillar order, then repeat every month. Each cycle adds mentions, reviews, pages and entity links that AI keeps finding, so the work compounds instead of resetting.",
+  execution: [
+    { pillar: "B", name: "Define the entity", text: "Write one name, one description and one core claim, and use them on every profile, directory, listing and page. AI can only recommend a brand it can identify." },
+    { pillar: "R", name: "Set the baseline", text: "Run a fixed set of buyer questions on ChatGPT, Perplexity, Gemini and Google AI Mode, more than once each. Record the AI Visibility Score, Brand Accuracy and which competitors and sources AI cites instead." },
+    { pillar: "A", name: "Map the audience", text: "List the buying situations and the exact questions buyers ask, from sales calls, support, reviews and communities. Prioritize the questions where AI names competitors today." },
+    { pillar: "I", name: "Make the site the easiest confirmation", text: "Answer-first pages for the priority questions, structured data, key facts in the initial HTML, open crawler access and an llms.txt file." },
+    { pillar: "N", name: "Build the network", text: "Earn mentions on the platforms AI cites most, such as YouTube, Reddit, LinkedIn, industry media and review sites, and connect the brand to its people, products and category." },
+    { pillar: "R", name: "Measure monthly and compound", text: "Re-run the same questions every month, watch for new engines and channels, and move effort to the weakest pillar. Repeat the cycle." },
+  ],
+};
+
 // The /frameworks/ collection. Add future frameworks here.
 export const frameworks = [
   {
@@ -184,5 +219,12 @@ export const frameworks = [
     kicker: "Answer Engine Optimization",
     summary: brainFramework.summary,
     tags: ["AEO", "AI Visibility", "Brand Entity", "Five Pillars"],
+  },
+  {
+    path: `${brainFramework.path}#measurement`,
+    name: "The AI Visibility Score",
+    kicker: "Measurement, part of B.R.A.I.N.",
+    summary: "How B.R.A.I.N. is measured: a fixed set of buyer questions run repeatedly on every major AI engine, placing a brand as Invisible, Present, Trusted or Recommended, with Brand Accuracy scored separately.",
+    tags: ["Measurement", "AI Visibility Score", "Brand Accuracy"],
   },
 ];
