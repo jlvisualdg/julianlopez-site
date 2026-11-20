@@ -24,15 +24,6 @@ export default function SiteFooter() {
           )}
         </div>
         <div>
-          <h4>Entity</h4>
-          <address className="nap">
-            {entity.name}<br />
-            {entity.jobTitle}, {entity.org.name}<br />
-            {entity.birthPlace.split(", ")[1] /* region */}<br />
-            <a href={`mailto:${entity.contact.email}`}>{entity.contact.email}</a>
-          </address>
-        </div>
-        <div>
           <h4>Verified profiles</h4>
           <ul>
             <li><a href={entity.sameAs[0]} rel="me">LinkedIn</a></li>
