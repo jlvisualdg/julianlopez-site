@@ -15,9 +15,8 @@ export default function Home() {
               className="hero-image"
             />
             <figcaption style={{ marginTop: "0.6rem", fontSize: "0.625rem", letterSpacing: "0.02em", color: "var(--muted)", textAlign: "center" }}>
-              <a href={entity.headshot.creditUrl} target="_blank" rel="noopener noreferrer">
-                Photo by Smart Marketer&apos;s Executive Producer {entity.headshot.credit}
-              </a>
+              Photo by Smart Marketer&apos;s Executive Producer{" "}
+              <a href={entity.headshot.creditUrl} target="_blank" rel="noopener noreferrer">{entity.headshot.credit}</a>
             </figcaption>
           </figure>
           <div className="hero-content">
