@@ -56,7 +56,7 @@ export const brainFramework = {
     "AI Authority: being the brand AI recommends across a market's important questions. AEO.co calls that BE THE ANSWER®.",
   origin: [
     "Julian Lopez developed B.R.A.I.N. to explain why some brands get recommended by AI while others with better search rankings do not.",
-    "Julian came to Answer Engine Optimization from more than a decade in brand building, graphic design and animation, not from traditional SEO. That outside view shaped the framework: it starts with how a brand is represented across the web, because that is where AI looks first, and only then turns to the website.",
+    "Julian came to Answer Engine Optimization from more than 12 years in brand building, graphic design and animation, not from traditional SEO. That outside view shaped the framework: it starts with how a brand is represented across the web, because that is where AI looks first, and only then turns to the website.",
     "The framework grew out of research into how AI engines choose brands that Julian began in 2024, and it is tested every month in AEO.co client work across ecommerce, health and professional-service brands.",
   ],
   versionHistory: [
@@ -182,7 +182,7 @@ export const frameworksHub = {
   intro:
     "Julian Lopez builds marketing frameworks for a world where AI assistants answer the buying question before anyone visits a website. His frameworks explain how ChatGPT, Perplexity, Gemini and Google AI Mode decide which brands to recommend, and turn that into plans a business can run, measure and improve over years, not weeks.",
   kinds: [
-    { name: "Brand strategy frameworks", text: "More than a decade of brand identity, positioning and creative direction work, before AEO existed. This is where B.R.A.I.N. starts: with how a brand is represented, not with a website." },
+    { name: "Brand strategy frameworks", text: "More than 12 years of brand identity, positioning and creative direction work, before AEO existed. This is where B.R.A.I.N. starts: with how a brand is represented, not with a website." },
     { name: "Answer Engine Optimization frameworks", text: "The B.R.A.I.N. Framework: the five pillars AI needs before it recommends a brand, in the order they depend on each other." },
     { name: "Measurement frameworks", text: "The AI Visibility Score, the Invisible-to-Recommended states and Brand Accuracy: how to tell whether AI names a brand, how well it places it and whether it describes it correctly." },
     { name: "Execution frameworks", text: "The long-term AEO execution sequence below: how to run B.R.A.I.N. month after month so a brand compounds its place in AI answers." },

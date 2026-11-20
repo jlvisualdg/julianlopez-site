@@ -49,7 +49,7 @@ Here's what we found and what to do with it.
 
 ## How I got here (the short version)
 
-I spent ten years in branding. Identity work, visual systems, the craft of making something feel like it meant something. When the pandemic hit, I had to pivot — I opened a printshop to keep moving.
+I spent twelve years in branding. Identity work, visual systems, the craft of making something feel like it meant something. When the pandemic hit, I had to pivot — I opened a printshop to keep moving.
 
 Once the streets opened again, I took every job that came through the door. Long hours. New techniques, new materials, daily. I was deeply in love with the craft.
 
