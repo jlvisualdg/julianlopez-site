@@ -7,6 +7,12 @@ import { brainFramework } from "./frameworks";
 
 export const SITE_URL = "https://julianlopez.site"; // canonical Entity Home; change at deploy
 
+// Companion Authority Hub (subdomain). It corroborates this site's claims with dated
+// facts and sources; this site keeps the topical/commercial keywords. It also reuses
+// this site's @ids (#person, #framework, #book). Leave null until the hub is live,
+// so the /about/ link never points at a 404.
+export const AUTHORITY_HUB_URL: string | null = null; // → "https://about.julianlopez.site/"
+
 export const entity = {
   name: "Julian Lopez",
   alternateName: "Julian Bonzo",

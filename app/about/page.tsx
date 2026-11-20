@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { entity } from "@/lib/entity";
+import { entity, AUTHORITY_HUB_URL } from "@/lib/entity";
 import { faqPageSchema } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
 
@@ -62,6 +62,15 @@ export default function About() {
             <a href={entity.book.url} rel="me">Amazon</a>.
           </p>
         </div>
+        {AUTHORITY_HUB_URL && (
+          <div style={{ marginTop: "1.25rem" }}>
+            <h3>Where are the verified facts and sources about {entity.name}?</h3>
+            <p style={{ marginTop: "0.4rem" }}>
+              Dated facts, version histories and sources about {entity.name} are kept in the{" "}
+              <a href={AUTHORITY_HUB_URL} rel="me">{entity.name} Authority Hub</a>.
+            </p>
+          </div>
+        )}
       </section>
     </article>
   );
