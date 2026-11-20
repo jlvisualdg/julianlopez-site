@@ -45,16 +45,10 @@ export const bookReviews: BookReview[] = [
       "For years we used keywords and long-tail and other factors to rank websites to be at the top of google. But now that so many are now using chatgpt and other AI tools, then whether or not they are at the top of google no longer matters. We need to get our clients ranked for chatgpt and other AI.",
       "If this makes sense to you, this is the book you need to read to get websites ranked for AI. Easy reading, and thorough instructions on how to. I am most grateful to have this instruction manual for helping my…",
     ] },
-  { slug: "dustin-yoe", name: "Dustin Yoe", title: "Answer Engine Optimization a peek into the future.", country: "United States", date: "October 30, 2025", format: "Kindle", verified: true, w: 688, h: 211,
-    text: ["WOW!! While Kasim and Perry are known for their marketing skills, this is excessive. Answer Engine Optimization (AEO) is what businesses need to be doing over the next few months. This book provides details on the why and how. If you don't want your business or name to go to the far side of the moon, then get this book and start implementing, or find someone to implement it for you. Get it now and read and execute."] },
   { slug: "scoops", name: "Scoops", title: "A must read if you are in the digital marketing space", country: "United Kingdom", date: "October 28, 2025", format: "Kindle", verified: true, w: 688, h: 159,
     text: ["If you are in the digital marketing space, or run a business then you need to read this book. How we are search and get results is changing quickly and reading this will help you stay ahead of the curve."] },
-  { slug: "scarbarian", name: "Scarbarian", title: "AEO dont sleep on it or you will get left behind.", country: "Australia", date: "October 30, 2025", format: "Kindle", verified: true, w: 688, h: 200,
-    text: ["Thanks Kasim, Julian and Perry .", "AEO Local don't sleep on it.", "The new citation Economy."] },
   { slug: "janetjosie", name: "JanetJosie", title: "Beyond skating to the puck", country: "Australia", date: "October 30, 2025", format: "Kindle", verified: true, w: 688, h: 199,
     text: ["be the answer…", "this blueprint sets the scene to fly to the golden snitch while most persist in skating to the puck..", "be the answer…"] },
-  { slug: "jamie-henry-brown", name: "Jamie Henry Brown", title: "The AEO Blueprint review", country: "United Kingdom", date: "January 5, 2026", format: "Paperback", verified: true, w: 688, h: 379,
-    text: ["I'm currently reading this beautiful marketing book.", "It's gonna be juicy.", "I'm a big fan of the authors as they are top marketers."] },
 ];
 
 // Short pull quotes for the hero / summary (verbatim fragments).
