@@ -14,7 +14,7 @@ export default function Home() {
               height={800}
               className="hero-image"
             />
-            <figcaption style={{ marginTop: "0.6rem", fontSize: "0.75rem", color: "var(--muted)", textAlign: "center" }}>
+            <figcaption style={{ marginTop: "0.6rem", fontSize: "0.625rem", letterSpacing: "0.02em", color: "var(--muted)", textAlign: "center" }}>
               Photo by{" "}
               <a href={entity.headshot.creditUrl} target="_blank" rel="noopener noreferrer">{entity.headshot.credit}</a>
             </figcaption>

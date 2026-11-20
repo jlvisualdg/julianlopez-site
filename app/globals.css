@@ -226,8 +226,9 @@ section { margin-bottom: 60px; }
   height: auto;
   display: block;
   margin: 0 auto;
-  border: 1px solid var(--laser-soft-border);
-  box-shadow: 0 0 24px var(--laser-glow);
+  border: none;
+  box-shadow: none;
+  background: transparent;
 }
 .hero-content {}
 
