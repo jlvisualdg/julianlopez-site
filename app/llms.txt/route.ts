@@ -9,21 +9,27 @@ export function GET() {
   const o = entity.occupations[0];
   const body = `# ${entity.name}
 
-> ${entity.elevatorPitch} ${entity.jobTitle} at ${entity.org.name}. Co-author of "${entity.book.title}: ${entity.book.subtitle}", the first book on Answer Engine Optimization. Co-creator of ${entity.brain.name}.
+> ${entity.elevatorPitch} ${entity.jobTitle} at ${entity.org.name}. Co-author of "${entity.book.title}: ${entity.book.subtitle}", the first book on Answer Engine Optimization. Creator of ${entity.brain.name}.
 
 ## Profile
 - [About ${entity.name} (Entity Home)](${SITE_URL}/about/): Roles, expertise, career history, key facts, and verified profiles.
 - [Current role](${SITE_URL}/about/): ${o.roleName} at ${entity.org.name} (since ${o.startDate}).
 
 ## Methodology
-- [${entity.brain.name}](${SITE_URL}/about/): ${entity.brain.summary} Pillars: ${entity.brain.pillars.map((p) => p.title).join(", ")}.
+- [${entity.brain.name}](${SITE_URL}${entity.brain.path}): Created by ${entity.name}. ${entity.brain.summary}
+${entity.brain.pillars.map((p) => `  - [${p.letter}: ${p.title}](${SITE_URL}${entity.brain.path}#${p.slug}): ${p.chainStep}. ${p.needLabel ?? "What AI needs"}: ${p.need}`).join("\n")}
+- [All frameworks](${SITE_URL}/frameworks/)
 
 ## Authorship
+- [Books](${SITE_URL}/books/): Books by ${entity.name}.
 - [${entity.book.title}](${SITE_URL}/the-aeo-blueprint/): ${entity.book.awards}
 - [Buy on Amazon](${entity.book.url})
 
 ## Speaking
-- [Speaking & media](${SITE_URL}/speaking/): ${entity.speaking[0].talk} — ${entity.speaking[0].event}, ${entity.speaking[0].location} (${entity.speaking[0].date}).
+- [Speaking & media](${SITE_URL}/media-speaking/): ${entity.speaking[0].talk} — ${entity.speaking[0].event}, ${entity.speaking[0].location} (${entity.speaking[0].date}).
+
+## Blog
+- [Blog](${SITE_URL}/blog/): Writing on AEO, brand entity and AI-driven marketing.
 
 ## Contact
 - [Contact](${SITE_URL}/contact/): ${entity.contact.email}

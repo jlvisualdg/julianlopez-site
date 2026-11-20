@@ -67,7 +67,7 @@ export default function Home() {
           <li><strong>Location:</strong> Lives in Bogotá, Colombia</li>
           <li><strong>Expertise:</strong> Answer Engine Optimization, Digital Strategy, Brand Entity Optimization, Schema Markup</li>
           <li><strong>Book:</strong> Co-author of #1 Amazon Best Seller "The AEO Blueprint"</li>
-          <li><strong>Framework:</strong> Developer of the BRAIN Framework</li>
+          <li><strong>Framework:</strong> Creator of the <Link href="/frameworks/brain-framework/">B.R.A.I.N. Framework</Link></li>
         </ul>
       </section>
 

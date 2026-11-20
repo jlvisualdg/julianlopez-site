@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { entity } from "@/lib/entity";
 
-// Clear, standard nav labels (About, Book, Speaking, Contact) — not clever names —
+// Clear, standard nav labels (About, Frameworks, Books, Speaking, Contact) — not clever names —
 // so crawlers can categorize the linked content. (Authority Hub spec, §3A.)
 export default function SiteHeader() {
   return (
@@ -13,8 +13,8 @@ export default function SiteHeader() {
         <nav aria-label="Primary">
           <ul>
             <li><Link href="/about/">About</Link></li>
-            <li><Link href="/the-aeo-blueprint/">The AEO Blueprint</Link></li>
-            <li><Link href="/blog/">Writing</Link></li>
+            <li><Link href="/frameworks/">Frameworks</Link></li>
+            <li><Link href="/books/">Books</Link></li>
             <li><Link href="/media-speaking/">Media & Speaking</Link></li>
             <li><Link href="/contact/">Contact</Link></li>
           </ul>

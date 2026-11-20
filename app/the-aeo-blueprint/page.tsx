@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { entity } from "@/lib/entity";
 import { bookSchema } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
@@ -84,26 +85,23 @@ export default function Book() {
         </div>
       </section>
 
-       {/* BRAIN methodology — reads from entity.brain.pillars (single source of truth) */}
+       {/* BRAIN methodology — full page lives at /frameworks/brain-framework/ */}
        <section className="qa">
-         <h2>{entity.brain.name} (Methodology)</h2>
+         <h2>{entity.brain.name}</h2>
          <p style={{ marginTop: "0.6rem" }}>
-           {entity.name} is the co-creator of {entity.brain.name}. {entity.brain.summary} The
-           B.R.A.I.N. Framework has five pillars, none optional. They form a causal chain — each one
-           depends on the one before it.
+           {entity.name} created {entity.brain.name}. {entity.brain.summary} The five pillars form a causal
+           chain: each one depends on the one before it.
          </p>
-         {entity.brain.pillars.map((pillar) => (
-           <div className="qa" key={pillar.letter}>
-             <h2>{pillar.letter} — {pillar.title}: {pillar.subtitle}</h2>
-             <p style={{ marginTop: "0.6rem" }}>{pillar.body}</p>
-           </div>
-         ))}
-         <div className="qa">
-           <h2>Critical Note: The sequence matters</h2>
-           <p style={{ marginTop: "0.6rem" }}>
-             Fixing Indexability while Brand Representation is broken is backwards. AI forms its
-             opinion about you externally before it ever visits your site.
-           </p>
+         <dl className="rows">
+           {entity.brain.pillars.map((pillar) => (
+             <div className="row" key={pillar.letter}>
+               <dt>{pillar.letter} &middot; {pillar.title}</dt>
+               <dd>{pillar.chainStep}</dd>
+             </div>
+           ))}
+         </dl>
+         <div className="actions">
+           <Link className="btn" href={entity.brain.path}>Read the full B.R.A.I.N. Framework</Link>
          </div>
        </section>
     </article>

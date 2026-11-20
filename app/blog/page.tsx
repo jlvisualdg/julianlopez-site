@@ -21,7 +21,7 @@ export default function BlogIndex() {
   return (
     <article>
       <p className="label">Perspectives</p>
-      <h1 style={{ marginTop: "1rem" }}>Writing</h1>
+      <h1 style={{ marginTop: "1rem" }}>Blog</h1>
       <p className="lede" style={{ marginTop: "1rem", marginBottom: "2.5rem" }}>
         AEO, brand entity, and what it actually means to be the answer AI recommends.
         Written by {entity.name}.

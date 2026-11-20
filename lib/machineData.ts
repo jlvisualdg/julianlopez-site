@@ -54,7 +54,11 @@ export const machineData = {
   // Navigation structure
   "navigation": {
     "about": "/about/",
+    "frameworks": "/frameworks/",
+    "brain_framework": "/frameworks/brain-framework/",
+    "books": "/books/",
     "book": "/the-aeo-blueprint/",
+    "blog": "/blog/",
     "media_speaking": "/media-speaking/",
     "contact": "/contact/"
   },
@@ -71,7 +75,9 @@ export const machineData = {
   
   // BRAIN Framework data
   "brain_framework": {
-    "name": "The BRAIN Framework",
+    "name": "The B.R.A.I.N. Framework",
+    "creator": "Julian Lopez",
+    "url": `${SITE_URL}/frameworks/brain-framework/`,
     "summary": "A first-principles, five-pillar system (B.R.A.I.N. v2.4) designed to transform invisible websites into AI-Recommended Brands. Pillars: Brand Representation · Research · Audience · Indexability · Network.",
     "pillars": [
       {

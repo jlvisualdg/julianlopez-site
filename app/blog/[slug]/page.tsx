@@ -140,7 +140,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
 
       {/* Header */}
       <p className="label">
-        <Link href="/blog/" style={{ color: "var(--spring-laser)" }}>Writing</Link>
+        <Link href="/blog/" style={{ color: "var(--spring-laser)" }}>Blog</Link>
       </p>
 
       <h1 style={{ marginTop: "1rem", maxWidth: "36ch" }}>{post.title}</h1>

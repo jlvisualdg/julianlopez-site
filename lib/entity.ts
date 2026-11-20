@@ -3,6 +3,8 @@
 // Every page, every JSON-LD block, and /llms.txt are generated from THIS file.
 // =============================================================================
 
+import { brainFramework } from "./frameworks";
+
 export const SITE_URL = "https://julianlopez.site"; // canonical Entity Home; change at deploy
 
 export const entity = {
@@ -66,12 +68,12 @@ export const entity = {
   // --- About: intro + sectioned Q&A (drives the visible page AND FAQPage schema) ---
   about: {
     intro:
-      "Julian Lopez is an Answer Engine Optimization (AEO) expert, digital strategist, and author based in Bogotá, Colombia. He is the Head Strategist for the AEO Team at SmartMarketer Agency, Head of Research for AEO.co, co-author of the #1 Amazon best-selling book The AEO Blueprint, and co-creator of the B.R.A.I.N. Framework — a five-pillar system that positions brands as the recommended answer on AI platforms such as ChatGPT, Perplexity, and Google AI Mode. A self-described \"recovering graphic designer,\" Julian transitioned into digital marketing and brand entity optimization after more than eight years in branding and motion graphics, and approaches Answer Engine Optimization from first principles: obsessively studying how AI retrieval works, then translating that into systems e-commerce brands can actually run.",
+      "Julian Lopez is an Answer Engine Optimization (AEO) expert, digital strategist, and author based in Bogotá, Colombia. He is the Head Strategist for the AEO Team at SmartMarketer Agency, Head of Research for AEO.co, co-author of the #1 Amazon best-selling book The AEO Blueprint, and creator of the B.R.A.I.N. Framework — a five-pillar system that positions brands as the recommended answer on AI platforms such as ChatGPT, Perplexity, and Google AI Mode. A self-described \"recovering graphic designer,\" Julian transitioned into digital marketing and brand entity optimization after more than eight years in branding and motion graphics, and approaches Answer Engine Optimization from first principles: obsessively studying how AI retrieval works, then translating that into systems e-commerce brands can actually run.",
     sections: [
       { heading: "Roles & Expertise", qas: [
-        { q: "What are Julian Lopez's current roles?", a: "Julian Lopez is the Head Strategist for the AEO Team at SmartMarketer Agency and the Head of Research for AEO.co, where he leads Answer Engine Optimization strategy and research — positioning e-commerce brands as the recommended answer on AI platforms such as ChatGPT, Perplexity, and Google AI Mode. He also co-created and manages The AEO Community on Skool and co-authored the B.R.A.I.N. Framework, the five-pillar system that underpins the practice." },
-        { q: "What is Julian Lopez's expertise?", a: "Julian Lopez specializes in Answer Engine Optimization (AEO), digital strategy, Brand Entity Optimization, and Schema Markup — the technical and strategic disciplines that determine whether AI answer engines recommend a brand. A self-described \"recovering graphic designer\" who turned his attention to the future of AI-driven marketing, he co-developed the B.R.A.I.N. Framework and co-authored The AEO Blueprint, bringing a first-principles, brand-strategy lens to a discipline most people are still catching up to." },
-        { q: "What is Answer Engine Optimization?", a: "Answer Engine Optimization (AEO) is the practice of structuring a brand's digital presence so that AI answer engines — ChatGPT, Perplexity, Gemini, Google AI Mode — recommend it as the authoritative answer to relevant queries. Julian Lopez co-developed the B.R.A.I.N. Framework as the five-pillar system for achieving this: Brand Representation, Research, Audience, Indexability, and Network." },
+        { q: "What are Julian Lopez's current roles?", a: "Julian Lopez is the Head Strategist for the AEO Team at SmartMarketer Agency and the Head of Research for AEO.co, where he leads Answer Engine Optimization strategy and research — positioning e-commerce brands as the recommended answer on AI platforms such as ChatGPT, Perplexity, and Google AI Mode. He also co-created and manages The AEO Community on Skool and created the B.R.A.I.N. Framework, the five-pillar system that underpins the practice." },
+        { q: "What is Julian Lopez's expertise?", a: "Julian Lopez specializes in Answer Engine Optimization (AEO), digital strategy, Brand Entity Optimization, and Schema Markup — the technical and strategic disciplines that determine whether AI answer engines recommend a brand. A self-described \"recovering graphic designer\" who turned his attention to the future of AI-driven marketing, he created the B.R.A.I.N. Framework and co-authored The AEO Blueprint, bringing a first-principles, brand-strategy lens to a discipline most people are still catching up to." },
+        { q: "What is Answer Engine Optimization?", a: "Answer Engine Optimization (AEO) is the practice of structuring a brand's digital presence so that AI answer engines — ChatGPT, Perplexity, Gemini, Google AI Mode — recommend it as the authoritative answer to relevant queries. Julian Lopez created the B.R.A.I.N. Framework as the five-pillar system for achieving this: Brand Representation, Research, Audience, Indexability, and Network." },
         { q: "What is Julian Lopez's experience in branding?", a: "Julian Lopez accumulated over 12 years of experience in Graphic Design, Branding, and Animation before entering the AEO space, holding Creative Director and Lead Animator roles across diverse industries. That brand-strategy foundation directly informs his approach to Brand Entity Optimization and entity-first AEO." },
       ] },
       { heading: "Career Evolution", qas: [
@@ -94,7 +96,7 @@ export const entity = {
       { heading: "Content, Media & Authorship", qas: [
         { q: "Who co-authored The AEO Blueprint?", a: "Julian Lopez co-authored the book The AEO Blueprint in 2025." },
         { q: "What awards did The AEO Blueprint win?", a: "The AEO Blueprint achieved #1 Amazon Best Seller status in the categories of Web Marketing, Marketing for Small Businesses, and Internet Marketing." },
-        { q: "Who created the B.R.A.I.N. Framework?", a: "Julian Lopez co-created the B.R.A.I.N. Framework along with Kasim Aslam. B.R.A.I.N. stands for Brand Representation, Research, Audience, Indexability, and Network — a five-pillar causal chain for Answer Engine Optimization." },
+        { q: "Who created the B.R.A.I.N. Framework?", a: "Julian Lopez created the B.R.A.I.N. Framework. B.R.A.I.N. stands for Brand Representation, Research, Audience, Indexability, and Network — a five-pillar causal chain for Answer Engine Optimization." },
         { q: "What is the goal of the B.R.A.I.N. Framework?", a: "The B.R.A.I.N. Framework is designed to make any business the AI-recommended brand for its market — the answer AI gives when a prospect asks any question in the brand's category. Its five pillars (Brand Representation, Research, Audience, Indexability, Network) form a causal chain: each one must be in place before the next delivers value." },
       ] },
       { heading: "Education", qas: [
@@ -105,22 +107,12 @@ export const entity = {
   },
 
   brain: {
-    name: "The BRAIN Framework",
-    coCreatedWith: "Kasim Aslam",
-    summary: 'A "first principles" approach designed to transform "invisible" websites into AI-Recommended Brands.',
-    version: "v2.4",
-    pillars: [
-      { letter: "B", title: "Brand Representation", subtitle: "Reach, Recognition, Reputation",
-        body: "Your external footprint. AI doesn't build its understanding of your brand from your About page — it builds it from what others say about you across every platform it scans. Reach (presence where AI looks), Recognition (consistent description across all surfaces), Reputation (positive sentiment from independent sources). AI spends over 66% of its retrieval budget on third-party sources before it ever visits your website. A brand with no external presence is invisible before its own site is ever considered." },
-      { letter: "R", title: "Research", subtitle: "AI Visibility, Competitor Intel, Attribution",
-        body: "AI answer engines, retrieval behavior, and the channel landscape change on a timescale of months, not years. Research isn't a phase — it's a standing budget line. Four functions: AI Visibility Baseline (monthly scans across ChatGPT, Perplexity, Gemini, Claude, AI Mode), Competitor & Category Intelligence (who AI cites for your queries and why), Channel Monitoring (new agentic surfaces as they emerge), and Source Attribution (closing the loop from AI citation to business outcome)." },
-      { letter: "A", title: "Audience", subtitle: "Query Intelligence, Buying Situations",
-        body: "Strategy calibrated to who asks what, in what situations. AI doesn't recommend generic brands — it recommends brands that demonstrably understand and serve specific needs in specific contexts. The Audience pillar replaced Authority in B.R.A.I.N. v2.4: authority signals are distributed across Brand Representation (Reputation) and Network (NEEATT). Audience is the variable that calibrates every other pillar." },
-      { letter: "I", title: "Indexability", subtitle: "Schema, Answer Architecture, Low Retrieval Cost",
-        body: "The technical capability to grant AI agents access to your entity data. Schema markup (Organization, Person, Product, FAQ, HowTo) tells AI what your content is instead of forcing it to infer. Answer-first content architecture ensures key answers appear in the first 30% of page text — where 44.2% of ChatGPT citations originate. Heavy JavaScript, gated content, and buried answers are AI repellents: AI operates on a computational budget and moves on if retrieval is expensive." },
-      { letter: "N", title: "Network", subtitle: "Co-Citation, Entity Relationships, NEEATT",
-        body: "AI builds knowledge from connected entities. An isolated brand is an unknown brand to AI. Three network types: Brand Mention Network (citations across Tier 1–3 authority sources), Entity Relationship Graph (mapping the brand to its category, products, people, and competing concepts), and NEEATT authority validation (Notability, Experience, Expertise, Authoritativeness, Transparency, Trustworthiness — extending E-E-A-T with the two dimensions AI evaluates that Google doesn't surface). Brands cited across 4+ independent sources are 2.8× more likely to appear in ChatGPT." },
-    ],
+    name: brainFramework.name,
+    creator: brainFramework.creator,
+    path: brainFramework.path,
+    summary: brainFramework.summary,
+    version: `v${brainFramework.version}`,
+    pillars: brainFramework.pillars,
   },
 
   book: {

@@ -9,8 +9,12 @@ export const dynamic = "force-static";
 const pages: { path: string; lastModified: string; priority: number }[] = [
   { path: "/",                   lastModified: "2026-07-31", priority: 1.0 },
   { path: "/about/",             lastModified: "2026-07-31", priority: 0.9 },
-  { path: "/the-aeo-blueprint/", lastModified: "2026-07-31", priority: 0.8 },
-  { path: "/speaking/",          lastModified: "2026-07-31", priority: 0.8 },
+  { path: "/frameworks/",       lastModified: "2026-11-20", priority: 0.8 },
+  { path: "/frameworks/brain-framework/", lastModified: "2026-11-20", priority: 0.9 },
+  { path: "/books/",             lastModified: "2026-11-20", priority: 0.8 },
+  { path: "/the-aeo-blueprint/", lastModified: "2026-11-20", priority: 0.8 },
+  { path: "/media-speaking/",    lastModified: "2026-07-31", priority: 0.8 },
+  { path: "/blog/",              lastModified: "2026-11-20", priority: 0.7 },
   { path: "/contact/",           lastModified: "2026-06-01", priority: 0.6 },
 ];
 

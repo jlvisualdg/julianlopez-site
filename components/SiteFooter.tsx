@@ -29,8 +29,10 @@ export default function SiteFooter() {
           <h4>Map</h4>
           <ul>
             <li><Link href="/about/">About (Entity Home)</Link></li>
-            <li><Link href="/the-aeo-blueprint/">The AEO Blueprint</Link></li>
-            <li><Link href="/blog/">Writing</Link></li>
+            <li><Link href="/frameworks/">Frameworks</Link></li>
+            <li><Link href="/frameworks/brain-framework/">The B.R.A.I.N. Framework</Link></li>
+            <li><Link href="/books/">Books</Link></li>
+            <li><Link href="/blog/">Blog</Link></li>
             <li><Link href="/media-speaking/">Media &amp; Speaking</Link></li>
             <li><a href="/llms.txt">llms.txt</a></li>
           </ul>
