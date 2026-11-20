@@ -3,7 +3,12 @@
   console.log('View toggle script loaded');
   
   // Function to set initial state to code view
+  // Conversion pages open in the human view: visitors there came to buy, not to read JSON.
+  var HUMAN_FIRST_PATHS = ['/books/the-aeo-blueprint'];
+  var humanFirst = HUMAN_FIRST_PATHS.some(function (p) { return location.pathname.indexOf(p) === 0; });
+
   function setInitialCodeView() {
+    if (humanFirst) return;
     const humanView = document.getElementById('human-view');
     const codeView = document.getElementById('code-view');
     

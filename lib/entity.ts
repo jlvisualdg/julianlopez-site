@@ -13,6 +13,19 @@ export const SITE_URL = "https://julianlopez.site"; // canonical Entity Home; ch
 // so the /about/ link never points at a 404.
 export const AUTHORITY_HUB_URL: string | null = "https://about.julianlopez.site/"; // companion authority hub
 
+// Amazon Associates tracking ID (e.g. "julianlopez-20"). Leave null until the
+// Associates account is approved: links then stay plain and the disclosure stays hidden,
+// so the site never claims an affiliate relationship that does not exist.
+export const AMAZON_ASSOCIATE_TAG: string | null = null;
+
+/** Buy link for an Amazon ASIN. Adds the Associates tag when one is set. Schema/sameAs keep the plain URL. */
+export function amazonBuyUrl(asin: string): string {
+  const base = `https://www.amazon.com/dp/${asin}`;
+  return AMAZON_ASSOCIATE_TAG ? `${base}?tag=${encodeURIComponent(AMAZON_ASSOCIATE_TAG)}` : base;
+}
+
+export const AMAZON_DISCLOSURE = "As an Amazon Associate, I earn from qualifying purchases.";
+
 export const entity = {
   name: "Julian Lopez",
   alternateName: "Julian Bonzo",

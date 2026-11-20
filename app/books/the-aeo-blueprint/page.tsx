@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { entity } from "@/lib/entity";
+import { entity, amazonBuyUrl, AMAZON_ASSOCIATE_TAG, AMAZON_DISCLOSURE } from "@/lib/entity";
 import { bookSchema, bookFaq } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
 import { bookReviews, pullQuotes } from "@/lib/reviews";
@@ -9,13 +9,16 @@ const b = entity.book;
 const paperback = b.formats[0];
 const kindle = b.formats[1];
 const authorLine = `${b.coAuthors.join(" & ")} & ${entity.name}`;
+const paperbackBuy = amazonBuyUrl(paperback.asin);
+const kindleBuy = amazonBuyUrl(kindle.asin);
+const FEATURED = ["ds-165", "mackensie-l", "cnewton-indiana"];
 
 export const metadata: Metadata = {
-  title: `The First AEO Book: ${b.title} (${b.edition})`,
-  description: `${b.title} is the first AEO book: the first book on Answer Engine Optimization, by ${entity.name} and ${b.coAuthors.join(" and ")}. How to get your business recommended by ChatGPT, Perplexity and Google AI Mode. #1 Amazon Best Seller, rated ${b.ratings.average} out of 5.`,
+  title: `Answer Engine Optimization Book: ${b.title} (2026)`,
+  description: `${b.title} is a practical Answer Engine Optimization book by ${entity.name} and ${b.coAuthors.join(" and ")}. Explore the ${b.edition}, reader reviews, the framework and the paperback and Kindle formats on Amazon.`,
   alternates: { canonical: b.path },
   openGraph: {
-    title: `The First AEO Book: ${b.title}`,
+    title: `Answer Engine Optimization Book: ${b.title}`,
     description: `The first book on Answer Engine Optimization. ${b.amazonDescription[0]}`,
     url: b.path,
     type: "book",
@@ -45,6 +48,46 @@ const proofImages = [
   { src: "/aeo-blueprint-amz-3.avif", alt: "Amazon product page for The AEO Blueprint", w: 1200, h: 893 },
 ];
 
+
+type Review = (typeof bookReviews)[number];
+const featuredReviews = FEATURED.map((s) => bookReviews.find((r) => r.slug === s)).filter((r): r is Review => Boolean(r));
+const moreReviews = bookReviews.filter((r) => !FEATURED.includes(r.slug));
+
+function renderReview(r: Review) {
+  return (
+      <figure key={r.slug} id={`review-${r.slug}`} style={{ breakInside: "avoid", margin: "0 0 1rem", border: "1px solid var(--border-active)", background: "var(--surface)", padding: "1rem" }}>
+        <figcaption style={{ fontFamily: "inherit", fontSize: "inherit", color: "inherit", margin: 0 }}>
+          <p style={{ margin: 0, fontSize: "13px", color: "var(--muted-light)" }}>
+            <strong style={{ color: "var(--white)" }}>{r.name}</strong>, {r.verified ? "a verified Amazon customer" : "an Amazon customer"} in {r.country.startsWith("United") ? `the ${r.country}` : r.country},
+            gave {b.title} <span aria-label="5 out of 5 stars" style={{ color: "var(--spring-laser)" }}>&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5 stars
+            on {r.date} ({r.format}) and said:
+          </p>
+          <blockquote cite={paperbackBuy} style={{ margin: "0.7rem 0 0", paddingLeft: "0.8rem", borderLeft: "2px solid var(--spring-laser)" }}>
+            <p style={{ margin: 0, color: "var(--white)", fontWeight: 600, fontSize: "13.5px" }}>&ldquo;{r.title}&rdquo;</p>
+            {r.text.map((t, i) => (
+              <p key={i} style={{ margin: "0.45rem 0 0", fontSize: "13px", color: "var(--muted-light)" }}>
+                {i === 0 ? "\u201C" : ""}{t}{i === r.text.length - 1 ? "\u201D" : ""}
+              </p>
+            ))}
+          </blockquote>
+          {r.truncated && (
+            <p style={{ margin: "0.5rem 0 0", fontSize: "11.5px", color: "var(--muted)" }}>
+              Amazon shows this review in part. <a href={paperbackBuy} rel="sponsored noopener">Read the full review on Amazon</a>.
+            </p>
+          )}
+        </figcaption>
+        <img
+          src={`/reviews/aeo-blueprint-review-${r.slug}.webp`}
+          alt={`Screenshot of ${r.name}'s 5-star Amazon review of ${b.title}, "${r.title}", ${r.date}`}
+          width={r.w}
+          height={r.h}
+          loading="lazy"
+          style={{ width: "100%", height: "auto", display: "block", borderRadius: "4px", marginTop: "0.9rem", opacity: 0.92 }}
+        />
+      </figure>
+  );
+}
+
 function Stars({ value }: { value: number }) {
   const full = Math.round(value);
   return (
@@ -54,12 +97,42 @@ function Stars({ value }: { value: number }) {
   );
 }
 
-function BuyButtons() {
+function Disclosure() {
+  if (!AMAZON_ASSOCIATE_TAG) return null;
+  return <p style={{ margin: "0.6rem 0 0", fontSize: "11.5px", color: "var(--muted)" }}>{AMAZON_DISCLOSURE}</p>;
+}
+
+function BuyButtons({ placement }: { placement: string }) {
   return (
-    <div className="actions">
-      <a className="btn btn-primary" href={paperback.url} rel="noopener">Get the paperback on Amazon</a>
-      <a className="btn" href={kindle.url} rel="noopener">Read it on Kindle</a>
-    </div>
+    <>
+      <div className="actions">
+        <a className="btn btn-primary" href={paperbackBuy} rel="sponsored noopener" data-placement={`${placement}_paperback`}>Buy the Paperback on Amazon</a>
+        <a className="btn" href={kindleBuy} rel="sponsored noopener" data-placement={`${placement}_kindle`}>Get the Kindle Edition</a>
+      </div>
+      <Disclosure />
+    </>
+  );
+}
+
+function FormatCards() {
+  const cards = [
+    { name: "Paperback", meta: `${paperback.pages} pages · ISBN-13 ${paperback.isbn13} · ${b.edition}`, cta: "Buy the Paperback", href: paperbackBuy, note: "See current price and availability on Amazon.", primary: true, id: "hero_paperback" },
+    { name: "Kindle", meta: `${kindle.pages} digital pages · ASIN ${kindle.asin} · Read instantly`, cta: "Get the Kindle Edition", href: kindleBuy, note: "See current Kindle price on Amazon.", primary: false, id: "hero_kindle" },
+  ];
+  return (
+    <>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "0.9rem", marginTop: "1.5rem" }}>
+        {cards.map((c) => (
+          <div key={c.name} className="cell" style={{ border: "1px solid var(--border-active)", padding: "1rem" }}>
+            <h3 style={{ margin: 0 }}>{c.name}</h3>
+            <p style={{ margin: "0.35rem 0 0.8rem", fontSize: "12px", color: "var(--muted-light)" }}>{c.meta}</p>
+            <a className={c.primary ? "btn btn-primary" : "btn"} href={c.href} rel="sponsored noopener" data-placement={c.id} style={{ width: "100%", textAlign: "center" }}>{c.cta}</a>
+            <p style={{ margin: "0.5rem 0 0", fontSize: "11px", color: "var(--muted)" }}>{c.note}</p>
+          </div>
+        ))}
+      </div>
+      <Disclosure />
+    </>
   );
 }
 
@@ -75,9 +148,9 @@ export default function AeoBlueprintPage() {
       {/* HERO */}
       <section style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "2.5rem", alignItems: "center" }}>
         <div>
-          <p className="label">The first book on Answer Engine Optimization</p>
+          <p className="label">#1 Amazon Best Seller &middot; {b.edition}</p>
           <h1 style={{ marginTop: "1rem" }}>
-            {b.title}: The First AEO Book
+            {b.title}: The Answer Engine Optimization Book
             <br />
             <span style={{ color: "var(--ink-soft)" }}>{b.subtitle}</span>
           </h1>
@@ -88,17 +161,18 @@ export default function AeoBlueprintPage() {
             <Stars value={b.ratings.average} />{" "}
             <strong style={{ color: "var(--white)" }}>{b.ratings.average} out of 5</strong>{" "}
             <span style={{ color: "var(--muted)" }}>&middot; {b.ratings.count} Amazon ratings &middot; #1 Best Seller in Web Marketing</span>
+            <br /><span style={{ fontSize: "11px", color: "var(--muted)" }}>Amazon rating last checked {b.ratings.asOf}.</span>
           </p>
           <p className="lede" style={{ marginTop: "1.25rem" }}>
             <strong style={{ color: "var(--white)" }}>{b.amazonDescription[0]}</strong> {b.amazonDescription[1]}
           </p>
-          <BuyButtons />
+          <FormatCards />
           <blockquote style={{ margin: "1.5rem 0 0", paddingLeft: "1rem", borderLeft: "2px solid var(--spring-laser)" }}>
             <p style={{ margin: 0, color: "var(--white)", fontStyle: "italic" }}>&ldquo;{pullQuotes[0].quote}&rdquo;</p>
             <p style={{ margin: "0.4rem 0 0", fontSize: "12px", color: "var(--muted)" }}>&mdash; {pullQuotes[0].name}, verified Amazon reader</p>
           </blockquote>
         </div>
-        <a href={paperback.url} rel="noopener">
+        <a href={paperbackBuy} rel="sponsored noopener" data-placement="hero_image">
           <img
             src="/aeo-blueprint-2026-edition-stack.avif"
             alt={`${b.title}, the first AEO book, ${b.edition}, by ${b.coAuthors.join(" and ")} and ${entity.name}, standing on a stack of copies`}
@@ -112,14 +186,14 @@ export default function AeoBlueprintPage() {
       <div className="facts-grid" style={{ marginTop: "2.5rem" }}>
         <div className="fact-cell"><strong>#1</strong><span>Amazon Best Seller</span></div>
         <div className="fact-cell"><strong>{b.ratings.average}&#9733;</strong><span>{b.ratings.count} ratings</span></div>
-        <div className="fact-cell"><strong>{paperback.pages}</strong><span>Pages, paperback</span></div>
+        <div className="fact-cell"><strong>{b.ratings.distribution[0].pct}%</strong><span>Five-star ratings</span></div>
         <div className="fact-cell"><strong>2026</strong><span>Edition</span></div>
       </div>
 
       {/* THE PROBLEM */}
       <section className="qa" aria-labelledby="h-problem">
         <p className="label">Why this book</p>
-        <h2 id="h-problem" style={{ marginTop: "0.8rem" }}>Why the first AEO book matters now: traditional SEO is losing ground</h2>
+        <h2 id="h-problem" style={{ marginTop: "0.8rem" }}>AI is becoming the first impression. Your website is becoming the confirmation.</h2>
         {b.amazonDescription.slice(2).map((p) => <p key={p}>{p}</p>)}
         <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
           {whyPoints.map((w) => (
@@ -129,11 +203,12 @@ export default function AeoBlueprintPage() {
             </div>
           ))}
         </div>
+        <BuyButtons placement="why" />
       </section>
 
       {/* WHO IT'S FOR */}
       <section className="qa" aria-labelledby="h-for">
-        <h2 id="h-for">Who the first AEO book is for</h2>
+        <h2 id="h-for">Who The AEO Blueprint is for</h2>
         <ul style={{ paddingLeft: "1.1rem", marginTop: "0.8rem" }}>
           {forWho.map((x) => <li key={x} style={{ color: "var(--muted)", marginTop: "0.45rem" }}>{x}</li>)}
         </ul>
@@ -145,6 +220,54 @@ export default function AeoBlueprintPage() {
           loading="lazy"
           style={{ width: "100%", maxWidth: "560px", height: "auto", borderRadius: "8px", display: "block", marginTop: "1.75rem" }}
         />
+        <BuyButtons placement="audience" />
+      </section>
+
+      {/* FRAMEWORK */}
+      <section className="qa" aria-labelledby="h-framework">
+        <p className="label">The framework behind the book</p>
+        <h2 id="h-framework" style={{ marginTop: "0.8rem" }}>From the book to {entity.brain.name}</h2>
+        <p>
+          The book&apos;s core idea is simple: AI needs to understand who a brand is, find signals it can trust and confirm
+          them across sources before it recommends it. {entity.name} turned that into {entity.brain.name}, five pillars in
+          the order AI needs them:
+        </p>
+        <dl className="rows">
+          {entity.brain.pillars.map((p) => (
+            <div className="row" key={p.letter}>
+              <dt>{p.letter} &middot; {p.title}</dt>
+              <dd>{p.chainStep}</dd>
+            </div>
+          ))}
+        </dl>
+        <div className="actions">
+          <a className="btn btn-primary" href={paperbackBuy} rel="sponsored noopener" data-placement="framework_paperback">Get the book on Amazon</a>
+          <Link className="btn" href={entity.brain.path}>Explore the B.R.A.I.N. Framework</Link>
+        </div>
+        <Disclosure />
+      </section>
+
+      {/* AUTHORS */}
+      <section className="qa" aria-labelledby="h-authors">
+        <h2 id="h-authors">Written by the team behind AEO.co&apos;s research and framework</h2>
+        <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
+          <div className="cell">
+            <span className="n">Co-author</span>
+            <h3><Link href="/about/" style={{ color: "var(--white)" }}>{entity.name}</Link></h3>
+            <p>
+              Head Strategist for the AEO Team at {entity.org.name}, Head of Research for AEO.co and creator of
+              the B.R.A.I.N. Framework. A self-described &quot;recovering graphic designer&quot; with more than 12 years in
+              branding, graphic design and animation. The AEO Blueprint is his first book.
+            </p>
+          </div>
+          {b.coAuthorBios.map((a) => (
+            <div className="cell" key={a.name}>
+              <span className="n">Co-author</span>
+              <h3>{a.name}</h3>
+              <p>{a.bio}</p>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* READERS */}
@@ -169,46 +292,21 @@ export default function AeoBlueprintPage() {
         </p>
       </section>
 
-      {/* REVIEWS */}
       <section className="qa" id="reviews" aria-labelledby="h-reviews">
         <p className="label">Reader reviews</p>
-        <h2 id="h-reviews" style={{ marginTop: "0.8rem" }}>What readers say about the first AEO book</h2>
-        <p>Five-star reviews from Amazon customers in the United States, the United Kingdom and Australia, quoted in full as they wrote them, with a screenshot of each review.</p>
+        <h2 id="h-reviews" style={{ marginTop: "0.8rem" }}>What readers say about The AEO Blueprint</h2>
+        <p>{b.ratings.count} Amazon ratings, {b.ratings.distribution[0].pct}% of them five stars. Three featured reviews, quoted in full as readers wrote them, with a screenshot of each.</p>
         <div style={{ columns: "2 320px", columnGap: "1rem", marginTop: "1.5rem" }}>
-          {bookReviews.map((r) => (
-            <figure key={r.slug} id={`review-${r.slug}`} style={{ breakInside: "avoid", margin: "0 0 1rem", border: "1px solid var(--border-active)", background: "var(--surface)", padding: "1rem" }}>
-              <figcaption style={{ fontFamily: "inherit", fontSize: "inherit", color: "inherit", margin: 0 }}>
-                <p style={{ margin: 0, fontSize: "13px", color: "var(--muted-light)" }}>
-                  <strong style={{ color: "var(--white)" }}>{r.name}</strong>, {r.verified ? "a verified Amazon customer" : "an Amazon customer"} in {r.country.startsWith("United") ? `the ${r.country}` : r.country},
-                  gave {b.title} <span aria-label="5 out of 5 stars" style={{ color: "var(--spring-laser)" }}>&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5 stars
-                  on {r.date} ({r.format}) and said:
-                </p>
-                <blockquote cite={paperback.url} style={{ margin: "0.7rem 0 0", paddingLeft: "0.8rem", borderLeft: "2px solid var(--spring-laser)" }}>
-                  <p style={{ margin: 0, color: "var(--white)", fontWeight: 600, fontSize: "13.5px" }}>&ldquo;{r.title}&rdquo;</p>
-                  {r.text.map((t, i) => (
-                    <p key={i} style={{ margin: "0.45rem 0 0", fontSize: "13px", color: "var(--muted-light)" }}>
-                      {i === 0 ? "\u201C" : ""}{t}{i === r.text.length - 1 ? "\u201D" : ""}
-                    </p>
-                  ))}
-                </blockquote>
-                {r.truncated && (
-                  <p style={{ margin: "0.5rem 0 0", fontSize: "11.5px", color: "var(--muted)" }}>
-                    Amazon shows this review in part. <a href={paperback.url} rel="noopener">Read the full review on Amazon</a>.
-                  </p>
-                )}
-              </figcaption>
-              <img
-                src={`/reviews/aeo-blueprint-review-${r.slug}.webp`}
-                alt={`Screenshot of ${r.name}'s 5-star Amazon review of ${b.title}, "${r.title}", ${r.date}`}
-                width={r.w}
-                height={r.h}
-                loading="lazy"
-                style={{ width: "100%", height: "auto", display: "block", borderRadius: "4px", marginTop: "0.9rem", opacity: 0.92 }}
-              />
-            </figure>
-          ))}
+          {featuredReviews.map(renderReview)}
         </div>
-        <p style={{ marginTop: "0.5rem" }}><a href={paperback.url} rel="noopener">Read all reviews on Amazon &rarr;</a></p>
+        <details style={{ marginTop: "0.5rem" }}>
+          <summary style={{ cursor: "pointer", color: "var(--spring-laser)", fontFamily: "var(--font-mono)", fontSize: "0.85rem" }}>See more Amazon reader reviews ({moreReviews.length})</summary>
+          <div style={{ columns: "2 320px", columnGap: "1rem", marginTop: "1rem" }}>
+            {moreReviews.map(renderReview)}
+          </div>
+        </details>
+        <p style={{ marginTop: "0.75rem" }}><a href={paperbackBuy} rel="sponsored noopener" data-placement="reviews_all">Read all reviews on Amazon &rarr;</a></p>
+        <BuyButtons placement="reviews" />
       </section>
 
       {/* BESTSELLER PROOF */}
@@ -219,51 +317,6 @@ export default function AeoBlueprintPage() {
           {proofImages.map((img) => (
             <img key={img.src} src={img.src} alt={img.alt} width={img.w} height={img.h} loading="lazy"
               style={{ width: "100%", height: "auto", borderRadius: "6px", display: "block" }} />
-          ))}
-        </div>
-      </section>
-
-      {/* FRAMEWORK */}
-      <section className="qa" aria-labelledby="h-framework">
-        <p className="label">The framework behind the book</p>
-        <h2 id="h-framework" style={{ marginTop: "0.8rem" }}>From the book to {entity.brain.name}</h2>
-        <p>
-          The book&apos;s core idea is simple: AI needs to understand who a brand is, find signals it can trust and confirm
-          them across sources before it recommends it. {entity.name} turned that into {entity.brain.name}, five pillars in
-          the order AI needs them:
-        </p>
-        <dl className="rows">
-          {entity.brain.pillars.map((p) => (
-            <div className="row" key={p.letter}>
-              <dt>{p.letter} &middot; {p.title}</dt>
-              <dd>{p.chainStep}</dd>
-            </div>
-          ))}
-        </dl>
-        <div className="actions">
-          <Link className="btn" href={entity.brain.path}>Explore the B.R.A.I.N. Framework</Link>
-        </div>
-      </section>
-
-      {/* AUTHORS */}
-      <section className="qa" aria-labelledby="h-authors">
-        <h2 id="h-authors">About the authors</h2>
-        <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))" }}>
-          <div className="cell">
-            <span className="n">Co-author</span>
-            <h3><Link href="/about/" style={{ color: "var(--white)" }}>{entity.name}</Link></h3>
-            <p>
-              Head Strategist for the AEO Team at {entity.org.name}, Head of Research for AEO.co and creator of
-              the B.R.A.I.N. Framework. A self-described &quot;recovering graphic designer&quot; with more than 12 years in
-              branding, graphic design and animation. The AEO Blueprint is his first book.
-            </p>
-          </div>
-          {b.coAuthorBios.map((a) => (
-            <div className="cell" key={a.name}>
-              <span className="n">Co-author</span>
-              <h3>{a.name}</h3>
-              <p>{a.bio}</p>
-            </div>
           ))}
         </div>
       </section>
@@ -297,9 +350,9 @@ export default function AeoBlueprintPage() {
 
       {/* CLOSING CTA */}
       <section className="qa" aria-labelledby="h-cta" style={{ textAlign: "center" }}>
-        <h2 id="h-cta">Be the answer AI recommends.</h2>
-        <p style={{ marginInline: "auto" }}>Get {b.title}, the first AEO book, on Amazon in paperback or Kindle.</p>
-        <div style={{ display: "flex", justifyContent: "center" }}><BuyButtons /></div>
+        <h2 id="h-cta">Be easier to understand before you try to be recommended.</h2>
+        <p style={{ marginInline: "auto" }}>Get {b.title} on Amazon in paperback or Kindle.</p>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}><BuyButtons placement="footer" /></div>
       </section>
     </article>
   );

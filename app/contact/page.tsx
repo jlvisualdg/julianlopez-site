@@ -21,7 +21,7 @@ export default function Contact() {
         <div className="row"><dt>Organization</dt><dd><a href="https://smartmarketer.com" rel="me">SmartMarketer Agency - AEO Team</a></dd></div>
       </dl>
       <div className="actions">
-        <a className="btn" href={entity.book.url}>Read the AEO Blueprint</a>
+        <a className="btn" href={entity.book.path}>Read the AEO Blueprint</a>
         <a className="btn btn-primary" href={`mailto:${entity.contact.email}`}>Reach Out</a>
       </div>
     </article>

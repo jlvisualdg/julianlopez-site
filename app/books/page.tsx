@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { entity, SITE_URL } from "@/lib/entity";
+import { entity, SITE_URL, amazonBuyUrl } from "@/lib/entity";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -16,7 +16,7 @@ const books = [
     title: b.title,
     subtitle: b.subtitle,
     path: b.path,
-    amazon: b.formats[0].url,
+    amazon: amazonBuyUrl(b.formats[0].asin),
     cover: "/aeo-blueprint-2026-edition-stack.avif",
     coverAlt: `${b.title}: ${b.subtitle}, ${b.edition}, by ${b.coAuthors.join(" and ")} and ${entity.name}`,
     authors: `${entity.name} & ${b.coAuthors.join(" & ")}`,
@@ -77,7 +77,7 @@ export default function Books() {
               <p>{bk.summary}</p>
               <div className="actions">
                 <Link className="btn btn-primary" href={bk.path}>About the book</Link>
-                <a className="btn" href={bk.amazon} rel="noopener">Get it on Amazon</a>
+                <a className="btn" href={bk.amazon} rel="sponsored noopener">Get it on Amazon</a>
               </div>
             </div>
           </div>

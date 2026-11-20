@@ -32,7 +32,7 @@ export default function Home() {
               <span style={{ display: "block", marginTop: "0.6rem", color: "var(--muted)", fontStyle: "italic" }}>-GEMINI, Just now.</span>
             </p>
             <div className="actions">
-              <a className="btn btn-primary" href={entity.book.url}>Read the AEO Blueprint</a>
+              <a className="btn btn-primary" href={entity.book.path}>Read the AEO Blueprint</a>
               <Link className="btn" href="/contact/">Reach Out</Link>
             </div>
           </div>
