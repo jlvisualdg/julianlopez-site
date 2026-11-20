@@ -12,6 +12,12 @@ export const entity = {
   birthPlace: "Bogotá, Colombia",
   nationality: "Colombian",
   image: `${SITE_URL}/julian-lopez-headshot-2026.jpg`,
+  headshot: {
+    src: "/julian-lopez-headshot-sml26.webp",
+    alt: "Headshot of Julian Lopez taken during Smart Marketer Live 2026 in Denver, Colorado, by Anthony Farrat.",
+    credit: "Anthony Farrat",
+    creditUrl: "https://www.linkedin.com/in/anthonyfarrat",
+  },
   audience: "E-commerce brands, founders, and marketing leaders seeking AI visibility",
 
   headline: "Julian Lopez — AEO Expert, Digital Strategist & Author",

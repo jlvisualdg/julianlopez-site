@@ -6,11 +6,19 @@ export default function Home() {
     <>
       <section aria-labelledby="hero-h">
         <div className="hero-container">
-          <img 
-            src="/julian-lopez-headshot-2026.jpg" 
-            alt="Julian Lopez - AEO Expert and Digital Strategist"
-            className="hero-image"
-          />
+          <figure style={{ margin: 0 }}>
+            <img
+              src={entity.headshot.src}
+              alt={entity.headshot.alt}
+              width={800}
+              height={800}
+              className="hero-image"
+            />
+            <figcaption style={{ marginTop: "0.6rem", fontSize: "0.75rem", color: "var(--muted)", textAlign: "center" }}>
+              Photo by{" "}
+              <a href={entity.headshot.creditUrl} target="_blank" rel="noopener noreferrer">{entity.headshot.credit}</a>
+            </figcaption>
+          </figure>
           <div className="hero-content">
             <p className="label">Answer Engine Optimization</p>
             <h1 id="hero-h" style={{ marginTop: "1rem" }}>
