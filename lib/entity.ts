@@ -11,7 +11,7 @@ export const entity = {
   birthDate: "1989-01-21",
   birthPlace: "Bogotá, Colombia",
   nationality: "Colombian",
-  image: `${SITE_URL}/julian-lopez-headshot-white.png`,
+  image: `${SITE_URL}/julian-lopez-headshot-2026.jpg`,
   audience: "E-commerce brands, founders, and marketing leaders seeking AI visibility",
 
   headline: "Julian Lopez — AEO Expert, Digital Strategist & Author",
