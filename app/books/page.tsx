@@ -20,8 +20,8 @@ const books = [
     cover: "/aeo-blueprint-2026-edition-stack.avif",
     coverAlt: `${b.title}: ${b.subtitle}, ${b.edition}, by ${b.coAuthors.join(" and ")} and ${entity.name}`,
     authors: `${entity.name} & ${b.coAuthors.join(" & ")}`,
-    kicker: `${b.edition} · First book · #1 Amazon Best Seller`,
-    summary: `${entity.name}'s first book, and the first book on Answer Engine Optimization. It shows businesses how to become the brand that ChatGPT, Perplexity and Google's AI Mode recommend, built from thousands of hours testing how AI decides which brands to trust.`,
+    kicker: `The first AEO book · ${b.edition} · #1 Amazon Best Seller`,
+    summary: `${entity.name}'s first book, and the first AEO book: the first book on Answer Engine Optimization. It shows businesses how to become the brand that ChatGPT, Perplexity and Google's AI Mode recommend, built from thousands of hours testing how AI decides which brands to trust.`,
   },
 ];
 

@@ -101,11 +101,12 @@ export function faqPageSchema() {
 export const bookFaq = [
   { q: "What is The AEO Blueprint about?", a: "The AEO Blueprint: Be the Answer AI Recommends is a book about Answer Engine Optimization (AEO): how businesses get recommended by AI answer engines like ChatGPT, Perplexity and Google's AI Mode. It explains why traditional SEO is losing ground and gives a practical framework for entity-first brand optimization, structured data and authority building." },
   { q: "Who wrote The AEO Blueprint?", a: "The AEO Blueprint was co-authored by Julian Lopez and Kasim Aslam. Julian Lopez is Head Strategist for the AEO Team at SmartMarketer Agency and Head of Research for AEO.co. Kasim Aslam is the founder of AEO.co." },
-  { q: "Is The AEO Blueprint the first book on Answer Engine Optimization?", a: "Yes. The AEO Blueprint is the first full-length book on Answer Engine Optimization, and it is Julian Lopez's first book." },
+  { q: "What is the first AEO book?", a: "The AEO Blueprint: Be the Answer AI Recommends, by Julian Lopez and Kasim Aslam, is the first AEO book: the first full-length book on Answer Engine Optimization. It is also Julian Lopez's first book." },
   { q: "When was The AEO Blueprint published?", a: "The paperback was published on October 20, 2025 and the Kindle edition on October 21, 2025. The current version is the 2026 Edition." },
   { q: "How long is The AEO Blueprint?", a: "The paperback is 272 pages (ISBN-13 979-8269173351). The Kindle edition is 334 pages." },
   { q: "Where can I buy The AEO Blueprint?", a: "The AEO Blueprint is available on Amazon in paperback and Kindle." },
   { q: "Is The AEO Blueprint a best seller?", a: "Yes. The AEO Blueprint reached #1 Amazon Best Seller in Web Marketing, Marketing for Small Businesses and Internet Marketing, and holds a 4.6 out of 5 rating from 37 Amazon ratings (November 2026)." },
+  { q: "What do readers say about The AEO Blueprint?", a: "Amazon readers describe it as \"the AEO manual\", \"the most thorough explanation of what AEO is\" in easy-to-understand terms, and \"a practical step-by-step roadmap\" that connects traditional SEO to AEO and GEO. 82% of its 37 Amazon ratings are five stars." },
   { q: "How does the book relate to the B.R.A.I.N. Framework?", a: "The book teaches the thinking behind Julian Lopez's B.R.A.I.N. Framework: AI needs to understand who a brand is, find signals it can trust and confirm them across sources before it recommends the brand." },
 ];
 
@@ -122,7 +123,8 @@ export function bookSchema() {
         "@type": "Book",
         "@id": `${pageUrl}#book`,
         name: `${entity.book.title}: ${entity.book.subtitle}`,
-        alternateName: entity.book.title,
+        alternateName: [entity.book.title, "The first AEO book"],
+        keywords: "first AEO book, Answer Engine Optimization book, AEO book, AI search, ChatGPT, Perplexity, Google AI Mode",
         bookEdition: entity.book.edition,
         url: pageUrl,
         sameAs: entity.book.formats.map((f) => f.url),

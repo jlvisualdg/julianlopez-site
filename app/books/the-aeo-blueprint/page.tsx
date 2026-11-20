@@ -3,6 +3,7 @@ import Link from "next/link";
 import { entity } from "@/lib/entity";
 import { bookSchema, bookFaq } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
+import { bookReviews, pullQuotes } from "@/lib/reviews";
 
 const b = entity.book;
 const paperback = b.formats[0];
@@ -10,12 +11,12 @@ const kindle = b.formats[1];
 const authorLine = `${b.coAuthors.join(" & ")} & ${entity.name}`;
 
 export const metadata: Metadata = {
-  title: `${b.title}: ${b.subtitle} (${b.edition})`,
-  description: `${b.title} by ${entity.name} and ${b.coAuthors.join(" and ")}: the first book on Answer Engine Optimization. How to get your business recommended by ChatGPT, Perplexity and Google AI Mode. #1 Amazon Best Seller, rated ${b.ratings.average} out of 5.`,
+  title: `The First AEO Book: ${b.title} (${b.edition})`,
+  description: `${b.title} is the first AEO book: the first book on Answer Engine Optimization, by ${entity.name} and ${b.coAuthors.join(" and ")}. How to get your business recommended by ChatGPT, Perplexity and Google AI Mode. #1 Amazon Best Seller, rated ${b.ratings.average} out of 5.`,
   alternates: { canonical: b.path },
   openGraph: {
-    title: `${b.title}: ${b.subtitle}`,
-    description: b.amazonDescription[0],
+    title: `The First AEO Book: ${b.title}`,
+    description: `The first book on Answer Engine Optimization. ${b.amazonDescription[0]}`,
     url: b.path,
     type: "book",
     images: ["/aeo-blueprint-2026-edition-stack.avif"],
@@ -76,7 +77,7 @@ export default function AeoBlueprintPage() {
         <div>
           <p className="label">The first book on Answer Engine Optimization</p>
           <h1 style={{ marginTop: "1rem" }}>
-            {b.title}
+            {b.title}: The First AEO Book
             <br />
             <span style={{ color: "var(--ink-soft)" }}>{b.subtitle}</span>
           </h1>
@@ -92,11 +93,15 @@ export default function AeoBlueprintPage() {
             <strong style={{ color: "var(--white)" }}>{b.amazonDescription[0]}</strong> {b.amazonDescription[1]}
           </p>
           <BuyButtons />
+          <blockquote style={{ margin: "1.5rem 0 0", paddingLeft: "1rem", borderLeft: "2px solid var(--spring-laser)" }}>
+            <p style={{ margin: 0, color: "var(--white)", fontStyle: "italic" }}>&ldquo;{pullQuotes[0].quote}&rdquo;</p>
+            <p style={{ margin: "0.4rem 0 0", fontSize: "12px", color: "var(--muted)" }}>&mdash; {pullQuotes[0].name}, verified Amazon reader</p>
+          </blockquote>
         </div>
         <a href={paperback.url} rel="noopener">
           <img
             src="/aeo-blueprint-2026-edition-stack.avif"
-            alt={`${b.title}: ${b.subtitle}, ${b.edition}, by ${b.coAuthors.join(" and ")} and ${entity.name}, standing on a stack of copies`}
+            alt={`${b.title}, the first AEO book, ${b.edition}, by ${b.coAuthors.join(" and ")} and ${entity.name}, standing on a stack of copies`}
             width={1312}
             height={1199}
             style={{ width: "100%", height: "auto", borderRadius: "8px", display: "block" }}
@@ -114,7 +119,7 @@ export default function AeoBlueprintPage() {
       {/* THE PROBLEM */}
       <section className="qa" aria-labelledby="h-problem">
         <p className="label">Why this book</p>
-        <h2 id="h-problem" style={{ marginTop: "0.8rem" }}>Traditional SEO is losing ground. The new battleground is AEO.</h2>
+        <h2 id="h-problem" style={{ marginTop: "0.8rem" }}>Why the first AEO book matters now: traditional SEO is losing ground</h2>
         {b.amazonDescription.slice(2).map((p) => <p key={p}>{p}</p>)}
         <div className="grid" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))" }}>
           {whyPoints.map((w) => (
@@ -128,7 +133,7 @@ export default function AeoBlueprintPage() {
 
       {/* WHO IT'S FOR */}
       <section className="qa" aria-labelledby="h-for">
-        <h2 id="h-for">Who The AEO Blueprint is for</h2>
+        <h2 id="h-for">Who the first AEO book is for</h2>
         <ul style={{ paddingLeft: "1.1rem", marginTop: "0.8rem" }}>
           {forWho.map((x) => <li key={x} style={{ color: "var(--muted)", marginTop: "0.45rem" }}>{x}</li>)}
         </ul>
@@ -158,12 +163,51 @@ export default function AeoBlueprintPage() {
             </div>
           ))}
         </div>
-        <p style={{ marginTop: "1rem" }}><a href={paperback.url} rel="noopener">Read the reviews on Amazon &rarr;</a></p>
+        <p style={{ marginTop: "1rem" }}>
+          Readers call it &ldquo;the manual&rdquo; for AEO, &ldquo;the most thorough explanation of what AEO is&rdquo; and
+          &ldquo;a practical step-by-step roadmap&rdquo; from traditional SEO to AEO and GEO.
+        </p>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="qa" id="reviews" aria-labelledby="h-reviews">
+        <p className="label">Reader reviews</p>
+        <h2 id="h-reviews" style={{ marginTop: "0.8rem" }}>What readers say about the first AEO book</h2>
+        <p>Five-star reviews from Amazon readers in the United States, the United Kingdom and Australia, shown as posted.</p>
+        <div style={{ columns: "2 320px", columnGap: "1rem", marginTop: "1.5rem" }}>
+          {bookReviews.map((r) => (
+            <figure key={r.slug} style={{ breakInside: "avoid", margin: "0 0 1rem", border: "1px solid var(--border-active)", background: "var(--surface)", padding: "0.75rem" }}>
+              <img
+                src={`/reviews/aeo-blueprint-review-${r.slug}.webp`}
+                alt={`Screenshot of a 5-star Amazon review of The AEO Blueprint by ${r.name}, titled "${r.title}", reviewed in ${r.country} on ${r.date}${r.verified ? ", verified purchase" : ""}. Full text below.`}
+                width={r.w}
+                height={r.h}
+                loading="lazy"
+                style={{ width: "100%", height: "auto", display: "block", borderRadius: "4px" }}
+              />
+              <figcaption style={{ fontFamily: "inherit", marginTop: "0.6rem" }}>
+                <details>
+                  <summary style={{ cursor: "pointer", color: "var(--muted-light)", fontSize: "12px" }}>
+                    {r.name} &middot; &#9733;&#9733;&#9733;&#9733;&#9733; &middot; {r.format}{r.verified ? " · Verified Purchase" : ""} &middot; review text
+                  </summary>
+                  <blockquote style={{ margin: "0.5rem 0 0" }}>
+                    <p style={{ margin: 0, color: "var(--white)", fontWeight: 600, fontSize: "13px" }}>{r.title}</p>
+                    {r.text.map((t, i) => <p key={i} style={{ margin: "0.4rem 0 0", fontSize: "13px" }}>{t}</p>)}
+                    <p style={{ margin: "0.4rem 0 0", fontSize: "11.5px", color: "var(--muted)" }}>
+                      &mdash; {r.name}, reviewed in {r.country} on {r.date}{r.truncated ? " (excerpt)" : ""}
+                    </p>
+                  </blockquote>
+                </details>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p style={{ marginTop: "0.5rem" }}><a href={paperback.url} rel="noopener">Read all reviews on Amazon &rarr;</a></p>
       </section>
 
       {/* BESTSELLER PROOF */}
       <section className="qa" aria-labelledby="h-bestseller">
-        <h2 id="h-bestseller">#1 Amazon Best Seller in three categories</h2>
+        <h2 id="h-bestseller">The first AEO book, a #1 Amazon Best Seller in three categories</h2>
         <p>{b.bestsellerNote}</p>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1rem", marginTop: "1.5rem" }}>
           {proofImages.map((img) => (
@@ -248,7 +292,7 @@ export default function AeoBlueprintPage() {
       {/* CLOSING CTA */}
       <section className="qa" aria-labelledby="h-cta" style={{ textAlign: "center" }}>
         <h2 id="h-cta">Be the answer AI recommends.</h2>
-        <p style={{ marginInline: "auto" }}>Get {b.title} on Amazon in paperback or Kindle.</p>
+        <p style={{ marginInline: "auto" }}>Get {b.title}, the first AEO book, on Amazon in paperback or Kindle.</p>
         <div style={{ display: "flex", justifyContent: "center" }}><BuyButtons /></div>
       </section>
     </article>
