@@ -144,7 +144,7 @@ export const entity = {
       ] },
   ],
 
-  contact: { email: "julian.l@paretotalent.com" },
+  contact: { email: "julian@smartmarketer.com" },
 
 
   articles: [
