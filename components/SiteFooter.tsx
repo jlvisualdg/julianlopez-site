@@ -1,13 +1,28 @@
 import Link from "next/link";
-import { entity } from "@/lib/entity";
+import { entity, AUTHORITY_HUB_URL } from "@/lib/entity";
 
 // Footer repeats NAP + the sameAs social links (Authority Hub spec, §3E) — the
 // repetition is a deliberate corroboration signal for entity resolution.
 export default function SiteFooter() {
   const year = new Date().getFullYear();
+  // Short About description = first sentence of the elevator pitch (single source of truth).
+  const shortAbout = entity.elevatorPitch.split(". ")[0] + ".";
   return (
     <footer className="site-footer">
       <div className="wrap cols">
+        <div className="footer-brand">
+          <Link href="/" className="brand">
+            {entity.name.toLowerCase().replace(" ", "_")}<span>.</span>
+          </Link>
+          <p className="footer-slogan">AEO Expert, Digital Strategist &amp; Author</p>
+          <p className="footer-about">{shortAbout}</p>
+          {AUTHORITY_HUB_URL && (
+            <p className="footer-hub">
+              <a href={AUTHORITY_HUB_URL}>{entity.name}: Verified Facts</a>
+              <span>Dated, sourced facts about {entity.name}.</span>
+            </p>
+          )}
+        </div>
         <div>
           <h4>Entity</h4>
           <address className="nap">

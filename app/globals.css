@@ -452,6 +452,12 @@ figcaption { font-family: var(--font-mono); font-size: 0.74rem; color: var(--mut
 .site-footer ul  { list-style: none; margin: 0; padding: 0; line-height: 1.9; }
 .site-footer ul a { color: var(--muted-light); }
 .site-footer ul a:hover { color: var(--spring-laser); text-decoration: none; }
+.site-footer .footer-brand { max-width: 22rem; }
+.site-footer .footer-slogan { margin: 0.5rem 0 0; color: var(--muted-light); font-family: var(--mono); font-size: 0.8rem; }
+.site-footer .footer-about { margin: 0.75rem 0 0; color: var(--muted); line-height: 1.6; }
+.site-footer .footer-hub { margin: 0.9rem 0 0; display: flex; flex-direction: column; gap: 0.2rem; }
+.site-footer .footer-hub a { color: var(--spring-laser); }
+.site-footer .footer-hub span { color: var(--muted); font-size: 0.78rem; }
 .site-footer .nap { font-style: normal; color: var(--muted); }
 
 /* ── MISC ────────────────────────────────────────────────────────── */
