@@ -173,32 +173,38 @@ export default function AeoBlueprintPage() {
       <section className="qa" id="reviews" aria-labelledby="h-reviews">
         <p className="label">Reader reviews</p>
         <h2 id="h-reviews" style={{ marginTop: "0.8rem" }}>What readers say about the first AEO book</h2>
-        <p>Five-star reviews from Amazon readers in the United States, the United Kingdom and Australia, shown as posted.</p>
+        <p>Five-star reviews from Amazon customers in the United States, the United Kingdom and Australia, quoted in full as they wrote them, with a screenshot of each review.</p>
         <div style={{ columns: "2 320px", columnGap: "1rem", marginTop: "1.5rem" }}>
           {bookReviews.map((r) => (
-            <figure key={r.slug} style={{ breakInside: "avoid", margin: "0 0 1rem", border: "1px solid var(--border-active)", background: "var(--surface)", padding: "0.75rem" }}>
+            <figure key={r.slug} id={`review-${r.slug}`} style={{ breakInside: "avoid", margin: "0 0 1rem", border: "1px solid var(--border-active)", background: "var(--surface)", padding: "1rem" }}>
+              <figcaption style={{ fontFamily: "inherit", fontSize: "inherit", color: "inherit", margin: 0 }}>
+                <p style={{ margin: 0, fontSize: "13px", color: "var(--muted-light)" }}>
+                  <strong style={{ color: "var(--white)" }}>{r.name}</strong>, {r.verified ? "a verified Amazon customer" : "an Amazon customer"} in {r.country.startsWith("United") ? `the ${r.country}` : r.country},
+                  gave {b.title} <span aria-label="5 out of 5 stars" style={{ color: "var(--spring-laser)" }}>&#9733;&#9733;&#9733;&#9733;&#9733;</span> 5 stars
+                  on {r.date} ({r.format}) and said:
+                </p>
+                <blockquote cite={paperback.url} style={{ margin: "0.7rem 0 0", paddingLeft: "0.8rem", borderLeft: "2px solid var(--spring-laser)" }}>
+                  <p style={{ margin: 0, color: "var(--white)", fontWeight: 600, fontSize: "13.5px" }}>&ldquo;{r.title}&rdquo;</p>
+                  {r.text.map((t, i) => (
+                    <p key={i} style={{ margin: "0.45rem 0 0", fontSize: "13px", color: "var(--muted-light)" }}>
+                      {i === 0 ? "\u201C" : ""}{t}{i === r.text.length - 1 ? "\u201D" : ""}
+                    </p>
+                  ))}
+                </blockquote>
+                {r.truncated && (
+                  <p style={{ margin: "0.5rem 0 0", fontSize: "11.5px", color: "var(--muted)" }}>
+                    Amazon shows this review in part. <a href={paperback.url} rel="noopener">Read the full review on Amazon</a>.
+                  </p>
+                )}
+              </figcaption>
               <img
                 src={`/reviews/aeo-blueprint-review-${r.slug}.webp`}
-                alt={`Screenshot of a 5-star Amazon review of The AEO Blueprint by ${r.name}, titled "${r.title}", reviewed in ${r.country} on ${r.date}${r.verified ? ", verified purchase" : ""}. Full text below.`}
+                alt={`Screenshot of ${r.name}'s 5-star Amazon review of ${b.title}, "${r.title}", ${r.date}`}
                 width={r.w}
                 height={r.h}
                 loading="lazy"
-                style={{ width: "100%", height: "auto", display: "block", borderRadius: "4px" }}
+                style={{ width: "100%", height: "auto", display: "block", borderRadius: "4px", marginTop: "0.9rem", opacity: 0.92 }}
               />
-              <figcaption style={{ fontFamily: "inherit", marginTop: "0.6rem" }}>
-                <details>
-                  <summary style={{ cursor: "pointer", color: "var(--muted-light)", fontSize: "12px" }}>
-                    {r.name} &middot; &#9733;&#9733;&#9733;&#9733;&#9733; &middot; {r.format}{r.verified ? " · Verified Purchase" : ""} &middot; review text
-                  </summary>
-                  <blockquote style={{ margin: "0.5rem 0 0" }}>
-                    <p style={{ margin: 0, color: "var(--white)", fontWeight: 600, fontSize: "13px" }}>{r.title}</p>
-                    {r.text.map((t, i) => <p key={i} style={{ margin: "0.4rem 0 0", fontSize: "13px" }}>{t}</p>)}
-                    <p style={{ margin: "0.4rem 0 0", fontSize: "11.5px", color: "var(--muted)" }}>
-                      &mdash; {r.name}, reviewed in {r.country} on {r.date}{r.truncated ? " (excerpt)" : ""}
-                    </p>
-                  </blockquote>
-                </details>
-              </figcaption>
             </figure>
           ))}
         </div>

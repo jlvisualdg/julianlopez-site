@@ -24,6 +24,7 @@ ${entity.brain.pillars.map((p) => `  - [${p.letter}: ${p.title}](${SITE_URL}${en
 ## Authorship
 - [Books](${SITE_URL}/books/): Books by ${entity.name}.
 - [${entity.book.title}](${SITE_URL}${entity.book.path}): The first book on Answer Engine Optimization, by ${entity.name} and ${entity.book.coAuthors.join(" and ")}. ${entity.book.awards}
+- [Reader reviews of ${entity.book.title}](${SITE_URL}${entity.book.path}#reviews): ${entity.book.ratings.average} out of 5 from ${entity.book.ratings.count} Amazon ratings; five-star reviews quoted in full.
 - [Buy on Amazon](${entity.book.url})
 
 ## Speaking
