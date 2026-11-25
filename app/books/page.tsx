@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { entity, SITE_URL, amazonBuyUrl } from "@/lib/entity";
 import JsonLd from "@/components/JsonLd";
+import { booksCollectionSchema } from "@/lib/schema";
 import HubFactsLink from "@/components/HubFactsLink";
 
 export const metadata: Metadata = {
@@ -26,30 +27,10 @@ const books = [
   },
 ];
 
-function booksSchema() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "CollectionPage",
-    "@id": `${SITE_URL}/books/#collection`,
-    name: `Books by ${entity.name}`,
-    url: `${SITE_URL}/books/`,
-    author: { "@type": "Person", "@id": `${SITE_URL}/#person`, name: entity.name },
-    mainEntity: {
-      "@type": "ItemList",
-      itemListElement: books.map((bk, i) => ({
-        "@type": "ListItem",
-        position: i + 1,
-        url: `${SITE_URL}${bk.path}`,
-        item: { "@id": `${SITE_URL}${bk.path}#book` },
-      })),
-    },
-  };
-}
-
 export default function Books() {
   return (
     <article>
-      <JsonLd data={booksSchema()} />
+      <JsonLd data={booksCollectionSchema(books)} />
       <p className="label">Books</p>
       <h1 style={{ marginTop: "1rem" }}>Books by {entity.name}</h1>
       <p className="lede" style={{ marginTop: "1rem", maxWidth: "64ch" }}>

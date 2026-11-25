@@ -1,105 +1,262 @@
-import { entity, SITE_URL, AUTHORITY_HUB_URL } from "@/lib/entity";
+import { entity, SITE_URL, AUTHORITY_HUB_URL, HOME_DATE_MODIFIED } from "@/lib/entity";
 import { brainFramework, brainSources, frameworks, frameworksHub } from "@/lib/frameworks";
 
-const PERSON_ID = `${SITE_URL}/#person`;
-const ORG_ID = `${entity.org.url}/#organization`;
+// =============================================================================
+// SCHEMA GOVERNANCE (Authority Hub Builder, _config/schema-reference.md §0A)
+// 1. One @id per entity, from the registry below. Never mint a second one, never
+//    retype an entity inline without its @id.
+// 2. Every page emits one @graph of sibling nodes joined by @id.
+// 3. Page-scoped parity: a page's JSON-LD only states what a reader can see on
+//    that page. Site-wide (layout) = WebSite + the Person's identity core only.
+//    Roles on / and /about/, biography and education on /about/, events on
+//    /media-speaking/, publication facts on the book page.
+// 4. sameAs = profiles of the entity itself. Works and coverage go in subjectOf
+//    on the page that shows them.
+// Gate: python tools/schema_governance.py --html out --ignore-id code-view
+// =============================================================================
+const HOME_URL = `${SITE_URL}/`;
+export const ID = {
+  person: `${SITE_URL}/#person`,
+  website: `${SITE_URL}/#website`,
+  profilePage: `${SITE_URL}/#profilepage`,
+  headshot: `${SITE_URL}/#headshot`,
+  org: `${entity.org.url}/#organization`,
+  org2: `${entity.org2.url}/#organization`,
+  book: `${SITE_URL}${entity.book.path}#book`,
+  brain: `${SITE_URL}${brainFramework.path}#framework`,
+  booksCollection: `${SITE_URL}/books/#collection`,
+  frameworksCollection: `${SITE_URL}/frameworks/#collection`,
+} as const;
 
-// ProfilePage > mainEntity Person — modeled on the Schema App / Van Berkel example.
-// This is the canonical entity definition that anchors the Knowledge Graph.
-export function profilePageSchema() {
+const PERSON_ID = ID.person;
+const ref = (id: string) => ({ "@id": id });
+
+// Typed stubs: enough for a parser to resolve a reference on a page that does not
+// define the entity in full. Only @type, @id, name and url, so they claim nothing.
+const ORG_NODE = { "@type": "Organization", "@id": ID.org, name: entity.org.name, url: entity.org.url };
+const ORG2_NODE = { "@type": "Organization", "@id": ID.org2, name: entity.org2.name, url: entity.org2.url };
+const BOOK_STUB = { "@type": "Book", "@id": ID.book, name: `${entity.book.title}: ${entity.book.subtitle}`, url: `${SITE_URL}${entity.book.path}` };
+const BRAIN_STUB = { "@type": "CreativeWork", "@id": ID.brain, name: brainFramework.name, url: `${SITE_URL}${brainFramework.path}` };
+const BOOKS_COLLECTION_STUB = { "@type": "CollectionPage", "@id": ID.booksCollection, name: `Books by ${entity.name}`, url: `${SITE_URL}/books/` };
+const FRAMEWORKS_COLLECTION_STUB = { "@type": "CollectionPage", "@id": ID.frameworksCollection, name: `Frameworks by ${entity.name}`, url: `${SITE_URL}/frameworks/` };
+
+const graph = (...nodes: Record<string, unknown>[]) => ({ "@context": "https://schema.org", "@graph": nodes });
+
+function webPage(type: string, path: string, name: string, extra: Record<string, unknown> = {}) {
   return {
-    "@context": "https://schema.org",
-    "@type": "ProfilePage",
-    "@id": `${SITE_URL}/#profilepage`,
-    url: SITE_URL,
-    name: `All About ${entity.name}`,
-    mainEntity: {
-      "@type": "Person",
-      "@id": PERSON_ID,
-      name: entity.name,
-      alternateName: entity.alternateName,
-      description: entity.elevatorPitch,
-      image: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}${entity.headshot.src}`,
-        contentUrl: `${SITE_URL}${entity.headshot.src}`,
-        caption: entity.headshot.alt,
-        creditText: entity.headshot.credit,
-        creator: { "@type": "Person", name: entity.headshot.credit, sameAs: entity.headshot.creditUrl },
-      },
-      jobTitle: entity.jobTitle,
-      birthDate: entity.birthDate,
-      birthPlace: { "@type": "Place", name: entity.birthPlace },
-      nationality: entity.nationality,
-      audience: { "@type": "Audience", audienceType: entity.audience },
-      worksFor: { "@id": ORG_ID },
-      knowsAbout: entity.expertise.map((name) => ({ "@type": "Thing", name })),
-      alumniOf: {
-        "@type": "CollegeOrUniversity",
-        name: entity.education.institution,
-      },
-      hasOccupation: entity.occupations.map((o) => ({
-        "@type": "Occupation",
-        name: o.roleName,
-        occupationLocation: { "@type": "Organization", name: o.org },
-        ...(o.startDate ? { startDate: o.startDate } : {}),
-        ...(o.endDate ? { endDate: o.endDate } : {}),
-        description: o.description,
-      })),
-      author: {
-        "@type": "Book",
-        name: `${entity.book.title}: ${entity.book.subtitle}`,
-        url: entity.book.url,
-      },
-      sameAs: entity.sameAs,
-      subjectOf: [
-        ...entity.articles.map((a) => ({
-          "@type": "Article",
-          name: a.title,
-          url: a.url,
-          publisher: { "@type": "Organization", name: a.publisher },
-          about: { "@id": PERSON_ID },
-        })),
-        ...entity.podcastAppearances.map((p) => ({
-          "@type": "PodcastEpisode",
-          name: p.title,
-          url: p.apple,
-          sameAs: [p.apple, p.spotify],
-          about: { "@id": PERSON_ID },
-        })),
-        // Companion authority hub: a separate site of dated facts about this Person.
-        ...(AUTHORITY_HUB_URL
-          ? [{ "@type": "WebSite", "@id": `${AUTHORITY_HUB_URL}#website`, name: `${entity.name}: Verified Facts`, url: AUTHORITY_HUB_URL, about: { "@id": PERSON_ID } }]
-          : []),
-      ],
-    },
-    about: {
-      "@type": "Organization",
-      "@id": ORG_ID,
-      name: entity.org.name,
-      url: entity.org.url,
-      description: entity.org.description,
-      founder: { "@type": "Person", name: entity.org.founder },
-    },
+    "@type": type,
+    "@id": `${SITE_URL}${path}#webpage`,
+    url: `${SITE_URL}${path}`,
+    name,
+    inLanguage: "en",
+    isPartOf: ref(ID.website),
+    ...extra,
   };
 }
 
-// FAQPage — every Q&A on /about as structured data so answer engines can extract
-// direct, quotable answers about the person. Mirrors the visible content exactly.
-export function faqPageSchema() {
-  const qas: { q: string; a: string }[] = entity.about.sections.flatMap((s) =>
-    s.qas.map((x) => ({ q: x.q, a: x.a }))
+// knowsAbout: Things, grounded where a matching Wikidata item exists (each QID verified
+// 2026-11-25). Topics with no exact item stay ungrounded rather than borrow a near match.
+const TOPIC_SAMEAS: Record<string, string> = {
+  "Answer Engine Optimization": "https://www.wikidata.org/wiki/Q97171941",
+  "Digital Strategy": "https://www.wikidata.org/wiki/Q5276170",
+  "Schema Markup": "https://www.wikidata.org/wiki/Q3475322",
+};
+const knowsAbout = () => [
+  ...entity.expertise.map((name) => ({ "@type": "Thing", name, ...(TOPIC_SAMEAS[name] ? { sameAs: TOPIC_SAMEAS[name] } : {}) })),
+  ref(ID.brain),
+];
+
+const currentRoles = (withDates: boolean) =>
+  entity.occupations
+    .filter((o) => !o.endDate && (o.org === entity.org.name || o.org === entity.org2.name))
+    .map((o) => ({
+      "@type": "EmployeeRole",
+      roleName: o.roleName,
+      worksFor: ref(o.org === entity.org.name ? ID.org : ID.org2),
+      // a start date is stated only where the page states it (SmartMarketer, on /about/)
+      ...(withDates && o.org === entity.org.name && o.startDate ? { startDate: o.startDate } : {}),
+    }));
+
+// SITE-WIDE (app/layout.tsx): the WebSite and the Person's identity core. Nothing
+// here is a page-specific claim: name, home URL and the profiles in the footer.
+export function siteSchema() {
+  return graph(
+    {
+      "@type": "WebSite",
+      "@id": ID.website,
+      url: HOME_URL,
+      name: entity.name,
+      inLanguage: "en",
+      publisher: ref(ID.person),
+    },
+    { "@type": "Person", "@id": ID.person, name: entity.name, url: HOME_URL, sameAs: [...entity.sameAs] },
   );
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `${SITE_URL}/about/#faq`,
-    mainEntity: qas.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
+}
+
+// HOME (/): the Entity Home. ProfilePage > mainEntity Person, with what the homepage shows:
+// both current roles, where he lives, expertise, the book, the framework, contact email.
+export function homeSchema() {
+  return graph(
+    {
+      "@type": "ProfilePage",
+      "@id": ID.profilePage,
+      url: HOME_URL,
+      name: entity.headline,
+      inLanguage: "en",
+      dateModified: HOME_DATE_MODIFIED,
+      isPartOf: ref(ID.website),
+      mainEntity: ref(ID.person),
+      primaryImageOfPage: ref(ID.headshot),
+    },
+    {
+      "@type": "ImageObject",
+      "@id": ID.headshot,
+      url: `${SITE_URL}${entity.headshot.src}`,
+      contentUrl: `${SITE_URL}${entity.headshot.src}`,
+      caption: entity.headshot.alt,
+      creditText: entity.headshot.credit,
+      creator: { "@type": "Person", name: entity.headshot.credit, sameAs: entity.headshot.creditUrl },
+    },
+    {
+      "@type": "Person",
+      "@id": ID.person,
+      name: entity.name,
+      url: HOME_URL,
+      mainEntityOfPage: ref(ID.profilePage),
+      description: entity.elevatorPitch,
+      image: ref(ID.headshot),
+      email: entity.contact.email,
+      jobTitle: currentRoles(false).map((r) => r.roleName),
+      homeLocation: { "@type": "Place", name: entity.birthPlace, sameAs: "https://www.wikidata.org/wiki/Q2841" },
+      worksFor: currentRoles(false),
+      knowsAbout: knowsAbout(),
+      sameAs: [...entity.sameAs],
+      // Companion authority hub: a separate site of dated facts about this Person (linked in the footer).
+      ...(AUTHORITY_HUB_URL
+        ? { subjectOf: { "@type": "WebSite", "@id": `${AUTHORITY_HUB_URL}#website`, name: `${entity.name}: Verified Facts`, url: AUTHORITY_HUB_URL, about: ref(ID.person) } }
+        : {}),
+    },
+    ORG_NODE,
+    ORG2_NODE,
+    { ...BOOK_STUB, author: ref(ID.person) },
+    { ...BRAIN_STUB, alternateName: brainFramework.alternateNames, creator: ref(ID.person) },
+  );
+}
+
+// ABOUT (/about/): the biography. Facts stated only here live only here:
+// alternate name, birth date and place, education, dated role, past occupations.
+export function aboutSchema() {
+  const qas: { q: string; a: string }[] = entity.about.sections.flatMap((s) => s.qas.map((x) => ({ q: x.q, a: x.a })));
+  return graph(
+    webPage("AboutPage", "/about/", `All About ${entity.name}`, { about: ref(ID.person), mainEntity: ref(ID.person) }),
+    {
+      "@type": "Person",
+      "@id": ID.person,
+      name: entity.name,
+      alternateName: entity.alternateName,
+      url: HOME_URL,
+      description: entity.about.intro,
+      jobTitle: currentRoles(false).map((r) => r.roleName),
+      birthDate: entity.birthDate,
+      birthPlace: { "@type": "Place", name: entity.birthPlace, sameAs: "https://www.wikidata.org/wiki/Q2841" },
+      worksFor: currentRoles(true),
+      alumniOf: { "@type": "CollegeOrUniversity", name: entity.education.institution, sameAs: entity.education.institutionWikidata },
+      hasCredential: {
+        "@type": "EducationalOccupationalCredential",
+        name: `Degree in ${entity.education.degree}`,
+        credentialCategory: "degree",
+      },
+      // Past professions as general occupations. Dated employment needs a named Organization;
+      // the earlier employers are not named on the page, so no Role is asserted for them.
+      hasOccupation: ["Executive Assistant", "Creative Director", "Lead Animator"].map((name) => ({ "@type": "Occupation", name })),
+      knowsAbout: knowsAbout(),
+      sameAs: [...entity.sameAs],
+    },
+    ORG_NODE,
+    ORG2_NODE,
+    BRAIN_STUB,
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}/about/#faq`,
+      mainEntity: qas.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
+    },
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "About", path: "/about/" }]),
+  );
+}
+
+// MEDIA & SPEAKING (/media-speaking/): the events shown on the page. Month precision
+// only where the page gives a month. Articles and podcast episodes are not listed on
+// this page, so they are not marked up here (the hub's /media page carries them).
+export function mediaSchema() {
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  const monthIso = (label: string) => {
+    const [m, y] = label.split(" ");
+    const i = months.indexOf(m) + 1;
+    return i ? `${y}-${String(i).padStart(2, "0")}` : y;
   };
+  return graph(
+    webPage("WebPage", "/media-speaking/", `${entity.name}: Media & Speaking`, { about: ref(ID.person) }),
+    ...entity.speaking.map((ev, i) => ({
+      "@type": "Event",
+      "@id": `${SITE_URL}/media-speaking/#event-${i + 1}`,
+      name: ev.event,
+      description: ev.talk,
+      startDate: monthIso(ev.date),
+      location: { "@type": "Place", name: ev.location },
+      performer: ref(ID.person),
+      image: ev.images.map((img) => `${SITE_URL}${img.src}`),
+    })),
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "Media & Speaking", path: "/media-speaking/" }]),
+  );
+}
+
+// CONTACT (/contact/)
+export function contactSchema() {
+  return graph(
+    webPage("ContactPage", "/contact/", `Contact ${entity.name}`, { about: ref(ID.person) }),
+    { "@type": "Person", "@id": ID.person, name: entity.name, url: HOME_URL, email: entity.contact.email },
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "Contact", path: "/contact/" }]),
+  );
+}
+
+// BOOKS (/books/): the collection. Each book is defined in full on its own page.
+export function booksCollectionSchema(books: { path: string }[]) {
+  return graph(
+    {
+      "@type": "CollectionPage",
+      "@id": ID.booksCollection,
+      name: `Books by ${entity.name}`,
+      url: `${SITE_URL}/books/`,
+      inLanguage: "en",
+      isPartOf: ref(ID.website),
+      author: ref(ID.person),
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: books.map((bk, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE_URL}${bk.path}`, item: ref(`${SITE_URL}${bk.path}#book`) })),
+      },
+    },
+    { ...BOOK_STUB, author: ref(ID.person) },
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "Books", path: "/books/" }]),
+  );
+}
+
+// BLOG POST (/blog/<slug>/)
+export function blogPostSchema(post: { slug: string; title: string; excerpt: string; date: string; tags: readonly string[] }) {
+  const url = `${SITE_URL}/blog/${post.slug}/`;
+  return graph({
+    "@type": "BlogPosting",
+    "@id": `${url}#article`,
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    url,
+    mainEntityOfPage: url,
+    inLanguage: "en",
+    isPartOf: ref(ID.website),
+    author: ref(ID.person),
+    publisher: ref(ID.person),
+    keywords: post.tags.join(", "),
+  });
 }
 
 export const bookFaq = [
@@ -116,16 +273,13 @@ export const bookFaq = [
 
 export function bookSchema() {
   const pageUrl = `${SITE_URL}${entity.book.path}`;
-  const authors = [
-    { "@type": "Person", "@id": PERSON_ID, name: entity.name, url: SITE_URL },
-    ...entity.book.coAuthors.map((name) => ({ "@type": "Person", name })),
-  ];
+  const authors = [ref(PERSON_ID), ...entity.book.coAuthors.map((name) => ({ "@type": "Person", name }))];
   return {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Book",
-        "@id": `${pageUrl}#book`,
+        "@id": ID.book,
         name: `${entity.book.title}: ${entity.book.subtitle}`,
         alternateName: [entity.book.title, "The first AEO book"],
         keywords: "first AEO book, Answer Engine Optimization book, AEO book, AI search, ChatGPT, Perplexity, Google AI Mode",
@@ -135,7 +289,6 @@ export function bookSchema() {
         image: `${SITE_URL}/aeo-blueprint-2026-edition-stack.avif`,
         description: entity.book.description,
         author: authors,
-        publisher: { "@type": "Organization", name: entity.book.publisher },
         inLanguage: "en",
         datePublished: entity.book.datePublished,
         award: entity.book.awards,
@@ -163,9 +316,11 @@ export function bookSchema() {
         "@id": `${pageUrl}#webpage`,
         url: pageUrl,
         name: `${entity.book.title} by ${entity.name} and ${entity.book.coAuthors.join(" and ")}`,
-        mainEntity: { "@id": `${pageUrl}#book` },
-        isPartOf: { "@id": `${SITE_URL}/books/#collection` },
+        inLanguage: "en",
+        mainEntity: ref(ID.book),
+        isPartOf: ref(ID.booksCollection),
       },
+      BOOKS_COLLECTION_STUB,
       {
         "@type": "FAQPage",
         "@id": `${pageUrl}#faq`,
@@ -189,8 +344,8 @@ export function bookSchema() {
 // are a DefinedTermSet, and the page is an Article about both.
 // ---------------------------------------------------------------------------
 const BRAIN_URL = `${SITE_URL}${brainFramework.path}`;
-const BRAIN_ID = `${BRAIN_URL}#framework`;
-const PERSON_REF = { "@type": "Person", "@id": PERSON_ID, name: entity.name, url: SITE_URL };
+const BRAIN_ID = ID.brain;
+const PERSON_REF = ref(PERSON_ID);
 
 function breadcrumbs(items: { name: string; path: string }[]) {
   return {
@@ -281,6 +436,7 @@ export function brainFrameworkSchema() {
         ]),
         "@id": `${BRAIN_URL}#breadcrumbs`,
       },
+      FRAMEWORKS_COLLECTION_STUB,
     ],
   };
 }
@@ -328,6 +484,7 @@ export function frameworksCollectionSchema() {
         { name: "Home", path: "/" },
         { name: "Frameworks", path: "/frameworks/" },
       ]),
+      { ...BRAIN_STUB, creator: ref(PERSON_ID) },
     ],
   };
 }

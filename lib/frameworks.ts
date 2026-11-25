@@ -38,7 +38,8 @@ export const brainFramework = {
   slug: "brain-framework",
   path: "/frameworks/brain-framework/",
   name: "The B.R.A.I.N. Framework",
-  alternateNames: ["BRAIN Framework", "B.R.A.I.N. framework", "BRAIN framework for AEO", "B.R.A.I.N. AEO framework"],
+  // Spelling variants only (schema alternateName). Descriptive phrases are not names.
+  alternateNames: ["BRAIN Framework"],
   creator: "Julian Lopez",
   version: "2.4",
   dateModified: "2026-11-20",

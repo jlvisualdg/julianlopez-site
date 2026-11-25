@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { entity, AUTHORITY_HUB_URL } from "@/lib/entity";
-import { faqPageSchema } from "@/lib/schema";
+import { aboutSchema } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
@@ -14,7 +14,7 @@ export default function About() {
     <article>
       {/* FAQPage structured data — mirrors every Q&A below, so answer engines can
           extract direct answers about the person. */}
-      <JsonLd data={faqPageSchema()} />
+      <JsonLd data={aboutSchema()} />
 
       <p className="label">Entity Home — Source of Truth</p>
       <h1 style={{ marginTop: "1rem" }}>All About {entity.name}</h1>
@@ -52,14 +52,14 @@ export default function About() {
           <h3>Where does {entity.name} work?</h3>
           <p style={{ marginTop: "0.4rem" }}>
             {entity.name} is currently the Head Strategist for the AEO Team at{" "}
-            <a href="https://smartmarketer.com" rel="me">SmartMarketer Agency</a>.
+            <a href="https://smartmarketer.com">SmartMarketer Agency</a>.
           </p>
         </div>
         <div style={{ marginTop: "1.25rem" }}>
           <h3>Where can you read {entity.name}&rsquo;s book?</h3>
           <p style={{ marginTop: "0.4rem" }}>
             {entity.name} co-authored <em>{entity.book.title}</em>, available on{" "}
-            <a href={entity.book.url} rel="me">Amazon</a>.
+            <a href={entity.book.url}>Amazon</a>.
           </p>
         </div>
         {AUTHORITY_HUB_URL && (

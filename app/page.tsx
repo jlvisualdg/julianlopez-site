@@ -1,9 +1,12 @@
 import Link from "next/link";
 import { entity } from "@/lib/entity";
+import { homeSchema } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd";
 
 export default function Home() {
   return (
     <>
+      <JsonLd data={homeSchema()} />
       <section aria-labelledby="hero-h">
         <div className="hero-container">
           <figure style={{ margin: 0 }}>
@@ -77,7 +80,7 @@ export default function Home() {
         <ul className="clean" style={{ maxWidth: "30rem" }}>
           <li><a href={entity.sameAs[0]} rel="me">LinkedIn</a></li>
           <li><a href={`mailto:${entity.contact.email}`}>Email — {entity.contact.email}</a></li>
-          <li><a href="https://smartmarketer.com" rel="me">SmartMarketer Agency - AEO Team</a></li>
+          <li><a href="https://smartmarketer.com">SmartMarketer Agency - AEO Team</a></li>
         </ul>
       </section>
     </>

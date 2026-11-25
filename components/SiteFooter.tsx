@@ -24,11 +24,12 @@ export default function SiteFooter() {
           )}
         </div>
         <div>
-          <h4>Verified profiles</h4>
+          <h4>Verified profiles &amp; book</h4>
           <ul>
             <li><a href={entity.sameAs[0]} rel="me">LinkedIn</a></li>
             <li><a href={entity.sameAs[1]} rel="me">Facebook</a></li>
-            <li><a href={entity.book.url} rel="me">Amazon Author</a></li>
+            <li><a href={entity.sameAs[2]} rel="me">Amazon Author</a></li>
+            <li><a href={entity.book.url}>The AEO Blueprint on Amazon</a></li>
           </ul>
         </div>
         <div>

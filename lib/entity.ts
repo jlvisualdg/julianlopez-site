@@ -24,6 +24,9 @@ export function amazonBuyUrl(asin: string): string {
   return AMAZON_ASSOCIATE_TAG ? `${base}?tag=${encodeURIComponent(AMAZON_ASSOCIATE_TAG)}` : base;
 }
 
+// Last content change of the homepage (ProfilePage.dateModified). Update when the homepage copy changes.
+export const HOME_DATE_MODIFIED = "2026-11-25";
+
 export const AMAZON_DISCLOSURE = "As an Amazon Associate, I earn from qualifying purchases.";
 
 export const entity = {
@@ -54,11 +57,13 @@ export const entity = {
     "Knowledge Graph Optimization",
   ],
 
+  // Second employer (visible in Quick Facts). Its own node, never folded into another name.
+  org2: { name: "AEO.co", url: "https://aeo.co" },
+
   org: {
     name: "SmartMarketer Agency",
     url: "https://smartmarketer.com",
-    description: "a premiere digital marketing agency",
-    founder: "Smart Marketer",
+    description: "a premier digital marketing agency",
   },
 
   occupations: [
@@ -74,7 +79,7 @@ export const entity = {
 
   pastIndustries: ["Handmade & Artisanal Goods", "Pet Supplies", "Transportation & Logistics"],
 
-  education: { institution: "Universidad Nacional de Colombia", degree: "Graphic Design (emphasis on Animation)" },
+  education: { institution: "Universidad Nacional de Colombia", institutionWikidata: "https://www.wikidata.org/wiki/Q1150419", degree: "Graphic Design (emphasis on Animation)" },
 
   // --- Homepage sections (exact client copy) ---
   home: {
@@ -201,13 +206,12 @@ export const entity = {
     },
   ],
 
+  // sameAs = profiles that ARE Julian Lopez (identity). Never a book, article or episode:
+  // those are works about or by him and live in `articles`, `podcastAppearances` and `book`.
   sameAs: [
     "https://www.linkedin.com/in/julian-lopez-a51724176/",
     "https://www.facebook.com/julian.lopez.9026/",
-    "https://www.amazon.com/AEO-Blueprint-Be-Answer-Recommends-ebook/dp/B0FX5VN49P",
-    "https://smartmarketer.com/how-to-get-your-brand-recommended-by-ai-aeo-with-julian-lopez/",
-    "https://podcasts.apple.com/us/podcast/episode-276-how-to-get-your-brand-recommended-by-ai/id1522629407?i=1000768742864",
-    "https://open.spotify.com/episode/1sPrTntUVvjUq4nm2DClyj",
+    "https://www.amazon.com/stores/author/B0FX6P2YSM/about", // Amazon Author page (the person, not the book)
   ],
 } as const;
 

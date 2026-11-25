@@ -1,3 +1,5 @@
+import { blogPostSchema } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
@@ -30,7 +32,7 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-US", {
-    year: "numeric", month: "long", day: "numeric",
+    year: "numeric", month: "long", day: "numeric", timeZone: "UTC",
   });
 }
 
@@ -118,25 +120,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
   return (
     <article>
       {/* Structured data for article authorship */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.title,
-            description: post.excerpt,
-            datePublished: post.date,
-            author: {
-              "@type": "Person",
-              name: entity.name,
-              url: SITE_URL,
-            },
-            keywords: post.tags.join(", "),
-            url: `${SITE_URL}/blog/${post.slug}/`,
-          }),
-        }}
-      />
+      <JsonLd data={blogPostSchema(post)} />
 
       {/* Header */}
       <p className="label">

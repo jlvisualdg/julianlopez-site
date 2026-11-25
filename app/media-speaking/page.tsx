@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { entity } from "@/lib/entity";
 import HubFactsLink from "@/components/HubFactsLink";
+import { mediaSchema } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd";
 
 export const metadata: Metadata = {
   title: "Media & Speaking",
@@ -12,6 +14,7 @@ export default function Speaking() {
   const ev = entity.speaking[0];
   return (
     <article>
+      <JsonLd data={mediaSchema()} />
       <p className="label">Media & Speaking</p>
       <h1 style={{ marginTop: "1rem" }}>Explaining AEO, on stage and in media.</h1>
       <p className="lede" style={{ marginTop: "1rem" }}>

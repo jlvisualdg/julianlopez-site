@@ -45,6 +45,10 @@ ${entity.brain.pillars.map((p) => `  - [${p.letter}: ${p.title}](${SITE_URL}${en
 ## Speaking
 - [Speaking & media](${SITE_URL}/media-speaking/): ${entity.speaking[0].talk} — ${entity.speaking[0].event}, ${entity.speaking[0].location} (${entity.speaking[0].date}).
 
+## Media coverage
+${entity.articles.map((a) => `- [${a.title}](${a.url}): ${a.publisher}`).join("\n")}
+${entity.podcastAppearances.map((p) => `- [${p.title}](${p.apple}): podcast episode`).join("\n")}
+
 ## Blog
 - [Blog](${SITE_URL}/blog/): Writing on AEO, brand entity and AI-driven marketing.
 
