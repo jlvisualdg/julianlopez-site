@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { entity } from "@/lib/entity";
+import HubFactsLink from "@/components/HubFactsLink";
 
 export const metadata: Metadata = {
   title: "Media & Speaking",
@@ -58,6 +59,7 @@ export default function Speaking() {
           ))}
         </div>
       </section>
+      <HubFactsLink path="/media" label="Julian Lopez media record" desc="dated talks, podcasts and interviews, each with its venue and source." />
     </article>
   );
 }

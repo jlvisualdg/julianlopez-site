@@ -1,4 +1,4 @@
-import { entity, SITE_URL } from "@/lib/entity";
+import { entity, SITE_URL, AUTHORITY_HUB_URL } from "@/lib/entity";
 import { brainFramework, brainSources, frameworks, frameworksHub } from "@/lib/frameworks";
 
 const PERSON_ID = `${SITE_URL}/#person`;
@@ -67,6 +67,10 @@ export function profilePageSchema() {
           sameAs: [p.apple, p.spotify],
           about: { "@id": PERSON_ID },
         })),
+        // Companion authority hub: a separate site of dated facts about this Person.
+        ...(AUTHORITY_HUB_URL
+          ? [{ "@type": "WebSite", "@id": `${AUTHORITY_HUB_URL}#website`, name: `${entity.name}: Verified Facts`, url: AUTHORITY_HUB_URL, about: { "@id": PERSON_ID } }]
+          : []),
       ],
     },
     about: {

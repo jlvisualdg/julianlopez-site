@@ -4,6 +4,7 @@ import { entity, amazonBuyUrl, AMAZON_ASSOCIATE_TAG, AMAZON_DISCLOSURE } from "@
 import { bookSchema, bookFaq } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
 import { bookReviews, pullQuotes } from "@/lib/reviews";
+import HubFactsLink from "@/components/HubFactsLink";
 
 const b = entity.book;
 const paperback = b.formats[0];
@@ -354,6 +355,7 @@ export default function AeoBlueprintPage() {
         <p style={{ marginInline: "auto" }}>Get {b.title} on Amazon in paperback or Kindle.</p>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}><BuyButtons placement="footer" /></div>
       </section>
+      <HubFactsLink path="/books" label="The AEO Blueprint: publication facts" desc="authors, editions, ISBN and ASINs, bestseller ranks and dated Amazon ratings." />
     </article>
   );
 }

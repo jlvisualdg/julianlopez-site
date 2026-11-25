@@ -4,6 +4,7 @@ import { entity } from "@/lib/entity";
 import { brainFramework as bf, brainSources } from "@/lib/frameworks";
 import { brainFrameworkSchema } from "@/lib/schema";
 import JsonLd from "@/components/JsonLd";
+import HubFactsLink from "@/components/HubFactsLink";
 
 export const metadata: Metadata = {
   title: "The B.R.A.I.N. Framework by Julian Lopez",
@@ -280,6 +281,7 @@ export default function BrainFrameworkPage() {
           {bf.name} was created by {entity.name}. {bf.disclaimer} Last updated {bf.dateModified}.
         </p>
       </section>
+      <HubFactsLink path="/frameworks" label="B.R.A.I.N. Framework: authorship and version history" desc="who created it, what changed in each version, and how it is scored, with dates and sources." />
     </article>
   );
 }

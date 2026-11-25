@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { entity, SITE_URL, amazonBuyUrl } from "@/lib/entity";
 import JsonLd from "@/components/JsonLd";
+import HubFactsLink from "@/components/HubFactsLink";
 
 export const metadata: Metadata = {
   title: "Books by Julian Lopez",
@@ -83,6 +84,7 @@ export default function Books() {
           </div>
         </section>
       ))}
+      <HubFactsLink path="/books" label="Books by Julian Lopez: publication facts" desc="authors, editions, ISBN and ASINs, bestseller ranks and dated Amazon ratings." />
     </article>
   );
 }

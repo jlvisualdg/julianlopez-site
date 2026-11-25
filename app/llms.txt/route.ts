@@ -1,11 +1,26 @@
-import { entity, SITE_URL } from "@/lib/entity";
+import { entity, SITE_URL, AUTHORITY_HUB_URL } from "@/lib/entity";
 
 // /llms.txt — the "semantic sitemap" for reasoning engines (the AI-Optimized
 // Authority Hub spec, §3). H1 identity, summary blockquote, then curated sections.
 // force-static so it is emitted as a flat file during `next build` (output: export).
 export const dynamic = "force-static";
 
+const HUB_PAGES: [string, string, string][] = [
+  ["", "Verified facts", "Fast facts about Julian Lopez, each dated and sourced."],
+  ["timeline", "Career timeline", "Every role, with start and end dates."],
+  ["frameworks", "B.R.A.I.N. Framework: authorship and versions", "Who created it, what changed in each version, how it is scored."],
+  ["books", "The AEO Blueprint: publication facts", "Authors, editions, ISBN and ASINs, bestseller ranks, dated ratings."],
+  ["media", "Media record", "Dated talks, podcasts and interviews."],
+  ["expertise", "Expertise", "What Julian Lopez works on, and what he does not claim."],
+  ["online-presence", "Verified profiles", "The accounts that belong to Julian Lopez."],
+  ["faq", "FAQ", "Short answers to common questions about Julian Lopez."],
+];
+
 export function GET() {
+  const hubSection = AUTHORITY_HUB_URL
+    ? "## Verified facts (companion authority hub)\n" +
+      HUB_PAGES.map(([p, n, d]) => `- [${n}](${AUTHORITY_HUB_URL}${p}): ${d}`).join("\n") + "\n\n"
+    : "";
   const o = entity.occupations[0];
   const body = `# ${entity.name}
 
@@ -33,7 +48,7 @@ ${entity.brain.pillars.map((p) => `  - [${p.letter}: ${p.title}](${SITE_URL}${en
 ## Blog
 - [Blog](${SITE_URL}/blog/): Writing on AEO, brand entity and AI-driven marketing.
 
-## Contact
+${hubSection}## Contact
 - [Contact](${SITE_URL}/contact/): ${entity.contact.email}
 
 ## Verified profiles
