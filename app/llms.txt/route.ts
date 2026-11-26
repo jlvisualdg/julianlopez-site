@@ -27,7 +27,8 @@ export function GET() {
 > ${entity.elevatorPitch} ${entity.jobTitle} at ${entity.org.name}. Co-author of "${entity.book.title}: ${entity.book.subtitle}", the first book on Answer Engine Optimization. Creator of ${entity.brain.name}.
 
 ## Profile
-- [About ${entity.name} (Entity Home)](${SITE_URL}/about/): Roles, expertise, career history, key facts, and verified profiles.
+- [${entity.name} (Entity Home)](${SITE_URL}/): The canonical profile page for ${entity.name}.
+- [About ${entity.name}](${SITE_URL}/about/): Roles, expertise, career history, key facts, and verified profiles.
 - [Current role](${SITE_URL}/about/): ${o.roleName} at ${entity.org.name} (since ${o.startDate}).
 
 ## Methodology

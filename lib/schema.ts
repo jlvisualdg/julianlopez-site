@@ -127,15 +127,16 @@ export function homeSchema() {
       image: ref(ID.headshot),
       email: entity.contact.email,
       jobTitle: currentRoles(false).map((r) => r.roleName),
-      homeLocation: { "@type": "Place", name: entity.birthPlace, sameAs: "https://www.wikidata.org/wiki/Q2841" },
+      homeLocation: { "@type": "City", name: entity.birthPlace, sameAs: "https://www.wikidata.org/wiki/Q2841" },
       worksFor: currentRoles(false),
       knowsAbout: knowsAbout(),
       sameAs: [...entity.sameAs],
-      // Companion authority hub: a separate site of dated facts about this Person (linked in the footer).
-      ...(AUTHORITY_HUB_URL
-        ? { subjectOf: { "@type": "WebSite", "@id": `${AUTHORITY_HUB_URL}#website`, name: `${entity.name}: Verified Facts`, url: AUTHORITY_HUB_URL, about: ref(ID.person) } }
-        : {}),
+      // Companion authority hub (linked in the footer): the corroboration loop closes here (G13).
+      ...(AUTHORITY_HUB_URL ? { subjectOf: ref(`${AUTHORITY_HUB_URL}#website`) } : {}),
     },
+    ...(AUTHORITY_HUB_URL
+      ? [{ "@type": "WebSite", "@id": `${AUTHORITY_HUB_URL}#website`, url: AUTHORITY_HUB_URL, name: `${entity.name}: Verified Facts` }]
+      : []),
     ORG_NODE,
     ORG2_NODE,
     { ...BOOK_STUB, author: ref(ID.person) },
@@ -158,7 +159,7 @@ export function aboutSchema() {
       description: entity.about.intro,
       jobTitle: currentRoles(false).map((r) => r.roleName),
       birthDate: entity.birthDate,
-      birthPlace: { "@type": "Place", name: entity.birthPlace, sameAs: "https://www.wikidata.org/wiki/Q2841" },
+      birthPlace: { "@type": "City", name: entity.birthPlace, sameAs: "https://www.wikidata.org/wiki/Q2841" },
       worksFor: currentRoles(true),
       alumniOf: { "@type": "CollegeOrUniversity", name: entity.education.institution, sameAs: entity.education.institutionWikidata },
       hasCredential: {
@@ -237,6 +238,20 @@ export function booksCollectionSchema(books: { path: string }[]) {
     },
     { ...BOOK_STUB, author: ref(ID.person) },
     breadcrumbs([{ name: "Home", path: "/" }, { name: "Books", path: "/books/" }]),
+  );
+}
+
+// BLOG (/blog/): the post list.
+export function blogIndexSchema(posts: { slug: string; title: string }[]) {
+  return graph(
+    webPage("CollectionPage", "/blog/", "Blog", {
+      author: ref(ID.person),
+      mainEntity: {
+        "@type": "ItemList",
+        itemListElement: posts.map((p, i) => ({ "@type": "ListItem", position: i + 1, url: `${SITE_URL}/blog/${p.slug}/`, name: p.title })),
+      },
+    }),
+    breadcrumbs([{ name: "Home", path: "/" }, { name: "Blog", path: "/blog/" }]),
   );
 }
 
@@ -450,6 +465,8 @@ export function frameworksCollectionSchema() {
         "@id": `${SITE_URL}/frameworks/#collection`,
         name: `Frameworks by ${entity.name}`,
         url: `${SITE_URL}/frameworks/`,
+        inLanguage: "en",
+        isPartOf: ref(ID.website),
         author: PERSON_REF,
         description: frameworksHub.intro,
         about: { "@type": "Thing", name: "Answer Engine Optimization" },

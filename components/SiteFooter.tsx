@@ -35,7 +35,7 @@ export default function SiteFooter() {
         <div>
           <h4>Map</h4>
           <ul>
-            <li><Link href="/about/">About (Entity Home)</Link></li>
+            <li><Link href="/about/">About</Link></li>
             <li><Link href="/frameworks/">Frameworks</Link></li>
             <li><Link href="/frameworks/brain-framework/">The B.R.A.I.N. Framework</Link></li>
             <li><Link href="/books/">Books</Link></li>

@@ -16,7 +16,7 @@ export default function About() {
           extract direct answers about the person. */}
       <JsonLd data={aboutSchema()} />
 
-      <p className="label">Entity Home — Source of Truth</p>
+      <p className="label">Biography — Source of Truth</p>
       <h1 style={{ marginTop: "1rem" }}>All About {entity.name}</h1>
       <p className="lede" style={{ marginTop: "1.5rem", maxWidth: "64ch" }}>{entity.about.intro}</p>
 

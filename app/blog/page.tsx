@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { entity } from "@/lib/entity";
 import { getAllPosts } from "@/lib/posts";
+import JsonLd from "@/components/JsonLd";
+import { blogIndexSchema } from "@/lib/schema";
 
 export const metadata: Metadata = {
   title: "Blog",
@@ -20,6 +22,7 @@ export default function BlogIndex() {
 
   return (
     <article>
+      <JsonLd data={blogIndexSchema(posts)} />
       <p className="label">Perspectives</p>
       <h1 style={{ marginTop: "1rem" }}>Blog</h1>
       <p className="lede" style={{ marginTop: "1rem", marginBottom: "2.5rem" }}>

@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { entity, SITE_URL } from "@/lib/entity";
-import { siteSchema } from "@/lib/schema";
-import JsonLd from "@/components/JsonLd";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
 import DualViewContainer from "@/components/DualViewContainer";
@@ -39,7 +37,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="google-site-verification" content="ei9vk_KszVdBbtXxRoziFSrfuHhptS7XbLf95csXfjQ" />
         {/* Google Tag Manager */}
         <script dangerouslySetInnerHTML={{ __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-MKRL2RFT');` }} />
-        <JsonLd data={siteSchema()} />
         <script src="/view-toggle.js"></script>
         <script dangerouslySetInnerHTML={{ __html: `
           // Immediate code view setup - runs before any other scripts
